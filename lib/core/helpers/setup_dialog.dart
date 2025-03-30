@@ -7,7 +7,7 @@ showLoadingDialog(BuildContext context) {
     context: context,
     builder: (context) => const Center(
       child: CircularProgressIndicator(
-        color: ColorsManager.color,
+        color: ColorsManager.primaryLighter,
       ),
     ),
   );
