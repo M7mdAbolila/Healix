@@ -8,6 +8,8 @@ class ColorsManager {
   static const Color dimmedBackground = Color(0xffFAF9F8);
   static const Color darkerGreyText = Color(0xff212529);
   static const Color darkGreyText = Color(0xff6C757D);
+  static const Color grey = Color(0xffD9D9D9);
+  static const Color grey400 = Color(0xffCED4DA);
   static const Color lightGreyText = Color(0xffDEE2E6);
   static const Color whiteText = Color(0xffF8F9FA);
 }

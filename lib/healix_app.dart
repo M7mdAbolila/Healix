@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/theming/colors.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
@@ -13,8 +14,12 @@ class HealixApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
+        title: 'Healix',
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.featureScreen,
+        theme: ThemeData(
+          scaffoldBackgroundColor: ColorsManager.dimmedBackground,
+        ),
+        initialRoute: Routes.onboardingScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

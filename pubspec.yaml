@@ -1,6 +1,6 @@
 name: healix
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -12,8 +12,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  #A build system for Dart code generation and modular compilation
-  build_runner: ^2.4.15
   # State management
   flutter_bloc: ^9.1.0
   bloc: ^9.0.0
@@ -48,9 +46,14 @@ dependencies:
   # snackbar experience with various alert messages i.e. success, failure, help or warning 
   awesome_snackbar_content: ^0.1.5
   # Google fonts
-  google_fonts: ^6.2.1
+  google_fonts: ^6.2.0
+  # Customizable animated page indicator with a set of built-in effects.
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
+  #A build system for Dart code generation and modular compilation
+  build_runner: ^2.4.15
+  flutter_gen_runner: ^5.9.0
   flutter_test:
     sdk: flutter
 
@@ -59,9 +62,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/svgs/
+    - assets/lotties/
 
 
   # fonts:
@@ -71,3 +75,13 @@ flutter:
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
 
+
+flutter_gen:
+  output: lib/core/gen/ 
+  line_length: 80 
+
+  # Optional
+  integrations:
+    flutter_svg: true
+    rive: true
+    lottie: true  

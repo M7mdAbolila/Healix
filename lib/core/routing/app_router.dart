@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
 import 'routes.dart';
 
@@ -12,6 +14,14 @@ class AppRouter {
       //   return MaterialPageRoute(
       //     builder: (_) => const FeatureScreen(),
       //   );
+      case Routes.onboardingScreen:
+        return MaterialPageRoute(
+          builder: (_) => const OnboardingScreen(),
+        );
+      case Routes.signUpScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SignUpScreen(),
+        );
       default:
         return null;
     }
