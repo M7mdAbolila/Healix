@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healix/core/gen/assets.gen.dart';
-import 'package:healix/core/theming/colors.dart';
-import 'package:healix/core/widgets/custom_button.dart';
-import 'package:healix/features/onboarding/presentation/widgets/onboarding_content.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:healix/core/helpers/extensions.dart';
 
+import '../../../core/gen/assets.gen.dart';
 import '../../../core/helpers/spacing.dart';
-import '../../../core/widgets/custom_back_button.dart';
-import 'widgets/skip_button.dart';
+import '../../../core/routing/routes.dart';
+import '../../../core/widgets/custom_button.dart';
+import 'widgets/all_in_one_widget.dart';
+import 'widgets/onboarding_header.dart';
+import 'widgets/onboarding_page_indicator.dart';
+import 'widgets/onboarding_page_view.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -31,21 +32,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: Column(
             children: [
               verticalSpace(24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _currentPage != 0
-                      ? CustomBackButton(
-                          onTap: () =>
-                              _pageController.jumpToPage(_currentPage - 1),
-                        )
-                      : const SizedBox.shrink(),
-                  _currentPage == 3
-                      ? const SizedBox.shrink()
-                      : SkipButton(
-                          onTap: () => _pageController.jumpToPage(3),
-                        ),
-                ],
+              OnboardingHeader(
+                currentPage: _currentPage,
+                onTapBack: () => _pageController.jumpToPage(_currentPage - 1),
+                onTapSkip: () => _pageController.jumpToPage(3),
               ),
               verticalSpace(24),
               Assets.svgs.logoWithWord.svg(
@@ -54,75 +44,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               verticalSpace(16),
               Expanded(
-                child: PageView(
-                  controller: _pageController,
+                child: OnboardingPageView(
+                  pageController: _pageController,
+                  slideFromRight: _slideFromRight,
                   onPageChanged: (index) {
                     setState(() {
                       _slideFromRight = index > _currentPage;
                       _currentPage = index;
                     });
                   },
-                  children: [
-                    OnboardingContent(
-                      title: ' Your Smart\nAI Health Assistant',
-                      description:
-                          'AI-powered assistant designed to help you analyze symptoms, track medical history, and book doctor appointments.',
-                      imagePath: Assets.svgs.onboarding1.path,
-                      slideFromRight: _slideFromRight,
-                    ),
-                    OnboardingContent(
-                      title: 'Instant Symptom Analysis,\nBacked by AI',
-                      description:
-                          'Describe your symptoms, & our AI will analyze them to provide health insights No more guessing about your health.',
-                      imagePath: Assets.svgs.onboarding2.path,
-                      slideFromRight: _slideFromRight,
-                    ),
-                    OnboardingContent(
-                      title: 'Find the Right Doctor in\nJust a Few Taps',
-                      description:
-                          'Easily search and book appointments with verified doctors. Get the medical attention you need without long waiting times.',
-                      imagePath: Assets.svgs.onboarding3.path,
-                      slideFromRight: _slideFromRight,
-                    ),
-                    OnboardingContent(
-                      title:
-                          'Stay Ahead of Health Risks\nFor You & Your Family',
-                      description:
-                          'Monitor your personal medical history and track family health patterns to detect potential chronic diseases early.',
-                      imagePath: Assets.svgs.onboarding4.path,
-                      slideFromRight: _slideFromRight,
-                    ),
-                  ],
                 ),
               ),
-              _currentPage == 0
-                  ? Column(
-                      children: [
-                        Assets.svgs.allInOne.svg(),
-                        verticalSpace(30),
-                      ],
-                    )
-                  : const SizedBox.shrink(),
-              SmoothPageIndicator(
-                controller: _pageController,
-                count: 4,
-                effect: ExpandingDotsEffect(
-                  dotWidth: 8.w,
-                  dotHeight: 8.h,
-                  spacing: 10.w,
-                  dotColor: ColorsManager.grey,
-                  activeDotColor: ColorsManager.grey,
-                ),
+              if (_currentPage == 0) const AllInOneWidget(),
+              OnboardingPageIndicator(
+                pageController: _pageController,
               ),
               verticalSpace(16),
               CustomButton(
                 title: _currentPage == 3 ? 'Let\'s Start!' : 'Next',
                 onTap: () {
                   if (_currentPage < 3) {
-                    _pageController.jumpToPage(
-                      _currentPage + 1,
-                    );
-                  } else {}
+                    _pageController.jumpToPage(_currentPage + 1);
+                  } else {
+                    context.pushNamed(Routes.signUpScreen);
+                  }
                 },
               ),
               verticalSpace(24),
