@@ -6,6 +6,8 @@ import 'package:healix/features/login/presentation/screens/login_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
+import '../../features/create_profile/presentation/screens/create_profile_screen.dart';
+import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -26,6 +28,14 @@ class AppRouter {
       case Routes.signInScreen:
         return MaterialPageRoute(
           builder: (_) => const LoginScreen(),
+        );
+      case Routes.verifyEmailScreen:
+        return MaterialPageRoute(
+          builder: (_) => const VerfiyEmailScreen(),
+        );
+      case Routes.createProfileScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CreateProfileScreen(),
         );
       default:
         return null;

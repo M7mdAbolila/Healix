@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healix/core/helpers/extensions.dart';
+import 'package:healix/core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -26,7 +28,7 @@ class _SignUpButtonAndTermsWidgetState
         CustomButton(
           title: 'Sign up',
           enable: _isAgree,
-          onTap: () {},
+          onTap: () => context.pushNamed(Routes.verifyEmailScreen),
         ),
         verticalSpace(16),
         Row(

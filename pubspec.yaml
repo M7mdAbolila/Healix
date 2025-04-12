@@ -49,6 +49,8 @@ dependencies:
   google_fonts: ^6.2.0
   # Customizable animated page indicator with a set of built-in effects.
   smooth_page_indicator: ^1.2.1
+  # pin code input
+  pin_code_fields: ^8.0.1
 
 dev_dependencies:
   #A build system for Dart code generation and modular compilation
