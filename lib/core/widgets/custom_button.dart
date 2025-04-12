@@ -13,6 +13,7 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.width,
     this.height,
+    this.enable = true,
   });
   final String title;
   final VoidCallback onTap;
@@ -20,17 +21,18 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
   final double? width;
   final double? height;
+  final bool enable;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: enable ? onTap : null,
       child: Container(
         width: width ?? double.infinity,
         height: height,
         padding: EdgeInsets.all(8.r),
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: enable ? backgroundColor : ColorsManager.darkGreyText,
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Center(
