@@ -18,7 +18,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
-
+  final TextInputAction? textInputAction;
   final Function(String?)? onChanged;
   final Function(String?)? onSumitted;
 
@@ -38,6 +38,7 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.prefixIcon,
     this.keyboardType,
+    this.textInputAction,
     this.onChanged,
     this.onSumitted,
     this.maxLines,
@@ -100,6 +101,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 TextFormField(
                   focusNode: _focusNode,
                   controller: widget.controller,
+                  textInputAction: widget.textInputAction,
                   keyboardType: widget.keyboardType ?? TextInputType.name,
                   obscureText: widget.isObscureText ?? false,
                   maxLines: widget.maxLines ?? 1,

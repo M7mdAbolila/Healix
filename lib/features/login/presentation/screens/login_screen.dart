@@ -3,14 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/theming/colors.dart';
 import 'package:healix/core/theming/text_styles.dart';
+import 'package:healix/core/widgets/custom_button.dart';
+import 'package:healix/features/login/presentation/widgets/dont_have_account.dart';
+import 'package:healix/features/login/presentation/widgets/forget_pass_widget.dart';
+import 'package:healix/features/login/presentation/widgets/login_form.dart';
 
 import '../../../../core/helpers/spacing.dart';
-import '../widgets/already_have_account.dart';
-import '../widgets/signup_button_and_terms_widget.dart';
-import '../widgets/signup_form.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class SignUpScreen extends StatelessWidget {
 
   Widget _buildContent() {
     return Padding(
-      padding: EdgeInsets.only(top: 60.h),
+      padding: EdgeInsets.only(top: 90.h),
       child: Column(
         children: [
           Assets.svgs.whiteLogoWithWord.svg(
@@ -77,15 +78,20 @@ class SignUpScreen extends StatelessWidget {
             children: [
               verticalSpace(32),
               Text(
-                'Sign up',
+                'Sign in',
                 style: AppTextStyles.fontTitleText(color: Colors.black),
               ),
               verticalSpace(32),
-              const SignUpForm(),
+              const EmailAndPasswordForm(),
+              verticalSpace(16),
+              const ForgotPassWidget(),
               verticalSpace(32),
-              const SignUpButtonAndTermsWidget(),
-              verticalSpace(65),
-              const AlreadyHaveAccount(),
+              CustomButton(
+                title: 'Sign in',
+                onTap: () {},
+              ),
+              verticalSpace(145),
+              const DontHaveAccount(),
             ],
           ),
         ),
