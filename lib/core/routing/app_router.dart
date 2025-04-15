@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:healix/features/login/presentation/screens/login_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:healix/features/physical_info/presentation/screens/physical_info_screen.dart';
@@ -33,6 +34,10 @@ class AppRouter {
       case Routes.verifyEmailScreen:
         return MaterialPageRoute(
           builder: (_) => const VerfiyEmailScreen(),
+        );
+      case Routes.forgetPasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ForgetPasswordScreen(),
         );
       case Routes.createProfileScreen:
         return MaterialPageRoute(
