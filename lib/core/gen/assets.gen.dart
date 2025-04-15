@@ -19,8 +19,11 @@ class $AssetsImagesGen {
   AssetGenImage get authPicture =>
       const AssetGenImage('assets/images/auth-picture.png');
 
+  /// File path: assets/images/temp.png
+  AssetGenImage get temp => const AssetGenImage('assets/images/temp.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [authPicture];
+  List<AssetGenImage> get values => [authPicture, temp];
 }
 
 class $AssetsSvgsGen {
@@ -47,6 +50,9 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/logo-with-word.svg
   SvgGenImage get logoWithWord =>
       const SvgGenImage('assets/svgs/logo-with-word.svg');
+
+  /// File path: assets/svgs/logout.svg
+  SvgGenImage get logout => const SvgGenImage('assets/svgs/logout.svg');
 
   /// File path: assets/svgs/onboarding-1.svg
   SvgGenImage get onboarding1 =>
@@ -76,6 +82,7 @@ class $AssetsSvgsGen {
     passwordTips,
     authPicture,
     logoWithWord,
+    logout,
     onboarding1,
     onboarding2,
     onboarding3,

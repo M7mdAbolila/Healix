@@ -81,7 +81,7 @@ class _SignUpFormState extends State<SignUpForm> {
             if (v!.isEmpty) {
               return 'Password is required';
             } else if (!AppRegex.isPasswordValid(v)) {
-              return 'Enter a valid password';
+              return 'Use at least 8 characters with a mix of uppercase, lowercase, numbers, and special symbols; avoid common words, personal info, and repeated patterns. ';
             }
             return null;
           },

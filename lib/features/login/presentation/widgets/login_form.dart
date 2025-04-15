@@ -54,7 +54,7 @@ class _EmailAndPasswordFormState extends State<EmailAndPasswordForm> {
           validator: (v) {
             if (v!.isEmpty) {
               return 'Password is required';
-            } else if (v.length < 6) {
+            } else if (!AppRegex.isPasswordValid(v)) {
               return 'Use at least 8 characters with a mix of uppercase, lowercase, numbers, and special symbols; avoid common words, personal info, and repeated patterns. ';
             }
             return null;

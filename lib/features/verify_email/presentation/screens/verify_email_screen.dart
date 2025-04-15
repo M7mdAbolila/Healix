@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
+import 'package:healix/core/routing/routes.dart';
 import 'package:healix/core/theming/colors.dart';
 import 'package:healix/core/widgets/custom_back_button.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -58,7 +60,7 @@ class VerfiyEmailScreen extends StatelessWidget {
                 verticalSpace(26),
                 CustomButton(
                   title: 'Verify Email',
-                  onTap: () {},
+                  onTap: () => context.pushNamed(Routes.createProfileScreen),
                 ),
                 verticalSpace(100),
               ],
@@ -71,68 +73,67 @@ class VerfiyEmailScreen extends StatelessWidget {
 
   Row _buildResendCodeWidget() {
     return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Didn’t receive the code?',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.fontParagraphText(
-                      color: ColorsManager.darkerGreyText,
-                    ),
-                  ),
-                  horizontalSpace(8),
-                  Text(
-                    'Resend',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.fontParagraphText(
-                      color: ColorsManager.informing,
-                    ).copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: ColorsManager.informing,
-                    ),
-                  ),
-                ],
-              );
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'Didn’t receive the code?',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.fontParagraphText(
+            color: ColorsManager.darkerGreyText,
+          ),
+        ),
+        horizontalSpace(8),
+        Text(
+          'Resend',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.fontParagraphText(
+            color: ColorsManager.informing,
+          ).copyWith(
+            decoration: TextDecoration.underline,
+            decorationColor: ColorsManager.informing,
+          ),
+        ),
+      ],
+    );
   }
 
   Column _buildVerfiyInstructions() {
     return Column(
-                children: [
-                  Text(
-                    'We’ve sent a 6-digit code to your email example@email.com',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.fontParagraphText(
-                      color: ColorsManager.darkerGreyText,
-                    ),
-                  ),
-                  verticalSpace(16),
-                  Text(
-                    'Enter the code below to verify your email and continue.',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.fontParagraphText(
-                      color: ColorsManager.darkerGreyText,
-                    ),
-                  ),
-                ],
-              );
+      children: [
+        Text(
+          'We’ve sent a 6-digit code to your email example@email.com',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.fontParagraphText(
+            color: ColorsManager.darkerGreyText,
+          ),
+        ),
+        verticalSpace(16),
+        Text(
+          'Enter the code below to verify your email and continue.',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.fontParagraphText(
+            color: ColorsManager.darkerGreyText,
+          ),
+        ),
+      ],
+    );
   }
 
   Column _buildVerifyHeader() {
     return Column(
-                children: [
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: CustomBackButton(),
-                  ),
-                  verticalSpace(50),
-                  Text(
-                    'Verify Your Email',
-                    style: AppTextStyles.fontTitleText(
-                      color: ColorsManager.darkerGreyText,
-                    ),
-                  ),
-                ],
-              );
+      children: [
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: CustomBackButton(),
+        ),
+        verticalSpace(50),
+        Text(
+          'Verify Your Email',
+          style: AppTextStyles.fontTitleText(
+            color: ColorsManager.darkerGreyText,
+          ),
+        ),
+      ],
+    );
   }
 }
-
