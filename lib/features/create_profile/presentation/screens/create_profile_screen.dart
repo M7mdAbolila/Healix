@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
+import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
+import 'package:healix/core/routing/routes.dart';
 import 'package:healix/core/theming/colors.dart';
 import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/features/create_profile/presentation/widgets/add_address_card.dart';
@@ -45,37 +47,31 @@ class CreateProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            _buildDoneButton(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: EdgeInsets.fromLTRB(16.w, 80.h, 16.w, 32.h),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromARGB(8, 255, 255, 255),
+                      Color.fromARGB(195, 255, 255, 255),
+                      Colors.white,
+                      Colors.white,
+                      Colors.white,
+                    ],
+                  ),
+                ),
+                child: CustomButton(
+                  height: 40.h,
+                  title: 'Done',
+                  onTap: () => context.pushNamed(Routes.physcialInfoScreen),
+                ),
+              ),
+            ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Align _buildDoneButton() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        padding: EdgeInsets.fromLTRB(16.w, 80.h, 16.w, 32.h),
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(8, 255, 255, 255),
-              Color.fromARGB(195, 255, 255, 255),
-              Colors.white,
-              Colors.white,
-              Colors.white,
-            ],
-          ),
-        ),
-        child: CustomButton(
-          height: 40.h,
-          title: 'Done',
-          onTap: () {
-            
-          },
         ),
       ),
     );

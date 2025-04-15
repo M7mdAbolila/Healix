@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/app_regex.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/widgets/custom_text_form_field.dart';
-import 'package:healix/features/create_profile/presentation/widgets/phone_text_field.dart';
-
+import 'package:healix/features/create_profile/presentation/widgets/text_field_with_prefix_text.dart';
 
 class CreateProfileForm extends StatelessWidget {
   const CreateProfileForm({super.key});
@@ -43,11 +42,27 @@ class CreateProfileForm extends StatelessWidget {
           ],
         ),
         verticalSpace(24),
-        const PhoneTextField(),
+        TextFieldWithPrifixText(
+          title: 'Phone Number',
+          hintText: '01234567891',
+          prefixText: '+20',
+          keyboardType: TextInputType.phone,
+          textInputAction: TextInputAction.next,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return 'Phone number is required';
+            } else if (!AppRegex.isPhoneNumberValid(value)) {
+              return 'Enter a valid phone number';
+            }
+            return null;
+          },
+        ),
         verticalSpace(24),
         CustomTextFormField(
           title: 'National ID',
           hintText: 'Your National ID or Passport Number',
+          keyboardType: TextInputType.number,
+          textInputAction: TextInputAction.done,
           validator: (value) {
             if (value!.isEmpty) {
               return 'National ID is required';

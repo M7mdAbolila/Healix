@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/features/login/presentation/screens/login_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:healix/features/physical_info/presentation/screens/physical_info_screen.dart';
 import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
 import '../../features/create_profile/presentation/screens/create_profile_screen.dart';
@@ -36,6 +37,10 @@ class AppRouter {
       case Routes.createProfileScreen:
         return MaterialPageRoute(
           builder: (_) => const CreateProfileScreen(),
+        );
+      case Routes.physcialInfoScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PhysicalInfoScreen(),
         );
       default:
         return null;

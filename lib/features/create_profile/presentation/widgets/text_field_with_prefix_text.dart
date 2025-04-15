@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
 
-class PhoneTextField extends StatelessWidget {
-  const PhoneTextField({super.key});
-
+class TextFieldWithPrifixText extends StatelessWidget {
+  const TextFieldWithPrifixText({
+    super.key,
+    required this.title,
+    required this.hintText,
+    required this.prefixText,
+    this.controller,
+    this.validator,
+    this.keyboardType,
+    this.textInputAction,
+  });
+  final String title;
+  final String hintText;
+  final String prefixText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 5.h,
+      spacing: 8.h,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Phone number',
+          title,
           style: AppTextStyles.fontTextInput(
             color: ColorsManager.darkGreyText,
           ),
@@ -43,7 +57,7 @@ class PhoneTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4.r),
                 ),
                 child: Text(
-                  '+20',
+                  prefixText,
                   style: AppTextStyles.fontSmallerText(
                     color: Colors.white,
                   ),
@@ -51,16 +65,10 @@ class PhoneTextField extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.phone,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Phone number is required';
-                    } else if (!AppRegex.isPhoneNumberValid(value)) {
-                      return 'Enter a valid phone number';
-                    }
-                    return null;
-                  },
+                  controller: controller,
+                  textInputAction: textInputAction,
+                  keyboardType: keyboardType,
+                  validator: validator,
                   cursorColor: ColorsManager.primaryColor,
                   decoration: InputDecoration(
                     isDense: true,
@@ -69,10 +77,10 @@ class PhoneTextField extends StatelessWidget {
                     fillColor: Colors.white,
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 9.h),
-                    hintStyle: AppTextStyles.fontParagraphText(
-                      color: ColorsManager.lightGreyText,
+                    hintStyle: AppTextStyles.fontTextInput(
+                      color: ColorsManager.grey500,
                     ),
-                    hintText: '012345678',
+                    hintText: hintText,
                     border: InputBorder.none,
                   ),
                 ),
