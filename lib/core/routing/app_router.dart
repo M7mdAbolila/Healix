@@ -2,13 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
+import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
 import 'package:healix/features/login/presentation/screens/login_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:healix/features/physical_info/presentation/screens/physical_info_screen.dart';
 import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
 import '../../features/create_profile/presentation/screens/create_profile_screen.dart';
+import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 import 'routes.dart';
 
@@ -39,9 +42,21 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const ForgetPasswordScreen(),
         );
+      case Routes.twoFactorAuthScreen:
+        return MaterialPageRoute(
+          builder: (_) => const TwoFactorAuthScreen(),
+        );
+      case Routes.enterOtpScreen:
+        return MaterialPageRoute(
+          builder: (_) => const EnterOtpScreen(),
+        );
       case Routes.createProfileScreen:
         return MaterialPageRoute(
           builder: (_) => const CreateProfileScreen(),
+        );
+      case Routes.resetPassScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ResetPassScreen(),
         );
       case Routes.physcialInfoScreen:
         return MaterialPageRoute(

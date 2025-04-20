@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/widgets/custom_text_form_field.dart';
 
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_back_button.dart';
@@ -39,7 +41,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               verticalSpace(32),
               CustomButton(
                 title: 'Send OTP',
-                onTap: () {},
+                onTap: () => context.pushNamed(Routes.enterOtpScreen),
               ),
               const Spacer(),
             ],
