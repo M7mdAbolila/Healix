@@ -1,25 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
-import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/theming/colors.dart';
 import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/core/widgets/custom_button.dart';
-import 'package:healix/features/login/presentation/widgets/dont_have_account.dart';
-import 'package:healix/features/login/presentation/widgets/forget_pass_widget.dart';
-import 'package:healix/features/login/presentation/widgets/login_form.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../../../../../core/helpers/spacing.dart';
+import '../widgets/already_have_account.dart';
+import '../widgets/signup_button_and_terms_widget.dart';
+import '../widgets/signup_form.dart';
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildContent() {
     return Padding(
-      padding: EdgeInsets.only(top: 90.h),
+      padding: EdgeInsets.only(top: 60.h),
       child: Column(
         children: [
           Assets.svgs.whiteLogoWithWord.svg(
@@ -86,27 +77,15 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               verticalSpace(32),
               Text(
-                'Sign in',
+                'Sign up',
                 style: AppTextStyles.fontTitleText(color: Colors.black),
               ),
               verticalSpace(32),
-              Form(
-                key: _formKey,
-                child: const EmailAndPasswordForm(),
-              ),
-              verticalSpace(16),
-              const ForgotPassWidget(),
+              const SignUpForm(),
               verticalSpace(32),
-              CustomButton(
-                title: 'Sign in',
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    log('sign in');
-                  }
-                },
-              ),
-              verticalSpace(145),
-              const DontHaveAccount(),
+              const SignUpButtonAndTermsWidget(),
+              verticalSpace(65),
+              const AlreadyHaveAccount(),
             ],
           ),
         ),

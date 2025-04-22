@@ -87,10 +87,10 @@ class EnterOtpScreen extends StatelessWidget {
           'Resend OTP',
           textAlign: TextAlign.center,
           style: AppTextStyles.fontParagraphText(
-            color: ColorsManager.informing,
+            color: ColorsManager.informingColor,
           ).copyWith(
             decoration: TextDecoration.underline,
-            decorationColor: ColorsManager.informing,
+            decorationColor: ColorsManager.informingColor,
           ),
         ),
       ],

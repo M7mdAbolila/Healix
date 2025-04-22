@@ -32,6 +32,14 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/All in one.svg
   SvgGenImage get allInOne => const SvgGenImage('assets/svgs/All in one.svg');
 
+  /// File path: assets/svgs/Chronic Disease.svg
+  SvgGenImage get chronicDisease =>
+      const SvgGenImage('assets/svgs/Chronic Disease.svg');
+
+  /// File path: assets/svgs/Medic Hist Illustration.svg
+  SvgGenImage get medicHistIllustration =>
+      const SvgGenImage('assets/svgs/Medic Hist Illustration.svg');
+
   /// File path: assets/svgs/Pass-Eye-slash.svg
   SvgGenImage get passEyeSlash =>
       const SvgGenImage('assets/svgs/Pass-Eye-slash.svg');
@@ -77,6 +85,8 @@ class $AssetsSvgsGen {
   /// List of all assets
   List<SvgGenImage> get values => [
     allInOne,
+    chronicDisease,
+    medicHistIllustration,
     passEyeSlash,
     passEye,
     passwordTips,

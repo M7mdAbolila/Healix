@@ -10,6 +10,14 @@ class Routes {
   static const String physcialInfoScreen = '/physcialInfoScreen';
   static const String enterOtpScreen = '/enterOtpScreen';
   static const String resetPassScreen = '/resetPassScreen';
+  static const String chronicDiseaseScreen = '/chronicDiseaseScreen';
+  static const String addMidcalHistScreen = '/addMidcalHistScreen';
+  static const String mainLayoutScreen = '/mainLayoutScreen';
+  static const String homeScreen = '/homeScreen';
+  static const String settingsScreen = '/settingsScreen';
+  static const String myActivityScreen = '/myActivityScreen';
+  static const String medicHistScreen = '/medicHistScreen';
+  static const String healixBotMainScreen = '/healixBotMainScreen';
 
   // static const String Screen = '/Screen';
 }

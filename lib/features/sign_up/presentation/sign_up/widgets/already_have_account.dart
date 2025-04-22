@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/theming/text_styles.dart';
+import 'package:healix/core/routing/routes.dart';
 
-import '../../../../core/theming/colors.dart';
+import '../../../../../core/theming/colors.dart';
 
-class DontHaveAccount extends StatelessWidget {
-  const DontHaveAccount({
+class AlreadyHaveAccount extends StatelessWidget {
+  const AlreadyHaveAccount({
     super.key,
   });
 
@@ -15,15 +16,15 @@ class DontHaveAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Don\'t have an account? ',
+          'Already have an account? ',
           style: AppTextStyles.fontParagraphText(
             color: ColorsManager.darkerGreyText,
           ),
         ),
         GestureDetector(
-          onTap: () => context.pop(),
+          onTap: () => context.pushNamed(Routes.signInScreen),
           child: Text(
-            'Sign up',
+            'Log in',
             style: AppTextStyles.fontParagraphText(
               color: ColorsManager.informingColor,
             ).copyWith(

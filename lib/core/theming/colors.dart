@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ColorsManager {
-  static const Color primaryColor = Color(0xff405D72);
-  static const Color primaryLighter = Color(0xff758694);
-  static const Color secondaryColor = Color(0xff293A7A);
+  static const Color primaryColor = Color(0xff5384B7);
+  static const Color primaryLighter = Color(0xffA6C5DF);
+  static const Color secondaryColor = Color(0xffF7E7DC);
   static const Color dimmedColor = Color(0xffF2F2F4);
   static const Color dimmedBackground = Color(0xffFAF9F8);
   static const Color darkerGreyText = Color(0xff212529);
@@ -16,7 +16,8 @@ class ColorsManager {
   static const Color grey800 = Color(0xff343A40);
   static const Color lightGreyText = Color(0xffDEE2E6);
   static const Color whiteText = Color(0xffF8F9FA);
-  static const Color informing = Color(0xff4059E6);
+  static const Color supportColor = Color(0xff3DCC80);
+  static const Color informingColor = Color(0xff4059E6);
   static const Color checkBoxColor = Color(0xff5C85A3);
   static const Color authBackground = Color(0xff031119);
   static const Color shodowColor = Color.fromARGB(61, 158, 158, 158);

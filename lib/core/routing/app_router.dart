@@ -7,10 +7,12 @@ import 'package:healix/features/forget_password/presentation/screens/forget_pass
 import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
 import 'package:healix/features/login/presentation/screens/login_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
-import 'package:healix/features/physical_info/presentation/screens/physical_info_screen.dart';
-import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
+import 'package:healix/features/sign_up/presentation/add_medical_history/add_medical_history_screen.dart';
+import 'package:healix/features/sign_up/presentation/chronic_disease/chronic_disease_screen.dart';
+import 'package:healix/features/sign_up/presentation/physical_info/screens/physical_info_screen.dart';
+import 'package:healix/features/sign_up/presentation/sign_up/screens/sign_up_screen.dart';
 
-import '../../features/create_profile/presentation/screens/create_profile_screen.dart';
+import '../../features/sign_up/presentation/create_profile/screens/create_profile_screen.dart';
 import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 import 'routes.dart';
@@ -53,6 +55,15 @@ class AppRouter {
       case Routes.createProfileScreen:
         return MaterialPageRoute(
           builder: (_) => const CreateProfileScreen(),
+        );
+
+      case Routes.addMidcalHistScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddMedicalHistoryScreen(),
+        );
+      case Routes.chronicDiseaseScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChronicDiseaseScreen(),
         );
       case Routes.resetPassScreen:
         return MaterialPageRoute(

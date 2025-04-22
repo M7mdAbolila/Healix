@@ -13,6 +13,7 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.width,
     this.height,
+    this.textColor,
     this.enable = true,
   });
   final String title;
@@ -22,7 +23,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final bool enable;
-
+  final Color? textColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,8 +39,8 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style:
-                textStyle ?? AppTextStyles.fontTextInput(color: Colors.white),
+            style: textStyle ??
+                AppTextStyles.fontTextInput(color: textColor ?? Colors.white),
           ),
         ),
       ),

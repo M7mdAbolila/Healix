@@ -87,10 +87,10 @@ class VerfiyEmailScreen extends StatelessWidget {
           'Resend',
           textAlign: TextAlign.center,
           style: AppTextStyles.fontParagraphText(
-            color: ColorsManager.informing,
+            color: ColorsManager.informingColor,
           ).copyWith(
             decoration: TextDecoration.underline,
-            decorationColor: ColorsManager.informing,
+            decorationColor: ColorsManager.informingColor,
           ),
         ),
       ],
