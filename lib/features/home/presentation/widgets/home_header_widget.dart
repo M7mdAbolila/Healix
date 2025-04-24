@@ -12,14 +12,21 @@ class HomeHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 160.h,
-      padding: EdgeInsets.fromLTRB(16.w, 40.h, 16.w, 16.h),
+      padding: EdgeInsets.fromLTRB(16.w, 56.h, 16.w, 16.h),
       decoration: BoxDecoration(
         color: ColorsManager.primaryColor,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(8.r),
           bottomRight: Radius.circular(8.r),
         ),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0, 16),
+            blurRadius: 13,
+            spreadRadius: -8,
+          ),
+        ],
       ),
       child: Column(
         spacing: 24.h,
@@ -27,7 +34,10 @@ class HomeHeaderWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Assets.svgs.healixName.svg(),
+              Assets.svgs.healixName.svg(
+                height: 32.h,
+                width: 137.w,
+              ),
               Container(
                 height: 40.h,
                 width: 40.w,

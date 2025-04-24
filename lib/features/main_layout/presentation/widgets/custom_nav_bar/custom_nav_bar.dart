@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/theming/colors.dart';
 import 'nav_button.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -27,9 +26,9 @@ class CustomNavBar extends StatelessWidget {
         ),
         boxShadow: const [
           BoxShadow(
-            offset: Offset(0, -4),
-            blurRadius: 15,
-            color: ColorsManager.shodowColor,
+            offset: Offset(0, -8),
+            blurRadius: 17,
+            color: Colors.black12,
           ),
         ],
       ),

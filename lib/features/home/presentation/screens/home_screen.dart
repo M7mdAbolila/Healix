@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:healix/features/home/presentation/widgets/home_content_widget.dart';
-import 'package:healix/features/home/presentation/widgets/home_header_widget.dart';
+
+import '../widgets/home_content_widget.dart';
+import '../widgets/home_header_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

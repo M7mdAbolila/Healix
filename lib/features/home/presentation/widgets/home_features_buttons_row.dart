@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+
+import '../../../../core/gen/assets.gen.dart';
+import 'home_feature_card.dart';
+
+class HomeFeaturesButtonsRow extends StatelessWidget {
+  const HomeFeaturesButtonsRow({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        HomeFeatureCard(
+          title: 'Med Hist',
+          description: 'Your Medical\nHistory',
+          iconPath: Assets.svgs.navActivity2.path,
+        ),
+        HomeFeatureCard(
+          title: 'Dr. Healix',
+          description: 'AI Consultant\nChat Bot',
+          iconPath: Assets.svgs.aiBot1.path,
+        ),
+        HomeFeatureCard(
+          title: 'Consult',
+          description: 'Book An\nAppointment',
+          iconPath: Assets.svgs.consultDoc.path,
+        ),
+      ],
+    );
+  }
+}

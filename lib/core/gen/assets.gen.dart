@@ -19,15 +19,21 @@ class $AssetsImagesGen {
   AssetGenImage get authPicture =>
       const AssetGenImage('assets/images/auth-picture.png');
 
+  /// File path: assets/images/doctor.png
+  AssetGenImage get doctor => const AssetGenImage('assets/images/doctor.png');
+
   /// File path: assets/images/temp.png
   AssetGenImage get temp => const AssetGenImage('assets/images/temp.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [authPicture, temp];
+  List<AssetGenImage> get values => [authPicture, doctor, temp];
 }
 
 class $AssetsSvgsGen {
   const $AssetsSvgsGen();
+
+  /// File path: assets/svgs/AI BOT 1.svg
+  SvgGenImage get aiBot1 => const SvgGenImage('assets/svgs/AI BOT 1.svg');
 
   /// File path: assets/svgs/All in one.svg
   SvgGenImage get allInOne => const SvgGenImage('assets/svgs/All in one.svg');
@@ -62,9 +68,16 @@ class $AssetsSvgsGen {
   SvgGenImage get authPicture =>
       const SvgGenImage('assets/svgs/auth-picture.svg');
 
+  /// File path: assets/svgs/consult-doc.svg
+  SvgGenImage get consultDoc =>
+      const SvgGenImage('assets/svgs/consult-doc.svg');
+
   /// File path: assets/svgs/healix name.svg
   SvgGenImage get healixName =>
       const SvgGenImage('assets/svgs/healix name.svg');
+
+  /// File path: assets/svgs/location.svg
+  SvgGenImage get location => const SvgGenImage('assets/svgs/location.svg');
 
   /// File path: assets/svgs/logo-with-word.svg
   SvgGenImage get logoWithWord =>
@@ -123,8 +136,13 @@ class $AssetsSvgsGen {
   SvgGenImage get whiteLogoWithWord =>
       const SvgGenImage('assets/svgs/white-logo-with-word.svg');
 
+  /// File path: assets/svgs/yellow_star.svg
+  SvgGenImage get yellowStar =>
+      const SvgGenImage('assets/svgs/yellow_star.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
+    aiBot1,
     allInOne,
     chronicDisease,
     mainLogo,
@@ -134,7 +152,9 @@ class $AssetsSvgsGen {
     passwordTips,
     searchIcon,
     authPicture,
+    consultDoc,
     healixName,
+    location,
     logoWithWord,
     logout,
     navActivity1,
@@ -150,6 +170,7 @@ class $AssetsSvgsGen {
     onboarding3,
     onboarding4,
     whiteLogoWithWord,
+    yellowStar,
   ];
 }
 
