@@ -86,6 +86,10 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/svgs/logout.svg');
 
+  /// File path: assets/svgs/message-notif.svg
+  SvgGenImage get messageNotif =>
+      const SvgGenImage('assets/svgs/message-notif.svg');
+
   /// File path: assets/svgs/nav-activity1.svg
   SvgGenImage get navActivity1 =>
       const SvgGenImage('assets/svgs/nav-activity1.svg');
@@ -157,6 +161,7 @@ class $AssetsSvgsGen {
     location,
     logoWithWord,
     logout,
+    messageNotif,
     navActivity1,
     navActivity2,
     navHome1,

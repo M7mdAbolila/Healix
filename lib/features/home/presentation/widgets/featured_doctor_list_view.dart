@@ -23,7 +23,7 @@ class FeaturedDoctorListView extends StatelessWidget {
         SizedBox(
           height: 268.h,
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: 5,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => const FeaturedDoctorItem(),
           ),
