@@ -36,6 +36,9 @@ class $AssetsSvgsGen {
   SvgGenImage get chronicDisease =>
       const SvgGenImage('assets/svgs/Chronic Disease.svg');
 
+  /// File path: assets/svgs/Main Logo.svg
+  SvgGenImage get mainLogo => const SvgGenImage('assets/svgs/Main Logo.svg');
+
   /// File path: assets/svgs/Medic Hist Illustration.svg
   SvgGenImage get medicHistIllustration =>
       const SvgGenImage('assets/svgs/Medic Hist Illustration.svg');
@@ -51,9 +54,17 @@ class $AssetsSvgsGen {
   SvgGenImage get passwordTips =>
       const SvgGenImage('assets/svgs/Password-tips.svg');
 
+  /// File path: assets/svgs/Search Icon.svg
+  SvgGenImage get searchIcon =>
+      const SvgGenImage('assets/svgs/Search Icon.svg');
+
   /// File path: assets/svgs/auth-picture.svg
   SvgGenImage get authPicture =>
       const SvgGenImage('assets/svgs/auth-picture.svg');
+
+  /// File path: assets/svgs/healix name.svg
+  SvgGenImage get healixName =>
+      const SvgGenImage('assets/svgs/healix name.svg');
 
   /// File path: assets/svgs/logo-with-word.svg
   SvgGenImage get logoWithWord =>
@@ -61,6 +72,36 @@ class $AssetsSvgsGen {
 
   /// File path: assets/svgs/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/svgs/logout.svg');
+
+  /// File path: assets/svgs/nav-activity1.svg
+  SvgGenImage get navActivity1 =>
+      const SvgGenImage('assets/svgs/nav-activity1.svg');
+
+  /// File path: assets/svgs/nav-activity2.svg
+  SvgGenImage get navActivity2 =>
+      const SvgGenImage('assets/svgs/nav-activity2.svg');
+
+  /// File path: assets/svgs/nav-home1.svg
+  SvgGenImage get navHome1 => const SvgGenImage('assets/svgs/nav-home1.svg');
+
+  /// File path: assets/svgs/nav-home2.svg
+  SvgGenImage get navHome2 => const SvgGenImage('assets/svgs/nav-home2.svg');
+
+  /// File path: assets/svgs/nav-profile1.svg
+  SvgGenImage get navProfile1 =>
+      const SvgGenImage('assets/svgs/nav-profile1.svg');
+
+  /// File path: assets/svgs/nav-profile2.svg
+  SvgGenImage get navProfile2 =>
+      const SvgGenImage('assets/svgs/nav-profile2.svg');
+
+  /// File path: assets/svgs/nav-setting1.svg
+  SvgGenImage get navSetting1 =>
+      const SvgGenImage('assets/svgs/nav-setting1.svg');
+
+  /// File path: assets/svgs/nav-setting2.svg
+  SvgGenImage get navSetting2 =>
+      const SvgGenImage('assets/svgs/nav-setting2.svg');
 
   /// File path: assets/svgs/onboarding-1.svg
   SvgGenImage get onboarding1 =>
@@ -86,13 +127,24 @@ class $AssetsSvgsGen {
   List<SvgGenImage> get values => [
     allInOne,
     chronicDisease,
+    mainLogo,
     medicHistIllustration,
     passEyeSlash,
     passEye,
     passwordTips,
+    searchIcon,
     authPicture,
+    healixName,
     logoWithWord,
     logout,
+    navActivity1,
+    navActivity2,
+    navHome1,
+    navHome2,
+    navProfile1,
+    navProfile2,
+    navSetting1,
+    navSetting2,
     onboarding1,
     onboarding2,
     onboarding3,

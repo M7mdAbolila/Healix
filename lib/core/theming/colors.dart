@@ -20,5 +20,5 @@ class ColorsManager {
   static const Color informingColor = Color(0xff4059E6);
   static const Color checkBoxColor = Color(0xff5C85A3);
   static const Color authBackground = Color(0xff031119);
-  static const Color shodowColor = Color.fromARGB(61, 158, 158, 158);
+  static const Color shodowColor = Color.fromARGB(82, 158, 158, 158);
 }

@@ -7,7 +7,7 @@ class MedicalHistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Medical History Screen'),
+        child: Text('History Screen'),
       ),
     );
   }
