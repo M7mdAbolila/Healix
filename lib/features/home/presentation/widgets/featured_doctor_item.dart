@@ -4,7 +4,7 @@ import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/features/home/presentation/widgets/doctor_rate_card.dart';
 
-import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class FeaturedDoctorItem extends StatelessWidget {

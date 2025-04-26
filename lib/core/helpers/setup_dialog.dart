@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theming/colors.dart';
+import '../theming/colors_manager.dart';
 
 showLoadingDialog(BuildContext context) {
   return showDialog(

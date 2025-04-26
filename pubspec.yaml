@@ -55,6 +55,8 @@ dependencies:
   geocoding: ^3.0.0
   geolocator: ^13.0.4
   google_maps_flutter: ^2.12.1
+  # Carousel slider
+  carousel_slider_plus: ^7.1.0
 
 dev_dependencies:
   #A build system for Dart code generation and modular compilation

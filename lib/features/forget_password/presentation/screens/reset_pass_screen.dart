@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../widgets/reset_password_form.dart';

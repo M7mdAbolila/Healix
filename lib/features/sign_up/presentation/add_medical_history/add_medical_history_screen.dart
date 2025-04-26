@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
-import 'package:healix/core/theming/colors.dart';
+import 'package:healix/core/theming/colors_manager.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/text_styles.dart';
-import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../core/widgets/grey_back_button.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_linear_progress.dart';
 
@@ -68,7 +68,7 @@ class AddMedicalHistoryScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CustomBackButton(),
+        const GreyBackButton(),
         ClipOval(
           child: Assets.images.temp.image(
             height: 56.h,

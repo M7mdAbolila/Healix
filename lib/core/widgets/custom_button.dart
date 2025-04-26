@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
-import '../theming/colors.dart';
+import '../theming/colors_manager.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({

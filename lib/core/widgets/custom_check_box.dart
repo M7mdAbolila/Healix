@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/colors.dart';
+import '../theming/colors_manager.dart';
 
 class CustomCheckbox extends StatefulWidget {
   final bool initialValue;

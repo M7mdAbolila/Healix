@@ -4,9 +4,9 @@ import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/routing/routes.dart';
-import 'package:healix/core/theming/colors.dart';
+import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/core/widgets/custom_back_button.dart';
+import 'package:healix/core/widgets/grey_back_button.dart';
 import 'package:healix/features/sign_up/presentation/create_profile/widgets/add_address_card.dart';
 import 'package:healix/features/sign_up/presentation/create_profile/widgets/create_profile_form.dart';
 
@@ -123,7 +123,7 @@ class CreateProfileScreen extends StatelessWidget {
   Align _buildBackButton() {
     return const Align(
       alignment: Alignment.centerLeft,
-      child: CustomBackButton(),
+      child: GreyBackButton(),
     );
   }
 }

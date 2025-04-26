@@ -3,7 +3,7 @@ import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/core/routing/routes.dart';
 
-import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/colors_manager.dart';
 
 class AlreadyHaveAccount extends StatelessWidget {
   const AlreadyHaveAccount({

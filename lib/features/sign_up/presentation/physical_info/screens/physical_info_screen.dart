@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
-import 'package:healix/core/theming/colors.dart';
+import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/features/sign_up/presentation/create_profile/widgets/text_field_with_prefix_text.dart';
 import 'package:healix/features/sign_up/presentation/physical_info/widgets/choose_gender_drop_down.dart';
 import 'package:healix/features/sign_up/presentation/physical_info/widgets/date_of_birth_widget.dart';
 
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/text_styles.dart';
-import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../../core/widgets/grey_back_button.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_linear_progress.dart';
 
@@ -31,7 +31,7 @@ class PhysicalInfoScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomBackButton(),
+                    const GreyBackButton(),
                     ClipOval(
                       child: Assets.images.temp.image(
                         height: 56.h,

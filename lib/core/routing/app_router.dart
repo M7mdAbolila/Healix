@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:healix/features/chat_bot/presentation/screens/chat_bot_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
@@ -77,6 +78,10 @@ class AppRouter {
       case Routes.physcialInfoScreen:
         return MaterialPageRoute(
           builder: (_) => const PhysicalInfoScreen(),
+        );
+      case Routes.chatBotScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChatBotScreen(),
         );
       default:
         return null;

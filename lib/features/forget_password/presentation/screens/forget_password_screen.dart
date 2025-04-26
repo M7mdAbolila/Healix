@@ -6,9 +6,9 @@ import 'package:healix/core/widgets/custom_text_form_field.dart';
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
-import '../../../../core/widgets/custom_back_button.dart';
+import '../../../../core/widgets/grey_back_button.dart';
 import '../../../../core/widgets/custom_button.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             children: [
               const Align(
                 alignment: Alignment.centerLeft,
-                child: CustomBackButton(),
+                child: GreyBackButton(),
               ),
               const Spacer(),
               Text(

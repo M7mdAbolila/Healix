@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
-import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/colors_manager.dart';
 
 class NavButton extends StatelessWidget {
   final String? title;

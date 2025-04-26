@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/helpers/spacing.dart';
-import 'package:healix/core/theming/colors.dart';
+import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 import 'package:healix/features/login/presentation/widgets/dont_have_account.dart';

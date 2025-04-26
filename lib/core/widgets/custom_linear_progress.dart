@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/spacing.dart';
 
-import '../theming/colors.dart';
+import '../theming/colors_manager.dart';
 import '../theming/text_styles.dart';
 
 class CustomLinearProgress extends StatefulWidget {

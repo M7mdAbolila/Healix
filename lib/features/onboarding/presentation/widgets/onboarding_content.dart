@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:healix/core/helpers/spacing.dart';
-import 'package:healix/core/theming/colors.dart';
+import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
 class OnboardingContent extends StatefulWidget {

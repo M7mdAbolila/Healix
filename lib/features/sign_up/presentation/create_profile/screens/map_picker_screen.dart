@@ -6,7 +6,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 
-import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/colors_manager.dart';
 
 class MapPickerScreen extends StatefulWidget {
   const MapPickerScreen({super.key});

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/routing/routes.dart';
-import 'package:healix/core/theming/colors.dart';
-import 'package:healix/core/widgets/custom_back_button.dart';
+import 'package:healix/core/theming/colors_manager.dart';
+import 'package:healix/core/widgets/grey_back_button.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/theming/text_styles.dart';
@@ -124,7 +124,7 @@ class EnterOtpScreen extends StatelessWidget {
       children: [
         const Align(
           alignment: Alignment.centerLeft,
-          child: CustomBackButton(),
+          child: GreyBackButton(),
         ),
         verticalSpace(50),
         Text(

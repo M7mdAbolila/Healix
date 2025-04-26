@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/widgets/custom_back_button.dart';
+import '../../../../core/widgets/grey_back_button.dart';
 import 'skip_button.dart';
 
 class OnboardingHeader extends StatelessWidget {
@@ -21,7 +21,7 @@ class OnboardingHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         currentPage != 0
-            ? CustomBackButton(
+            ? GreyBackButton(
                 onTap: onTapBack,
               )
             : const SizedBox.shrink(),

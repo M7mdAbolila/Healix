@@ -42,6 +42,10 @@ class $AssetsSvgsGen {
   SvgGenImage get chronicDisease =>
       const SvgGenImage('assets/svgs/Chronic Disease.svg');
 
+  /// File path: assets/svgs/Feeling ill.svg
+  SvgGenImage get feelingIll =>
+      const SvgGenImage('assets/svgs/Feeling ill.svg');
+
   /// File path: assets/svgs/Main Logo.svg
   SvgGenImage get mainLogo => const SvgGenImage('assets/svgs/Main Logo.svg');
 
@@ -60,13 +64,13 @@ class $AssetsSvgsGen {
   SvgGenImage get passwordTips =>
       const SvgGenImage('assets/svgs/Password-tips.svg');
 
+  /// File path: assets/svgs/Right Arrow.svg
+  SvgGenImage get rightArrow =>
+      const SvgGenImage('assets/svgs/Right Arrow.svg');
+
   /// File path: assets/svgs/Search Icon.svg
   SvgGenImage get searchIcon =>
       const SvgGenImage('assets/svgs/Search Icon.svg');
-
-  /// File path: assets/svgs/auth-picture.svg
-  SvgGenImage get authPicture =>
-      const SvgGenImage('assets/svgs/auth-picture.svg');
 
   /// File path: assets/svgs/consult-doc.svg
   SvgGenImage get consultDoc =>
@@ -136,6 +140,38 @@ class $AssetsSvgsGen {
   SvgGenImage get onboarding4 =>
       const SvgGenImage('assets/svgs/onboarding-4.svg');
 
+  /// File path: assets/svgs/tutorial_pic1.svg
+  SvgGenImage get tutorialPic1 =>
+      const SvgGenImage('assets/svgs/tutorial_pic1.svg');
+
+  /// File path: assets/svgs/tutorial_pic2.svg
+  SvgGenImage get tutorialPic2 =>
+      const SvgGenImage('assets/svgs/tutorial_pic2.svg');
+
+  /// File path: assets/svgs/tutorial_pic3.svg
+  SvgGenImage get tutorialPic3 =>
+      const SvgGenImage('assets/svgs/tutorial_pic3.svg');
+
+  /// File path: assets/svgs/tutorial_pic4.svg
+  SvgGenImage get tutorialPic4 =>
+      const SvgGenImage('assets/svgs/tutorial_pic4.svg');
+
+  /// File path: assets/svgs/tutorial_text1.svg
+  SvgGenImage get tutorialText1 =>
+      const SvgGenImage('assets/svgs/tutorial_text1.svg');
+
+  /// File path: assets/svgs/tutorial_text2.svg
+  SvgGenImage get tutorialText2 =>
+      const SvgGenImage('assets/svgs/tutorial_text2.svg');
+
+  /// File path: assets/svgs/tutorial_text3.svg
+  SvgGenImage get tutorialText3 =>
+      const SvgGenImage('assets/svgs/tutorial_text3.svg');
+
+  /// File path: assets/svgs/tutorial_text4.svg
+  SvgGenImage get tutorialText4 =>
+      const SvgGenImage('assets/svgs/tutorial_text4.svg');
+
   /// File path: assets/svgs/white-logo-with-word.svg
   SvgGenImage get whiteLogoWithWord =>
       const SvgGenImage('assets/svgs/white-logo-with-word.svg');
@@ -149,13 +185,14 @@ class $AssetsSvgsGen {
     aiBot1,
     allInOne,
     chronicDisease,
+    feelingIll,
     mainLogo,
     medicHistIllustration,
     passEyeSlash,
     passEye,
     passwordTips,
+    rightArrow,
     searchIcon,
-    authPicture,
     consultDoc,
     healixName,
     location,
@@ -174,6 +211,14 @@ class $AssetsSvgsGen {
     onboarding2,
     onboarding3,
     onboarding4,
+    tutorialPic1,
+    tutorialPic2,
+    tutorialPic3,
+    tutorialPic4,
+    tutorialText1,
+    tutorialText2,
+    tutorialText3,
+    tutorialText4,
     whiteLogoWithWord,
     yellowStar,
   ];

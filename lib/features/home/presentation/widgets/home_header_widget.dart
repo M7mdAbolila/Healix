@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
-import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/colors_manager.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/routing/routes.dart';
 
-import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class ForgotPassWidget extends StatelessWidget {

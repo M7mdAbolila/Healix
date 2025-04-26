@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:healix/core/helpers/spacing.dart';
 
-import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class HomeFeatureCard extends StatelessWidget {

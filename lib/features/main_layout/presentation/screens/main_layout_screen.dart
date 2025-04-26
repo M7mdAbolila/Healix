@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healix/core/theming/colors.dart';
+import 'package:healix/core/helpers/extensions.dart';
+import 'package:healix/core/routing/routes.dart';
+import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/features/home/presentation/screens/home_screen.dart';
 import 'package:healix/features/medical_history/presentation/screens/medical_history_screen.dart';
 import 'package:healix/features/my_activity/presentation/screens/my_activity_screen.dart';
@@ -40,7 +42,7 @@ class _HealixMainLayoutScreenState extends State<HealixMainLayoutScreen> {
             height: 26.h,
             width: 26.w,
           ),
-          onPressed: () {},
+          onPressed: () => context.pushNamed(Routes.chatBotScreen),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
