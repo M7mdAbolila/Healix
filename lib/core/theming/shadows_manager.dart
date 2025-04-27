@@ -7,4 +7,10 @@ class ShadowsManager {
         spreadRadius: -8,
         offset: const Offset(0, 16),
       );
+  static BoxShadow upwardShadow({Color? color}) => BoxShadow(
+        color: color ?? Colors.black12,
+        blurRadius: 17,
+        spreadRadius: 0,
+        offset: const Offset(0, -8),
+      );
 }

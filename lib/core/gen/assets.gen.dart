@@ -25,8 +25,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/temp.png
   AssetGenImage get temp => const AssetGenImage('assets/images/temp.png');
 
+  /// File path: assets/images/virus_pic.jpg
+  AssetGenImage get virusPic =>
+      const AssetGenImage('assets/images/virus_pic.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [authPicture, doctor, temp];
+  List<AssetGenImage> get values => [authPicture, doctor, temp, virusPic];
 }
 
 class $AssetsSvgsGen {

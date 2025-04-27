@@ -6,6 +6,8 @@ import 'package:healix/features/chat_bot/presentation/widgets/header_bar_tutoria
 import 'package:healix/features/chat_bot/presentation/widgets/previous_discussions_section.dart';
 
 import '../../../../core/widgets/my_divider_widget.dart';
+import '../widgets/new_chat_button.dart';
+import '../widgets/topics_section.dart';
 
 class ChatBotScreen extends StatelessWidget {
   const ChatBotScreen({super.key});
@@ -13,23 +15,30 @@ class ChatBotScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const NewChatButton(),
       body: Column(
         children: [
           const HeaderBarTutorial(),
-          verticalSpace(20),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              children: [
-                const CircleBotLogo(),
-                verticalSpace(16),
-                const MyDividerWidget(),
-                verticalSpace(12),
-                const PreviousDiscussionsSection(),
-                verticalSpace(12),
-                const MyDividerWidget(),
-                verticalSpace(12),
-              ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  children: [
+                    verticalSpace(20),
+                    const CircleBotLogo(),
+                    verticalSpace(16),
+                    const MyDividerWidget(),
+                    verticalSpace(12),
+                    const PreviousDiscussionsSection(),
+                    verticalSpace(12),
+                    const MyDividerWidget(),
+                    verticalSpace(12),
+                    const TopicsSection(),
+                    verticalSpace(100),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
