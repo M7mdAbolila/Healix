@@ -17,6 +17,7 @@ class ColorsManager {
   static const Color lightGreyText = Color(0xffD2D8DE);
   static const Color whiteText = Color(0xffF8F9FA);
   static const Color supportColor = Color(0xff3DCC80);
+  static const Color alertColor = Color(0xffFF1919);
   static const Color informingColor = Color(0xff4059E6);
   static const Color checkBoxColor = Color(0xff5C85A3);
   static const Color authBackground = Color(0xff031119);

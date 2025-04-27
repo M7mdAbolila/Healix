@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/spacing.dart';
-import 'package:healix/features/chat_bot/presentation/widgets/circle_bot_logo.dart';
-import 'package:healix/features/chat_bot/presentation/widgets/header_bar_tutorial.dart';
-import 'package:healix/features/chat_bot/presentation/widgets/previous_discussions_section.dart';
+import 'package:healix/features/chat_bot/presentation/widgets/main_chat_bot_screen_widgets/circle_bot_logo.dart';
+import 'package:healix/features/chat_bot/presentation/widgets/main_chat_bot_screen_widgets/header_bar_tutorial.dart';
+import 'package:healix/features/chat_bot/presentation/widgets/main_chat_bot_screen_widgets/previous_discussions_section.dart';
 
 import '../../../../core/widgets/my_divider_widget.dart';
-import '../widgets/new_chat_button.dart';
-import '../widgets/topics_section.dart';
+import '../widgets/main_chat_bot_screen_widgets/new_chat_button.dart';
+import '../widgets/main_chat_bot_screen_widgets/topics_section.dart';
 
 class ChatBotScreen extends StatelessWidget {
   const ChatBotScreen({super.key});

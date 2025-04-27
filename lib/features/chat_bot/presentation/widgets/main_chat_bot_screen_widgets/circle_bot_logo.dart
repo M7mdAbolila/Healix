@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 
-import '../../../../core/theming/colors_manager.dart';
-import '../../../../core/theming/shadows_manager.dart';
+import '../../../../../core/theming/colors_manager.dart';
+import '../../../../../core/theming/shadows_manager.dart';
 
 class CircleBotLogo extends StatelessWidget {
   const CircleBotLogo({super.key});

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/helpers/extensions.dart';
+import 'package:healix/core/routing/routes.dart';
 import 'package:healix/core/theming/shadows_manager.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 
@@ -22,7 +24,7 @@ class NewChatButton extends StatelessWidget {
       child: CustomButton(
         height: 40.h,
         title: 'New Chat',
-        onTap: () {},
+        onTap: () => context.pushNamed(Routes.chatScreen),
       ),
     );
   }

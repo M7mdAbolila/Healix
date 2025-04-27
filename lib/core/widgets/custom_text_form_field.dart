@@ -4,7 +4,7 @@ import 'package:healix/core/theming/text_styles.dart';
 
 import '../theming/colors_manager.dart';
 
-class CustomTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
@@ -45,93 +45,66 @@ class CustomTextFormField extends StatefulWidget {
   });
 
   @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  final FocusNode _focusNode = FocusNode();
-  Color _spaceColor = ColorsManager.grey200;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode.addListener(() {
-      setState(() {
-        _spaceColor =
-            _focusNode.hasFocus ? ColorsManager.grey700 : ColorsManager.grey200;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: widget.title != null ? 4.h : 0,
+      spacing: title != null ? 4.h : 0,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (widget.title != null)
+        if (title != null)
           Text(
-            widget.title!,
+            title!,
             style: AppTextStyles.fontTextInput(
               color: ColorsManager.darkGreyText,
             ),
           ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
-            boxShadow: [
-              BoxShadow(
-                color: const Color.fromARGB(61, 158, 158, 158),
-                blurRadius: 5.6.r,
-                offset: const Offset(0, 4),
-              )
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8.r),
-            child: Column(
-              children: [
-                TextFormField(
-                  focusNode: _focusNode,
-                  controller: widget.controller,
-                  textInputAction: widget.textInputAction,
-                  keyboardType: widget.keyboardType ?? TextInputType.name,
-                  obscureText: widget.isObscureText ?? false,
-                  maxLines: widget.maxLines ?? 1,
-                  validator: widget.validator,
-                  onChanged: widget.onChanged,
-                  onFieldSubmitted: widget.onSumitted,
-                  cursorColor: ColorsManager.primaryColor,
-                  style: widget.inputTextStyle,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    errorMaxLines: 4,
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: widget.contentPadding ??
-                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 9.h),
-                    hintStyle: widget.hintStyle ??
-                        AppTextStyles.fontParagraphText(
-                          color: ColorsManager.lightGreyText,
-                        ),
-                    hintText: widget.hintText,
-                    prefixIcon: widget.prefixIcon,
-                    suffixIcon: widget.suffixIcon,
-                    border: InputBorder.none,
-                  ),
+        TextFormField(
+          controller: controller,
+          textInputAction: textInputAction,
+          keyboardType: keyboardType ?? TextInputType.name,
+          obscureText: isObscureText ?? false,
+          maxLines: maxLines ?? 1,
+          validator: validator,
+          onChanged: onChanged,
+          onFieldSubmitted: onSumitted,
+          cursorColor: ColorsManager.primaryColor,
+          style: inputTextStyle,
+          decoration: InputDecoration(
+            isDense: true,
+            errorMaxLines: 4,
+            filled: true,
+            fillColor: Colors.white,
+            contentPadding: contentPadding ??
+                EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+            hintStyle: hintStyle ??
+                AppTextStyles.fontTextInput(
+                  color: ColorsManager.lightGreyText,
                 ),
-                Container(
-                  height: 8.h,
-                  color: _spaceColor,
+            hintText: hintText,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            focusedBorder: focusedBorder ??
+                OutlineInputBorder(
+                  borderSide:
+                      const BorderSide(color: ColorsManager.supportColor),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
-              ],
+            enabledBorder: enabledBorder ??
+                OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: ColorsManager.alertColor),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: ColorsManager.alertColor),
+              borderRadius: BorderRadius.circular(8.r),
             ),
           ),
         ),

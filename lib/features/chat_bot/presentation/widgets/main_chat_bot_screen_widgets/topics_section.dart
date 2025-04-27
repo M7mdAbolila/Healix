@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/widgets/feature_title_text.dart';
-import '../../../../core/widgets/view_all_button.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/widgets/feature_title_text.dart';
+import '../../../../../core/widgets/view_all_button.dart';
 import 'topic_card.dart';
 
 class TopicsSection extends StatelessWidget {

@@ -6,7 +6,7 @@ import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/widgets/white_back_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../core/theming/colors_manager.dart';
+import '../../../../../core/theming/colors_manager.dart';
 
 class HeaderBarTutorial extends StatefulWidget {
   const HeaderBarTutorial({super.key});

@@ -1,16 +1,27 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../features/chat_bot/data/datasources/chat_api_service.dart';
+import '../../features/chat_bot/data/repositories_impl/chat_repo_impl.dart';
+import '../../features/chat_bot/domain/repositories/chat_repo.dart';
+import '../../features/chat_bot/domain/use_cases/send_message_usecase.dart';
+import '../../features/chat_bot/presentation/logic/chat_cubit.dart';
 import '../networking/dio_factory.dart';
 
-final getIt = GetIt.instance;
+final sl = GetIt.instance;
 
-Future<void> setupGetIt() async {
+Future<void> init() async {
   // Dio
-  // ignore: unused_local_variable
-  Dio dio = DioFactory.getDio();
+  sl.registerLazySingleton(() => DioFactory.getDio());
 
-  ///
-  // getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
-  // getIt.registerLazySingleton<Repo>(() => Repo(getIt()));
-  // getIt.registerFactory<Cubit>(() => Cubit(getIt()));
+  // ApiService
+  sl.registerLazySingleton<ChatApiService>(() => ChatApiService(sl()));
+
+  // Repo
+  sl.registerLazySingleton<ChatRepo>(() => ChatRepoImpl(sl()));
+
+  // UseCase
+  sl.registerLazySingleton(() => SendMessageUseCase(sl()));
+
+  // Cubit
+  sl.registerFactory(() => ChatCubit(sl()));
 }

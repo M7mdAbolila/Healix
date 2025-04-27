@@ -18,7 +18,8 @@ class Routes {
   static const String myActivityScreen = '/myActivityScreen';
   static const String medicHistScreen = '/medicHistScreen';
   static const String healixBotMainScreen = '/healixBotMainScreen';
-  static const String chatBotScreen = '/chatBotScreen';
+  static const String mainChatBotScreen = '/mainChatBotScreen';
+  static const String chatScreen = '/chatScreen';
 
   // static const String Screen = '/Screen';
 }

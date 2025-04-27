@@ -42,7 +42,7 @@ class _HealixMainLayoutScreenState extends State<HealixMainLayoutScreen> {
             height: 26.h,
             width: 26.w,
           ),
-          onPressed: () => context.pushNamed(Routes.chatBotScreen),
+          onPressed: () => context.pushNamed(Routes.mainChatBotScreen),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

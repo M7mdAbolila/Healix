@@ -14,6 +14,7 @@ import 'package:healix/features/sign_up/presentation/chronic_disease/chronic_dis
 import 'package:healix/features/sign_up/presentation/physical_info/screens/physical_info_screen.dart';
 import 'package:healix/features/sign_up/presentation/sign_up/screens/sign_up_screen.dart';
 
+import '../../features/chat_bot/presentation/screens/chat_screen.dart';
 import '../../features/sign_up/presentation/create_profile/screens/create_profile_screen.dart';
 import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
@@ -79,9 +80,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const PhysicalInfoScreen(),
         );
-      case Routes.chatBotScreen:
+      case Routes.mainChatBotScreen:
         return MaterialPageRoute(
           builder: (_) => const ChatBotScreen(),
+        );
+      case Routes.chatScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChatScreen(),
         );
       default:
         return null;
