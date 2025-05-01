@@ -4,6 +4,7 @@ import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
 
 import '../../../../../core/theming/colors_manager.dart';
+import '../../../../../core/theming/shadows_manager.dart';
 import '../../../../../core/theming/text_styles.dart';
 
 class ChooseGenderDropDown extends StatefulWidget {
@@ -45,11 +46,7 @@ class _ChooseGenderDropDownState extends State<ChooseGenderDropDown>
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.r),
               boxShadow: [
-                BoxShadow(
-                  color: ColorsManager.shodowColor,
-                  blurRadius: 5.6.r,
-                  offset: const Offset(0, 4),
-                ),
+                ShadowsManager.softerShadow(),
               ],
             ),
             child: Column(
@@ -117,11 +114,7 @@ class _ChooseGenderDropDownState extends State<ChooseGenderDropDown>
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.r),
               boxShadow: [
-                BoxShadow(
-                  color: ColorsManager.shodowColor,
-                  blurRadius: 5.6.r,
-                  offset: const Offset(0, 4),
-                ),
+                ShadowsManager.softerShadow(),
               ],
             ),
             child: Row(

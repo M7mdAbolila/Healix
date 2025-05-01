@@ -20,26 +20,29 @@ class _ChatApiService implements ChatApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ChatResponseModel> sendMessage(ChatRequestBody body) async {
+  Future<SendMessageResponse> sendMessage(
+    SendMessageRequest request,
+    String apiKey,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'key': apiKey};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<ChatResponseModel>(
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<SendMessageResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY_HERE',
+            '/v1beta/models/gemini-2.0-flash:generateContent',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ChatResponseModel _value;
+    late SendMessageResponse _value;
     try {
-      _value = ChatResponseModel.fromJson(_result.data!);
+      _value = SendMessageResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

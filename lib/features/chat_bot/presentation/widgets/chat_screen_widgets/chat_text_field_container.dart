@@ -1,12 +1,28 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
-class ChatTextFieldContainer extends StatelessWidget {
-  const ChatTextFieldContainer({super.key});
+class ChatTextFieldContainer extends StatefulWidget {
+  const ChatTextFieldContainer({
+    super.key,
+    required this.controller,
+    required this.onSend,
+  });
+  final TextEditingController controller;
+  final VoidCallback onSend;
 
+  @override
+  State<ChatTextFieldContainer> createState() => _ChatTextFieldContainerState();
+}
+
+class _ChatTextFieldContainerState extends State<ChatTextFieldContainer> {
+  File? file;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +33,44 @@ class ChatTextFieldContainer extends StatelessWidget {
           top: Radius.circular(8.r),
         ),
       ),
-      child: const CustomTextFormField(hintText: 'Type here...'),
+      child: CustomTextFormField(
+        hintText: 'Type here...',
+        controller: widget.controller,
+        onSumitted: (_) => widget.onSend(),
+        suffixIcon: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: Assets.svgs.documentUpload.svg(),
+              style: ButtonStyle(
+                foregroundColor: WidgetStateProperty.all(Colors.white),
+                shape: WidgetStateProperty.all(
+                  const CircleBorder(),
+                ),
+              ),
+              onPressed: () async {
+                FilePickerResult? result =
+                    await FilePicker.platform.pickFiles();
+                if (result != null) {
+                  setState(() {
+                    file = File(result.files.single.path!);
+                  });
+                }
+              },
+            ),
+            IconButton(
+              icon: Assets.svgs.sendIcon.svg(),
+              style: ButtonStyle(
+                foregroundColor: WidgetStateProperty.all(Colors.white),
+                shape: WidgetStateProperty.all(
+                  const CircleBorder(),
+                ),
+              ),
+              onPressed: widget.onSend,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

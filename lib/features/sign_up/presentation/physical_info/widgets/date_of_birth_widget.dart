@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/theming/colors_manager.dart';
+import 'package:healix/core/theming/shadows_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 import 'package:intl/intl.dart';
@@ -113,11 +114,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.r),
               boxShadow: [
-                BoxShadow(
-                  color: ColorsManager.shodowColor,
-                  blurRadius: 5.6.r,
-                  offset: const Offset(0, 4),
-                ),
+                ShadowsManager.softerShadow(),
               ],
             ),
             child: Row(

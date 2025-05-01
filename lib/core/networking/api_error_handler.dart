@@ -42,7 +42,7 @@ ApiErrorModel _handleError(Response<dynamic>? response) {
 
   if (response.statusCode != 200) {
     final errorMessage = response.data is Map && response.data['error'] != null
-        ? response.data['error']
+        ? response.data['error']['message']
         : response.statusMessage ?? "Unknown error occurred";
     return ApiErrorModel(errMessage: errorMessage);
   }

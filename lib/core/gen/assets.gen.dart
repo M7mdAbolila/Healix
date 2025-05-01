@@ -80,6 +80,10 @@ class $AssetsSvgsGen {
   SvgGenImage get consultDoc =>
       const SvgGenImage('assets/svgs/consult-doc.svg');
 
+  /// File path: assets/svgs/document-upload.svg
+  SvgGenImage get documentUpload =>
+      const SvgGenImage('assets/svgs/document-upload.svg');
+
   /// File path: assets/svgs/healix name.svg
   SvgGenImage get healixName =>
       const SvgGenImage('assets/svgs/healix name.svg');
@@ -144,6 +148,9 @@ class $AssetsSvgsGen {
   SvgGenImage get onboarding4 =>
       const SvgGenImage('assets/svgs/onboarding-4.svg');
 
+  /// File path: assets/svgs/send icon.svg
+  SvgGenImage get sendIcon => const SvgGenImage('assets/svgs/send icon.svg');
+
   /// File path: assets/svgs/tutorial_pic1.svg
   SvgGenImage get tutorialPic1 =>
       const SvgGenImage('assets/svgs/tutorial_pic1.svg');
@@ -198,6 +205,7 @@ class $AssetsSvgsGen {
     rightArrow,
     searchIcon,
     consultDoc,
+    documentUpload,
     healixName,
     location,
     logoWithWord,
@@ -215,6 +223,7 @@ class $AssetsSvgsGen {
     onboarding2,
     onboarding3,
     onboarding4,
+    sendIcon,
     tutorialPic1,
     tutorialPic2,
     tutorialPic3,
@@ -231,8 +240,12 @@ class $AssetsSvgsGen {
 class Assets {
   const Assets._();
 
+  static const String aEnv = '.env';
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {

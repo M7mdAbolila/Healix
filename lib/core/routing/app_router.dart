@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:healix/core/di/setup_get_it.dart';
+import 'package:healix/features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
 import 'package:healix/features/chat_bot/presentation/screens/chat_bot_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
@@ -86,7 +88,10 @@ class AppRouter {
         );
       case Routes.chatScreen:
         return MaterialPageRoute(
-          builder: (_) => const ChatScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<ChatCubit>(),
+            child: const ChatScreen(),
+          ),
         );
       default:
         return null;

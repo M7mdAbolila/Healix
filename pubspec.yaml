@@ -57,6 +57,10 @@ dependencies:
   google_maps_flutter: ^2.12.1
   # Carousel slider
   carousel_slider_plus: ^7.1.0
+  # Easily configure global variables using a `.env` file.
+  flutter_dotenv: ^5.2.1
+  # File picker
+  file_picker: ^10.1.2
 
 dev_dependencies:
   #A build system for Dart code generation and modular compilation
@@ -71,6 +75,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/images/
     - assets/svgs/
     - assets/lotties/

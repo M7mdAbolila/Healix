@@ -1,6 +1,6 @@
 import 'package:healix/core/helpers/extensions.dart';
 
-import '../helpers/constants.dart';
+import '../constants/constants.dart';
 import '../helpers/shared_pref_helper.dart';
 import '../helpers/shared_pref_keys.dart';
 
