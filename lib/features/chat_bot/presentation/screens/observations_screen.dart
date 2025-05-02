@@ -5,6 +5,7 @@ import 'package:healix/core/theming/text_styles.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/widgets/white_back_button.dart';
 import '../../domain/entities/observation.dart';
+import 'observation_details_screen.dart';
 
 class ObservationsScreen extends StatelessWidget {
   const ObservationsScreen({super.key, this.observations});
@@ -31,11 +32,11 @@ class ObservationsScreen extends StatelessWidget {
       itemCount: observations!.length,
       shrinkWrap: true,
       padding: EdgeInsets.zero,
-      itemBuilder: (context, index) => _buildObservationCard(index),
+      itemBuilder: (context, index) => _buildObservationCard(index, context),
     );
   }
 
-  Container _buildObservationCard(int index) {
+  Container _buildObservationCard(int index, BuildContext context) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(16.r),
@@ -62,13 +63,54 @@ class ObservationsScreen extends StatelessWidget {
             ),
           ),
           _buildProbabilityContainer(index),
-          Text(
-            observations![index].description,
-            style: AppTextStyles.fontParagraphText(
-              color: index == 0 ? Colors.white : ColorsManager.darkGreyText,
-            ),
+          Row(
+            spacing: 16.w,
+            children: [
+              Expanded(
+                child: Text(
+                  observations![index].description,
+                  style: AppTextStyles.fontParagraphText(
+                    color:
+                        index == 0 ? Colors.white : ColorsManager.darkGreyText,
+                  ),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              _buildNextButton(index, context),
+            ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildNextButton(int index, BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => ObservationDetailsScreen(
+            observation: observations![index],
+            index: index,
+          ),
+        ),
+      ),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 8.h,
+          horizontal: 16.w,
+        ),
+        decoration: BoxDecoration(
+          color: index == 0 ? ColorsManager.orange10 : ColorsManager.blue10,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Text(
+          'Next',
+          style: AppTextStyles.fontParagraphText(
+            color:
+                index == 0 ? ColorsManager.orange : ColorsManager.primaryColor,
+          ),
+        ),
       ),
     );
   }
