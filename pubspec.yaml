@@ -61,6 +61,8 @@ dependencies:
   flutter_dotenv: ^5.2.1
   # File picker
   file_picker: ^10.1.2
+  # Customize Flutter's default white native splash screen with background color and splash image
+  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   #A build system for Dart code generation and modular compilation

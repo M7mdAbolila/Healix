@@ -16,6 +16,14 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/android12_white_logo.png
+  AssetGenImage get android12WhiteLogo =>
+      const AssetGenImage('assets/images/android12_white_logo.png');
+
+  /// File path: assets/images/android12_white_logo.png.crdownload
+  String get android12WhiteLogoPng =>
+      'assets/images/android12_white_logo.png.crdownload';
+
   /// File path: assets/images/auth-picture.png
   AssetGenImage get authPicture =>
       const AssetGenImage('assets/images/auth-picture.png');
@@ -30,8 +38,20 @@ class $AssetsImagesGen {
   AssetGenImage get virusPic =>
       const AssetGenImage('assets/images/virus_pic.jpg');
 
+  /// File path: assets/images/white_logo.png
+  AssetGenImage get whiteLogo =>
+      const AssetGenImage('assets/images/white_logo.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [authPicture, doctor, temp, virusPic];
+  List<dynamic> get values => [
+    android12WhiteLogo,
+    android12WhiteLogoPng,
+    authPicture,
+    doctor,
+    temp,
+    virusPic,
+    whiteLogo,
+  ];
 }
 
 class $AssetsLottiesGen {

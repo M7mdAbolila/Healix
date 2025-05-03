@@ -19,7 +19,7 @@ class HealixApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: ColorsManager.dimmedBackground,
         ),
-        initialRoute: Routes.chatScreen,
+        initialRoute: Routes.mainLayoutScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
