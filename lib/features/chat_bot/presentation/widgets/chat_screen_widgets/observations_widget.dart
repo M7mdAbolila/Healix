@@ -60,17 +60,5 @@ class ObservationsWidget extends StatelessWidget {
         ],
       ),
     );
-
-    // Column(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: observations!
-    //       .map((obs) => Card(
-    //             child: ListTile(
-    //               title: Text(obs.condition),
-    //               subtitle: Text('${obs.probability}\n${obs.description}'),
-    //             ),
-    //           ))
-    //       .toList(),
-    // );
   }
 }

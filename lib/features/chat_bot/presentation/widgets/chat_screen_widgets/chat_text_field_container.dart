@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
@@ -22,7 +19,6 @@ class ChatTextFieldContainer extends StatefulWidget {
 }
 
 class _ChatTextFieldContainerState extends State<ChatTextFieldContainer> {
-  File? file;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,15 +44,7 @@ class _ChatTextFieldContainerState extends State<ChatTextFieldContainer> {
                   const CircleBorder(),
                 ),
               ),
-              onPressed: () async {
-                FilePickerResult? result =
-                    await FilePicker.platform.pickFiles();
-                if (result != null) {
-                  setState(() {
-                    file = File(result.files.single.path!);
-                  });
-                }
-              },
+              onPressed: () async {},
             ),
             IconButton(
               icon: Assets.svgs.sendIcon.svg(),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../../../../core/utils/logging.dart';
 import '../../../../core/constants/prompt_constants.dart';
 import '../../../../core/networking/api_error_handler.dart';
 import '../../../../core/networking/api_error_model.dart';
@@ -32,12 +33,15 @@ class ChatRepoImpl implements ChatRepo {
           Part(text: PromptConstants.chatPrompt),
         ],
       ));
+      Logging.info(
+          'Prompt added to contents: ${PromptConstants.chatPrompt.substring(0, 50)}...');
 
       /// Add the conversation history
       for (var message in conversationHistory) {
         final parts = <Part>[];
         if (message.message.isNotEmpty) {
           parts.add(Part(text: message.message));
+          Logging.info('Message added to contents: ${message.message}');
         }
         if (message.images != null && message.images!.isNotEmpty) {
           for (final image in message.images!) {
@@ -54,6 +58,8 @@ class ChatRepoImpl implements ChatRepo {
           parts: parts,
         ));
       }
+      Logging.info(
+          'Conversation history added to contents: ${contents.length} messages');
 
       /// Add the language instruction and the current user input
       contents.add(Content(
@@ -72,7 +78,10 @@ class ChatRepoImpl implements ChatRepo {
                 )),
         ],
       ));
-/// prepare the request And call the API 
+      Logging.info(
+          'User input and language instruction added: User input: $userInput');
+
+      /// Prepare the request and call the API
       final request = SendMessageRequest(
         contents: contents,
         generationConfig: GenerationConfig(
@@ -81,28 +90,60 @@ class ChatRepoImpl implements ChatRepo {
           maxOutputTokens: 1024,
         ),
       );
+      final requestString = request.toString();
+      Logging.info(
+          'API request prepared: ${requestString.length > 100 ? '${requestString.substring(0, 100)}...' : requestString}');
 
       final apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
       if (apiKey.isEmpty) {
+        Logging.error('API Key not found');
         return left(ApiErrorModel(errMessage: "API Key not found"));
       }
       final response = await _apiService.sendMessage(request, apiKey);
+      final responseString = response.toString();
+      Logging.info(
+          'API response received: ${responseString.length > 200 ? '${responseString.substring(0, 200)}...' : responseString}');
 
-      /// Parse the response and decode it to
-      ///  return the message
+      /// Parse the response
       final botReply = response.candidates[0].content.parts[0].text;
+      Logging.info('Raw bot reply: $botReply');
       String cleanedReply = botReply.trim();
-      if (cleanedReply.startsWith('```json')) {
+
+      /// Check if the response is wrapped in code blocks
+      if (cleanedReply.startsWith('```json') && cleanedReply.endsWith('```')) {
         cleanedReply = cleanedReply.replaceFirst('```json', '').trim();
-      }
-      if (cleanedReply.endsWith('```')) {
         cleanedReply =
             cleanedReply.substring(0, cleanedReply.length - 3).trim();
+        Logging.info(
+            'Cleaned reply (after removing ```json```): $cleanedReply');
+      } else {
+        /// If the response is not a JSON object, return an error message
+        Logging.warn(
+            'Response not wrapped in ```json```, returning error message');
+        return right(Message(
+          isUser: false,
+          message:
+              "Error: The API response was not in the expected JSON format. Please try again.",
+          date: DateTime.now(),
+          hasObservations: false,
+        ));
       }
 
+      /// Try parsing the cleaned response as JSON
       final jsonData = jsonDecode(cleanedReply);
-      final chatResponse = ChatResponse.fromJson(jsonData);
+      Logging.info('Parsed JSON data: $jsonData');
+      if (jsonData is! Map<String, dynamic>) {
+        Logging.warn('Invalid JSON format detected');
+        return right(Message(
+          isUser: false,
+          message:
+              "Error: The API response was not a valid JSON object. Please try again.",
+          date: DateTime.now(),
+          hasObservations: false,
+        ));
+      }
 
+      final chatResponse = ChatResponse.fromJson(jsonData);
       final message = Message(
         isUser: false,
         message: chatResponse.text,
@@ -120,8 +161,10 @@ class ChatRepoImpl implements ChatRepo {
             : null,
       );
 
+      Logging.info('Final message prepared: ${message.message}');
       return right(message);
     } catch (error) {
+      Logging.error('Error occurred: $error');
       return left(ApiErrorHandler.handle(error));
     }
   }
