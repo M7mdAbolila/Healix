@@ -20,8 +20,18 @@ class Routes {
   static const String healixBotMainScreen = '/healixBotMainScreen';
   static const String mainChatBotScreen = '/mainChatBotScreen';
   static const String chatScreen = '/chatScreen';
-  static const String medicalRecordCategoryScreen =
-      '/medicalRecordCategoryScreen';
+  static const String medicalCategoriesScreen = '/medicalCategoriesScreen';
+  static const String viewAllMedicalRecordsScreen =
+      '/viewAllMedicalRecordsScreen';
+  static const String addMedicalVistScreen = '/addMedicalVistScreen';
+  static const String addLabTestScreen = '/addLabTestScreen';
+  static const String addXRayScreen = '/addXRayScreen';
+  static const String addSurgeryScreen = '/addSurgeryScreen';
+  static const String addLogsScreen = '/addLogsScreen';
+  static const String addHereditaryDiseaseScreen =
+      '/addHereditaryDiseaseScreen';
+  static const String addAllergyScreen = '/addAllergyScreen';
+  static const String addChronicDiseaseScreen = '/addChronicDiseaseScreen';
 
   // static const String Screen = '/Screen';
 }

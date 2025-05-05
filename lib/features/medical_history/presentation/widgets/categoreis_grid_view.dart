@@ -75,10 +75,6 @@ class CategoryModel {
   final String title;
   final String subTitle;
   final String imagePath;
-
-  CategoryModel(
-    this.title,
-    this.subTitle,
-    this.imagePath,
-  );
+  final VoidCallback? onTab;
+  CategoryModel(this.title, this.subTitle, this.imagePath, {this.onTab});
 }

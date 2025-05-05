@@ -27,8 +27,7 @@ class MedicalRecordTypeSection extends StatelessWidget {
               const FeatureTitleText(title: 'Medical Record Type'),
               const Spacer(),
               ViewAllButton(
-                onTap: () =>
-                    context.pushNamed(Routes.medicalRecordCategoryScreen),
+                onTap: () => context.pushNamed(Routes.medicalCategoriesScreen),
               ),
               horizontalSpace(16),
             ],

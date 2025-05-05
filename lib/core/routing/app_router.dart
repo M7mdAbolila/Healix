@@ -10,7 +10,16 @@ import 'package:healix/features/forget_password/presentation/screens/forget_pass
 import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
 import 'package:healix/features/login/presentation/screens/login_screen.dart';
 import 'package:healix/features/main_layout/presentation/screens/main_layout_screen.dart';
-import 'package:healix/features/medical_history/presentation/screens/med_record_category_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_allergy_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_chronic_disease_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_hereditary_disease_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_lab_test_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_logs_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_medical_visit_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_surgery_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_x_ray_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/all_medical_records_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/medical_categories_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:healix/features/sign_up/presentation/add_medical_history/add_medical_history_screen.dart';
 import 'package:healix/features/sign_up/presentation/chronic_disease/chronic_disease_screen.dart';
@@ -87,9 +96,46 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const ChatBotScreen(),
         );
-      case Routes.medicalRecordCategoryScreen:
+      case Routes.medicalCategoriesScreen:
         return MaterialPageRoute(
-          builder: (_) => const MedRecordCategoryScreen(),
+          builder: (_) => const MedicalCategoriesScreen(),
+        );
+      case Routes.viewAllMedicalRecordsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AllMedicalRecordsScreen(),
+        );
+      case Routes.addMedicalVistScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddMedicalVisitScreen(),
+        );
+
+      case Routes.addLabTestScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddLabTestScreen(),
+        );
+      case Routes.addXRayScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddXRayScreen(),
+        );
+      case Routes.addSurgeryScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddSurgeryScreen(),
+        );
+      case Routes.addLogsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddLogsScreen(),
+        );
+      case Routes.addChronicDiseaseScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddChronicDiseaseScreen(),
+        );
+      case Routes.addHereditaryDiseaseScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddHereditaryDiseaseScreen(),
+        );
+      case Routes.addAllergyScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddAllergyScreen(),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

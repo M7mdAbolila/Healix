@@ -7,8 +7,8 @@ import '../../../../core/widgets/custom_screen_app_bar.dart';
 import '../../../../core/widgets/feature_title_text.dart';
 import '../../../../core/widgets/search_bar_widget.dart';
 
-class MedRecordCategoryScreen extends StatelessWidget {
-  const MedRecordCategoryScreen({super.key});
+class MedicalCategoriesScreen extends StatelessWidget {
+  const MedicalCategoriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
