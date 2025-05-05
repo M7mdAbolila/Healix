@@ -9,7 +9,7 @@ class ShadowsManager {
       );
   static BoxShadow softerShadow({Color? color}) => BoxShadow(
         color: color ?? Colors.black12,
-        blurRadius: 10,
+        blurRadius: 21,
         spreadRadius: 0,
         offset: const Offset(0, 4),
       );

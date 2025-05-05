@@ -4,12 +4,12 @@ import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 
 class WhiteBackButton extends StatelessWidget {
-  const WhiteBackButton({super.key});
-
+  const WhiteBackButton({super.key, this.onTap});
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pop(),
+      onTap: onTap ?? () => context.pop(),
       child: Container(
         width: 30.w,
         height: 30.h,

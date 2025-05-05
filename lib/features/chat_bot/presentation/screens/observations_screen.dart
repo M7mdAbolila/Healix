@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/theming/text_styles.dart';
+import 'package:healix/core/widgets/custom_screen_app_bar.dart';
 
 import '../../../../core/theming/colors_manager.dart';
-import '../../../../core/widgets/white_back_button.dart';
 import '../../domain/entities/observation.dart';
 import 'observation_details_screen.dart';
 
@@ -15,7 +15,7 @@ class ObservationsScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          _buildScreenHeader(),
+          const CustomScreenAppBar(title: 'Observations'),
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16.r),
@@ -130,31 +130,6 @@ class ObservationsScreen extends StatelessWidget {
         style: AppTextStyles.fontParagraphText(
           color: index == 0 ? ColorsManager.orange : ColorsManager.primaryColor,
         ),
-      ),
-    );
-  }
-
-  Container _buildScreenHeader() {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.fromLTRB(16.w, 60.h, 16.w, 24.h),
-      decoration: BoxDecoration(
-        color: ColorsManager.primaryColor,
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(8.r),
-        ),
-      ),
-      child: Row(
-        spacing: 16.w,
-        children: [
-          const WhiteBackButton(),
-          Text(
-            'Observations',
-            style: AppTextStyles.fontTitleText(
-              color: Colors.white,
-            ),
-          ),
-        ],
       ),
     );
   }

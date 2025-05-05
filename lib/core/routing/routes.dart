@@ -20,6 +20,8 @@ class Routes {
   static const String healixBotMainScreen = '/healixBotMainScreen';
   static const String mainChatBotScreen = '/mainChatBotScreen';
   static const String chatScreen = '/chatScreen';
+  static const String medicalRecordCategoryScreen =
+      '/medicalRecordCategoryScreen';
 
   // static const String Screen = '/Screen';
 }

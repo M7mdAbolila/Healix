@@ -74,6 +74,13 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/All in one.svg
   SvgGenImage get allInOne => const SvgGenImage('assets/svgs/All in one.svg');
 
+  /// File path: assets/svgs/Allergy.svg
+  SvgGenImage get allergy => const SvgGenImage('assets/svgs/Allergy.svg');
+
+  /// File path: assets/svgs/Chronic Disease category.svg
+  SvgGenImage get chronicDiseaseCategory =>
+      const SvgGenImage('assets/svgs/Chronic Disease category.svg');
+
   /// File path: assets/svgs/Chronic Disease.svg
   SvgGenImage get chronicDisease =>
       const SvgGenImage('assets/svgs/Chronic Disease.svg');
@@ -82,12 +89,26 @@ class $AssetsSvgsGen {
   SvgGenImage get feelingIll =>
       const SvgGenImage('assets/svgs/Feeling ill.svg');
 
+  /// File path: assets/svgs/Hereditary Disease.svg
+  SvgGenImage get hereditaryDisease =>
+      const SvgGenImage('assets/svgs/Hereditary Disease.svg');
+
+  /// File path: assets/svgs/LAB Test.svg
+  SvgGenImage get lABTest => const SvgGenImage('assets/svgs/LAB Test.svg');
+
+  /// File path: assets/svgs/Logs.svg
+  SvgGenImage get logs => const SvgGenImage('assets/svgs/Logs.svg');
+
   /// File path: assets/svgs/Main Logo.svg
   SvgGenImage get mainLogo => const SvgGenImage('assets/svgs/Main Logo.svg');
 
   /// File path: assets/svgs/Medic Hist Illustration.svg
   SvgGenImage get medicHistIllustration =>
       const SvgGenImage('assets/svgs/Medic Hist Illustration.svg');
+
+  /// File path: assets/svgs/Medic Visit.svg
+  SvgGenImage get medicVisit =>
+      const SvgGenImage('assets/svgs/Medic Visit.svg');
 
   /// File path: assets/svgs/Pass-Eye-slash.svg
   SvgGenImage get passEyeSlash =>
@@ -108,6 +129,12 @@ class $AssetsSvgsGen {
   SvgGenImage get searchIcon =>
       const SvgGenImage('assets/svgs/Search Icon.svg');
 
+  /// File path: assets/svgs/Surgery.svg
+  SvgGenImage get surgery => const SvgGenImage('assets/svgs/Surgery.svg');
+
+  /// File path: assets/svgs/X-Ray.svg
+  SvgGenImage get xRay => const SvgGenImage('assets/svgs/X-Ray.svg');
+
   /// File path: assets/svgs/consult-doc.svg
   SvgGenImage get consultDoc =>
       const SvgGenImage('assets/svgs/consult-doc.svg');
@@ -115,6 +142,10 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/document-upload.svg
   SvgGenImage get documentUpload =>
       const SvgGenImage('assets/svgs/document-upload.svg');
+
+  /// File path: assets/svgs/filter-square.svg
+  SvgGenImage get filterSquare =>
+      const SvgGenImage('assets/svgs/filter-square.svg');
 
   /// File path: assets/svgs/healix name.svg
   SvgGenImage get healixName =>
@@ -227,17 +258,26 @@ class $AssetsSvgsGen {
   List<SvgGenImage> get values => [
     aiBot1,
     allInOne,
+    allergy,
+    chronicDiseaseCategory,
     chronicDisease,
     feelingIll,
+    hereditaryDisease,
+    lABTest,
+    logs,
     mainLogo,
     medicHistIllustration,
+    medicVisit,
     passEyeSlash,
     passEye,
     passwordTips,
     rightArrow,
     searchIcon,
+    surgery,
+    xRay,
     consultDoc,
     documentUpload,
+    filterSquare,
     healixName,
     location,
     logoWithWord,

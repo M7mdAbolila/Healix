@@ -10,6 +10,7 @@ import 'package:healix/features/forget_password/presentation/screens/forget_pass
 import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
 import 'package:healix/features/login/presentation/screens/login_screen.dart';
 import 'package:healix/features/main_layout/presentation/screens/main_layout_screen.dart';
+import 'package:healix/features/medical_history/presentation/screens/med_record_category_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:healix/features/sign_up/presentation/add_medical_history/add_medical_history_screen.dart';
 import 'package:healix/features/sign_up/presentation/chronic_disease/chronic_disease_screen.dart';
@@ -85,6 +86,10 @@ class AppRouter {
       case Routes.mainChatBotScreen:
         return MaterialPageRoute(
           builder: (_) => const ChatBotScreen(),
+        );
+      case Routes.medicalRecordCategoryScreen:
+        return MaterialPageRoute(
+          builder: (_) => const MedRecordCategoryScreen(),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
-import 'package:healix/core/theming/text_styles.dart';
 
 import '../../../../core/theming/colors_manager.dart';
+import '../../../../core/widgets/search_bar_widget.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({super.key});
@@ -52,25 +52,7 @@ class HomeHeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Search',
-                  style: AppTextStyles.fontTextInput(
-                    color: ColorsManager.grey500,
-                  ),
-                ),
-                Assets.svgs.searchIcon.svg(),
-              ],
-            ),
-          ),
+          const SearchBarWidget(),
         ],
       ),
     );

@@ -1,45 +1,45 @@
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'dart:developer' as developer;
 
+import 'package:healix/core/constants/constants.dart';
+
 class Logging {
-  static void log(String message, {String tag = 'Healix'}) {
+  static void log(String message, {String tag = Constants.appName}) {
     if (kDebugMode) {
       developer.log(
         '[$tag] $message',
         time: DateTime.now(),
-        name: 'HealixApp',
       );
     }
   }
 
-  static void error(String message, {String tag = 'Healix-Error'}) {
+  static void error(String message,
+      {String tag = '${Constants.appName}-Error'}) {
     if (kDebugMode) {
       developer.log(
         '[$tag] $message',
         time: DateTime.now(),
-        name: 'HealixApp',
         level: 1000, // Higher level for errors
       );
     }
   }
 
-  static void warn(String message, {String tag = 'Healix-Warning'}) {
+  static void warn(String message,
+      {String tag = '${Constants.appName}-Warning'}) {
     if (kDebugMode) {
       developer.log(
         '[$tag] $message',
         time: DateTime.now(),
-        name: 'HealixApp',
         level: 900, // Warning level
       );
     }
   }
 
-  static void info(String message, {String tag = 'Healix-Info'}) {
+  static void info(String message, {String tag = '${Constants.appName}-Info'}) {
     if (kDebugMode) {
       developer.log(
         '[$tag] $message',
         time: DateTime.now(),
-        name: 'HealixApp',
         level: 800, // Info level
       );
     }
