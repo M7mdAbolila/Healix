@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/theming/shadows_manager.dart';
 
 import 'nav_button.dart';
 
@@ -24,12 +25,8 @@ class CustomNavBar extends StatelessWidget {
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(8.r),
         ),
-        boxShadow: const [
-          BoxShadow(
-            offset: Offset(0, -8),
-            blurRadius: 17,
-            color: Colors.black12,
-          ),
+        boxShadow: [
+          ShadowsManager.upwardShadow(),
         ],
       ),
       child: Row(

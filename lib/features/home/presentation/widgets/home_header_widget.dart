@@ -52,7 +52,7 @@ class HomeHeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-          const SearchBarWidget(),
+          const SearchBarWidget(padding: EdgeInsets.zero),
         ],
       ),
     );

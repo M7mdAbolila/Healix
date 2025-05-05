@@ -18,12 +18,16 @@ class MedRecordCategoryScreen extends StatelessWidget {
           const CustomScreenAppBar(title: 'Select Med-Record Type'),
           Expanded(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Column(
                   children: [
                     verticalSpace(16),
-                    const SearchBarWidget(hasFilter: true),
+                    const SearchBarWidget(
+                      hasFilter: true,
+                      padding: EdgeInsets.zero,
+                    ),
                     verticalSpace(32),
                     const Align(
                       alignment: Alignment.centerLeft,

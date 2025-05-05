@@ -165,6 +165,9 @@ class $AssetsSvgsGen {
   SvgGenImage get messageNotif =>
       const SvgGenImage('assets/svgs/message-notif.svg');
 
+  /// File path: assets/svgs/my-family.svg
+  SvgGenImage get myFamily => const SvgGenImage('assets/svgs/my-family.svg');
+
   /// File path: assets/svgs/nav-activity1.svg
   SvgGenImage get navActivity1 =>
       const SvgGenImage('assets/svgs/nav-activity1.svg');
@@ -246,6 +249,10 @@ class $AssetsSvgsGen {
   SvgGenImage get tutorialText4 =>
       const SvgGenImage('assets/svgs/tutorial_text4.svg');
 
+  /// File path: assets/svgs/view-all-icon.svg
+  SvgGenImage get viewAllIcon =>
+      const SvgGenImage('assets/svgs/view-all-icon.svg');
+
   /// File path: assets/svgs/white-logo-with-word.svg
   SvgGenImage get whiteLogoWithWord =>
       const SvgGenImage('assets/svgs/white-logo-with-word.svg');
@@ -283,6 +290,7 @@ class $AssetsSvgsGen {
     logoWithWord,
     logout,
     messageNotif,
+    myFamily,
     navActivity1,
     navActivity2,
     navHome1,
@@ -304,6 +312,7 @@ class $AssetsSvgsGen {
     tutorialText2,
     tutorialText3,
     tutorialText4,
+    viewAllIcon,
     whiteLogoWithWord,
     yellowStar,
   ];

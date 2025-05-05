@@ -17,7 +17,7 @@ class CategoreisGridView extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 16.h,
         crossAxisSpacing: 16.w,
-        childAspectRatio: 165.w / 165.h,
+        childAspectRatio: 165.w / 168.h,
       ),
       itemBuilder: (context, index) {
         return CategoryCard(

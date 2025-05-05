@@ -15,8 +15,8 @@ class ShadowsManager {
       );
   static BoxShadow upwardShadow({Color? color}) => BoxShadow(
         color: color ?? Colors.black12,
-        blurRadius: 17,
+        blurRadius: 30,
         spreadRadius: 0,
-        offset: const Offset(0, -8),
+        offset: const Offset(0, -11),
       );
 }

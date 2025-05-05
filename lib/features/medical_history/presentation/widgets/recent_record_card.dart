@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healix/core/gen/assets.gen.dart';
-import 'package:healix/core/theming/text_styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/theming/colors_manager.dart';
+import '../../../../core/theming/colors_manager.dart';
+import '../../../../core/theming/text_styles.dart';
 
-class MedHealthSummaryCard extends StatelessWidget {
-  const MedHealthSummaryCard({super.key});
-
+class RecentRecordCard extends StatelessWidget {
+  const RecentRecordCard({
+    super.key,
+    required this.record,
+  });
+  final RecentRecordModel record;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +23,7 @@ class MedHealthSummaryCard extends StatelessWidget {
         ),
       ),
       child: Row(
-        spacing: 8.w,
+        spacing: 16.w,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
@@ -29,7 +32,7 @@ class MedHealthSummaryCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Medical Health Summary',
+                  record.title,
                   style: AppTextStyles.fontBodyText(
                     color: ColorsManager.darkerGreyText,
                   ),
@@ -37,20 +40,43 @@ class MedHealthSummaryCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  'Summarized analysis for your health this Year',
-                  style: AppTextStyles.fontBodyText(
+                  record.description,
+                  style: AppTextStyles.fontParagraphText(
+                    color: ColorsManager.darkGreyText,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  record.date,
+                  style: AppTextStyles.fontSmallerText(
                     color: ColorsManager.darkGreyText,
                   ),
                 ),
               ],
             ),
           ),
-          Assets.svgs.rightArrow.svg(
-            height: 24.h,
-            width: 24.w,
+          SvgPicture.asset(
+            record.iconPath,
+            height: 56.h,
+            width: 56.w,
           ),
         ],
       ),
     );
   }
+}
+
+class RecentRecordModel {
+  final String title;
+  final String description;
+  final String date;
+  final String iconPath;
+
+  RecentRecordModel(
+    this.title,
+    this.description,
+    this.date,
+    this.iconPath,
+  );
 }
