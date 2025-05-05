@@ -47,14 +47,14 @@ class ChronicDiseaseScreen extends StatelessWidget {
                 verticalSpace(16),
                 CustomButton(
                   title: 'Done',
-                  onTap: () => context.pushNamed(Routes.addMidcalHistScreen),
+                  onTap: () => context.pushNamed(Routes.addOldMidcalHistScreen),
                 ),
                 verticalSpace(16),
                 CustomButton(
                   title: 'No, Skip',
                   backgroundColor: ColorsManager.lightGreyText,
                   textColor: ColorsManager.grey700,
-                  onTap: () => context.pushNamed(Routes.addMidcalHistScreen),
+                  onTap: () => context.pushNamed(Routes.addOldMidcalHistScreen),
                 ),
               ],
             ),

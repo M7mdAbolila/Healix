@@ -11,7 +11,7 @@ class Routes {
   static const String enterOtpScreen = '/enterOtpScreen';
   static const String resetPassScreen = '/resetPassScreen';
   static const String chronicDiseaseScreen = '/chronicDiseaseScreen';
-  static const String addMidcalHistScreen = '/addMidcalHistScreen';
+  static const String addOldMidcalHistScreen = '/addOldMidcalHistScreen';
   static const String mainLayoutScreen = '/mainLayoutScreen';
   static const String homeScreen = '/homeScreen';
   static const String settingsScreen = '/settingsScreen';

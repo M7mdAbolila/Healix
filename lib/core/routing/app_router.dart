@@ -21,7 +21,7 @@ import 'package:healix/features/medical_history/presentation/screens/add_x_ray_s
 import 'package:healix/features/medical_history/presentation/screens/all_medical_records_screen.dart';
 import 'package:healix/features/medical_history/presentation/screens/medical_categories_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
-import 'package:healix/features/sign_up/presentation/add_medical_history/add_medical_history_screen.dart';
+import 'package:healix/features/sign_up/presentation/add_medical_history/add_old_medical_history_screen.dart';
 import 'package:healix/features/sign_up/presentation/chronic_disease/chronic_disease_screen.dart';
 import 'package:healix/features/sign_up/presentation/physical_info/screens/physical_info_screen.dart';
 import 'package:healix/features/sign_up/presentation/sign_up/screens/sign_up_screen.dart';
@@ -72,9 +72,9 @@ class AppRouter {
           builder: (_) => const CreateProfileScreen(),
         );
 
-      case Routes.addMidcalHistScreen:
+      case Routes.addOldMidcalHistScreen:
         return MaterialPageRoute(
-          builder: (_) => const AddMedicalHistoryScreen(),
+          builder: (_) => const AddOldMedicalHistoryScreen(),
         );
       case Routes.chronicDiseaseScreen:
         return MaterialPageRoute(

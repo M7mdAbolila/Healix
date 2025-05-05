@@ -10,8 +10,8 @@ import '../../../../core/widgets/grey_back_button.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_linear_progress.dart';
 
-class AddMedicalHistoryScreen extends StatelessWidget {
-  const AddMedicalHistoryScreen({super.key});
+class AddOldMedicalHistoryScreen extends StatelessWidget {
+  const AddOldMedicalHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +47,14 @@ class AddMedicalHistoryScreen extends StatelessWidget {
                 verticalSpace(32),
                 CustomButton(
                   title: 'Done',
-                  onTap: () => context.pushNamed(Routes.addMidcalHistScreen),
+                  onTap: () => context.pushNamed(Routes.addOldMidcalHistScreen),
                 ),
                 verticalSpace(16),
                 CustomButton(
                   title: 'No, Skip to Home Page',
                   backgroundColor: ColorsManager.lightGreyText,
                   textColor: ColorsManager.grey700,
-                  onTap: () => context.pushNamed(Routes.addMidcalHistScreen),
+                  onTap: () => context.pushNamed(Routes.addOldMidcalHistScreen),
                 ),
               ],
             ),

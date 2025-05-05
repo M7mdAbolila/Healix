@@ -6,7 +6,7 @@ import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/features/sign_up/presentation/create_profile/widgets/text_field_with_prefix_text.dart';
 import 'package:healix/features/sign_up/presentation/physical_info/widgets/choose_gender_drop_down.dart';
-import 'package:healix/features/sign_up/presentation/physical_info/widgets/date_of_birth_widget.dart';
+import 'package:healix/core/widgets/custom_date_picker_widget.dart';
 
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/text_styles.dart';
@@ -52,7 +52,10 @@ class PhysicalInfoScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(96),
-                const DateOfBirthWidget(),
+                CustomDatePickerWidget(
+                  title: 'Date of Birth',
+                  controller: TextEditingController(),
+                ),
                 verticalSpace(16),
                 const TextFieldWithPrifixText(
                   title: 'Height',

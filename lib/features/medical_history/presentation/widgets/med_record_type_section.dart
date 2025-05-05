@@ -39,7 +39,7 @@ class MedicalRecordTypeSection extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Row(
                 spacing: 16.w,
-                children: medRecordTypes
+                children: _medRecordTypes
                     .map((e) => CategoryCard(category: e))
                     .toList(),
               ),
@@ -51,25 +51,29 @@ class MedicalRecordTypeSection extends StatelessWidget {
   }
 }
 
-List<CategoryModel> medRecordTypes = [
+List<CategoryModel> _medRecordTypes = [
   CategoryModel(
     'Medical Visit',
     'Add a Medical Visit Record',
     Assets.svgs.medicVisit.path,
+    route: Routes.addMedicalVistScreen,
   ),
   CategoryModel(
     'Lab Tests',
     'Add Lab Test Results',
     Assets.svgs.lABTest.path,
+    route: Routes.addLabTestScreen,
   ),
   CategoryModel(
     'X-Rays',
     'Upload an X-Ray Result',
     Assets.svgs.xRay.path,
+    route: Routes.addXRayScreen,
   ),
   CategoryModel(
     'View All',
     'Records Type List',
     Assets.svgs.viewAllIcon.path,
+    route: Routes.medicalCategoriesScreen,
   ),
 ];

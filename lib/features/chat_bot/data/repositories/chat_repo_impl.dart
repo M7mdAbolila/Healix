@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import '../../../../core/utils/logging.dart';
+import '../../../../core/helpers/logging.dart';
 import '../../../../core/constants/prompt_constants.dart';
 import '../../../../core/networking/api_error_handler.dart';
 import '../../../../core/networking/api_error_model.dart';
