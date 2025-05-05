@@ -19,9 +19,9 @@ class HomeFeaturesButtonsRow extends StatelessWidget {
           iconPath: Assets.svgs.navActivity2.path,
         ),
         HomeFeatureCard(
-          title: 'Dr. Healix',
-          description: 'AI Consultant\nChat Bot',
-          iconPath: Assets.svgs.aiBot1.path,
+          title: 'My Family',
+          description: 'My Family\nMembers',
+          iconPath: Assets.svgs.myFamily.path,
         ),
         HomeFeatureCard(
           title: 'Consult',
