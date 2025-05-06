@@ -11,11 +11,12 @@ import '../helpers/spacing.dart';
 class CustomDatePickerWidget extends StatefulWidget {
   final String title;
   final TextEditingController controller;
-
+  final bool showIcon;
   const CustomDatePickerWidget({
     super.key,
     required this.title,
     required this.controller,
+    this.showIcon = true,
   });
 
   @override
@@ -76,22 +77,23 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                       : DateFormat('dd/MM/yyyy').format(_selectedDate!),
                   style: AppTextStyles.fontTextInput(
                     color: _selectedDate == null
-                        ? ColorsManager.grey500
+                        ? ColorsManager.lightGreyText
                         : ColorsManager.darkGreyText,
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(2.r),
-                  decoration: BoxDecoration(
-                    color: ColorsManager.lightGreyText,
-                    borderRadius: BorderRadius.circular(8.r),
+                if (widget.showIcon)
+                  Container(
+                    padding: EdgeInsets.all(2.r),
+                    decoration: BoxDecoration(
+                      color: ColorsManager.lightGreyText,
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      size: 20.sp,
+                      color: ColorsManager.darkGreyText,
+                    ),
                   ),
-                  child: Icon(
-                    Icons.keyboard_arrow_right_rounded,
-                    size: 20.sp,
-                    color: ColorsManager.darkGreyText,
-                  ),
-                ),
               ],
             ),
           ),

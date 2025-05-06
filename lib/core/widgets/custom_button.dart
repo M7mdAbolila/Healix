@@ -15,6 +15,7 @@ class CustomButton extends StatelessWidget {
     this.height,
     this.textColor,
     this.enable = true,
+    this.border,
   });
   final String title;
   final VoidCallback onTap;
@@ -24,6 +25,7 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final bool enable;
   final Color? textColor;
+  final Border? border;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,6 +37,7 @@ class CustomButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: enable ? backgroundColor : ColorsManager.darkGreyText,
           borderRadius: BorderRadius.circular(8.r),
+          border: border,
         ),
         child: Center(
           child: Text(
