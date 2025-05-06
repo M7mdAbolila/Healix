@@ -6,6 +6,7 @@ import 'package:healix/core/theming/text_styles.dart';
 import 'package:intl/intl.dart';
 
 import '../dialogs/custom_date_picker_dialog.dart';
+import '../helpers/spacing.dart';
 
 class CustomDatePickerWidget extends StatefulWidget {
   final String title;
@@ -45,7 +46,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
             color: ColorsManager.darkGreyText,
           ),
         ),
-        SizedBox(height: 8.h),
+        verticalSpace(8),
         GestureDetector(
           onTap: () async {
             DateTime? pickedDate = await showCustomDatePickerDialog(context);
@@ -58,7 +59,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
             }
           },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.r),

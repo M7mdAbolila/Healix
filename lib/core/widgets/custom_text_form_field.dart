@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
 import '../theming/colors_manager.dart';
+import '../theming/shadows_manager.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
@@ -58,53 +59,60 @@ class CustomTextFormField extends StatelessWidget {
               color: ColorsManager.darkGreyText,
             ),
           ),
-        TextFormField(
-          controller: controller,
-          textInputAction: textInputAction,
-          keyboardType: keyboardType ?? TextInputType.name,
-          obscureText: isObscureText ?? false,
-          maxLines: maxLines ?? 1,
-          validator: validator,
-          onChanged: onChanged,
-          onFieldSubmitted: onSumitted,
-          cursorColor: ColorsManager.primaryColor,
-          style: inputTextStyle,
-          decoration: InputDecoration(
-            isDense: true,
-            errorMaxLines: 4,
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding: contentPadding ??
-                EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-            hintStyle: hintStyle ??
-                AppTextStyles.fontTextInput(
-                  color: ColorsManager.lightGreyText,
-                ),
-            hintText: hintText,
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            focusedBorder: focusedBorder ??
-                OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: ColorsManager.supportColor),
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-            enabledBorder: enabledBorder ??
-                OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-            errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: ColorsManager.alertColor),
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: ColorsManager.alertColor),
-              borderRadius: BorderRadius.circular(8.r),
+        Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              ShadowsManager.softerShadow(),
+            ],
+          ),
+          child: TextFormField(
+            controller: controller,
+            textInputAction: textInputAction,
+            keyboardType: keyboardType ?? TextInputType.name,
+            obscureText: isObscureText ?? false,
+            maxLines: maxLines ?? 1,
+            validator: validator,
+            onChanged: onChanged,
+            onFieldSubmitted: onSumitted,
+            cursorColor: ColorsManager.primaryColor,
+            style: inputTextStyle,
+            decoration: InputDecoration(
+              isDense: true,
+              errorMaxLines: 4,
+              filled: true,
+              fillColor: Colors.white,
+              contentPadding: contentPadding ??
+                  EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              hintStyle: hintStyle ??
+                  AppTextStyles.fontTextInput(
+                    color: ColorsManager.lightGreyText,
+                  ),
+              hintText: hintText,
+              prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              focusedBorder: focusedBorder ??
+                  OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ColorsManager.supportColor),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+              enabledBorder: enabledBorder ??
+                  OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+              errorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: ColorsManager.alertColor),
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: ColorsManager.alertColor),
+                borderRadius: BorderRadius.circular(8.r),
+              ),
             ),
           ),
         ),
