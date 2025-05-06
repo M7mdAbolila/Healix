@@ -6,13 +6,14 @@ import 'package:healix/core/widgets/custom_date_picker_widget.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 
-class PrescriptionDataForm extends StatelessWidget {
-  const PrescriptionDataForm({super.key});
+class MedicineDataForm extends StatelessWidget {
+  const MedicineDataForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16.r),
+      margin: EdgeInsets.only(bottom: 16.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.r),
