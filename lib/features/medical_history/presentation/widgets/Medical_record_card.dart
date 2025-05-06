@@ -5,12 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 
-class RecentRecordCard extends StatelessWidget {
-  const RecentRecordCard({
+class MedicalRecordCard extends StatelessWidget {
+  const MedicalRecordCard({
     super.key,
     required this.record,
   });
-  final RecentRecordModel record;
+  final MedicalRecordModel record;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,13 +67,13 @@ class RecentRecordCard extends StatelessWidget {
   }
 }
 
-class RecentRecordModel {
+class MedicalRecordModel {
   final String title;
   final String description;
   final String date;
   final String iconPath;
 
-  RecentRecordModel(
+  MedicalRecordModel(
     this.title,
     this.description,
     this.date,

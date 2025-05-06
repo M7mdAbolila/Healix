@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
-import 'package:healix/features/medical_history/presentation/widgets/recent_record_card.dart';
+import 'package:healix/core/helpers/extensions.dart';
+import 'package:healix/core/routing/routes.dart';
+import 'package:healix/features/medical_history/presentation/widgets/Medical_record_card.dart';
 
 import '../../../../core/widgets/feature_title_text.dart';
 import '../../../../core/widgets/view_all_button.dart';
@@ -20,13 +22,15 @@ class RecentUpdatesSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const FeatureTitleText(title: 'Recent Updates'),
-              ViewAllButton(onTap: () {}),
+              ViewAllButton(
+                  onTap: () =>
+                      context.pushNamed(Routes.viewAllMedicalRecordsScreen)),
             ],
           ),
           Column(
             spacing: 8.h,
             children:
-                recentRecords.map((e) => RecentRecordCard(record: e)).toList(),
+                recentRecords.map((e) => MedicalRecordCard(record: e)).toList(),
           ),
         ],
       ),
@@ -34,20 +38,20 @@ class RecentUpdatesSection extends StatelessWidget {
   }
 }
 
-List<RecentRecordModel> recentRecords = [
-  RecentRecordModel(
+List<MedicalRecordModel> recentRecords = [
+  MedicalRecordModel(
     'Allergy',
     'You are Allergic to Dust and pollen grains',
     'HH:MM | DD/MM/YYYY',
     Assets.svgs.allergy.path,
   ),
-  RecentRecordModel(
+  MedicalRecordModel(
     'Chronic Disease',
     'You have high probability for getting diabetes.',
     'HH:MM | DD/MM/YYYY',
     Assets.svgs.chronicDiseaseCategory.path,
   ),
-  RecentRecordModel(
+  MedicalRecordModel(
     'title',
     'description',
     'HH:MM | DD/MM/YYYY',
