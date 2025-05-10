@@ -44,14 +44,14 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        android12WhiteLogo,
-        android12WhiteLogoPng,
-        authPicture,
-        doctor,
-        temp,
-        virusPic,
-        whiteLogo,
-      ];
+    android12WhiteLogo,
+    android12WhiteLogoPng,
+    authPicture,
+    doctor,
+    temp,
+    virusPic,
+    whiteLogo,
+  ];
 }
 
 class $AssetsLottiesGen {
@@ -142,7 +142,7 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/Neuro.svg
   SvgGenImage get neuro => const SvgGenImage('assets/svgs/Neuro.svg');
 
-  /// File path: assets/svgs/New Bord.svg
+  /// File path: assets/svgs/New Born.svg
   SvgGenImage get newBorn => const SvgGenImage('assets/svgs/New Born.svg');
 
   /// File path: assets/svgs/Ophthalmology.svg
@@ -196,6 +196,9 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/document-upload.svg
   SvgGenImage get documentUpload =>
       const SvgGenImage('assets/svgs/document-upload.svg');
+
+  /// File path: assets/svgs/fees.svg
+  SvgGenImage get fees => const SvgGenImage('assets/svgs/fees.svg');
 
   /// File path: assets/svgs/filter-square.svg
   SvgGenImage get filterSquare =>
@@ -317,74 +320,75 @@ class $AssetsSvgsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        aiBot1,
-        allInOne,
-        allergy,
-        audiology,
-        cardiology,
-        chestRespiratory,
-        chronicDiseaseCategory,
-        chronicDisease,
-        dentistry,
-        dermatology,
-        earNoseThroat,
-        feelingIll,
-        generalPractice,
-        hereditaryDisease,
-        internalMedicine,
-        lABTest,
-        logs,
-        mainLogo,
-        medicHistIllustration,
-        medicVisit,
-        neuro,
-        newBorn,
-        ophthalmology,
-        orthopedics,
-        painManagement,
-        passEyeSlash,
-        passEye,
-        passwordTips,
-        psychiatry,
-        rightArrow,
-        searchIcon,
-        surgery,
-        xRay,
-        authBackgroundPicture,
-        consultDoc,
-        documentUpload,
-        filterSquare,
-        healixName,
-        location,
-        logoWithWord,
-        logout,
-        messageNotif,
-        myFamily,
-        navActivity1,
-        navActivity2,
-        navHome1,
-        navHome2,
-        navProfile1,
-        navProfile2,
-        navSetting1,
-        navSetting2,
-        onboarding1,
-        onboarding2,
-        onboarding3,
-        onboarding4,
-        sendIcon,
-        tutorialPic1,
-        tutorialPic2,
-        tutorialPic3,
-        tutorialPic4,
-        tutorialText1,
-        tutorialText2,
-        tutorialText3,
-        tutorialText4,
-        viewAllIcon,
-        whiteLogoWithWord,
-        yellowStar,
-      ];
+    aiBot1,
+    allInOne,
+    allergy,
+    audiology,
+    cardiology,
+    chestRespiratory,
+    chronicDiseaseCategory,
+    chronicDisease,
+    dentistry,
+    dermatology,
+    earNoseThroat,
+    feelingIll,
+    generalPractice,
+    hereditaryDisease,
+    internalMedicine,
+    lABTest,
+    logs,
+    mainLogo,
+    medicHistIllustration,
+    medicVisit,
+    neuro,
+    newBorn,
+    ophthalmology,
+    orthopedics,
+    painManagement,
+    passEyeSlash,
+    passEye,
+    passwordTips,
+    psychiatry,
+    rightArrow,
+    searchIcon,
+    surgery,
+    xRay,
+    authBackgroundPicture,
+    consultDoc,
+    documentUpload,
+    fees,
+    filterSquare,
+    healixName,
+    location,
+    logoWithWord,
+    logout,
+    messageNotif,
+    myFamily,
+    navActivity1,
+    navActivity2,
+    navHome1,
+    navHome2,
+    navProfile1,
+    navProfile2,
+    navSetting1,
+    navSetting2,
+    onboarding1,
+    onboarding2,
+    onboarding3,
+    onboarding4,
+    sendIcon,
+    tutorialPic1,
+    tutorialPic2,
+    tutorialPic3,
+    tutorialPic4,
+    tutorialText1,
+    tutorialText2,
+    tutorialText3,
+    tutorialText4,
+    viewAllIcon,
+    whiteLogoWithWord,
+    yellowStar,
+  ];
 }
 
 class Assets {
@@ -471,10 +475,10 @@ class AssetGenImage {
 
 class SvgGenImage {
   const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
-      : _isVecFormat = false;
+    : _isVecFormat = false;
 
   const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
-      : _isVecFormat = true;
+    : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -528,7 +532,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ??
+      colorFilter:
+          colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
@@ -559,7 +564,7 @@ class LottieGenImage {
     Key? key,
     AssetBundle? bundle,
     Widget Function(BuildContext, Widget, _lottie.LottieComposition?)?
-        frameBuilder,
+    frameBuilder,
     ImageErrorWidgetBuilder? errorBuilder,
     double? width,
     double? height,
