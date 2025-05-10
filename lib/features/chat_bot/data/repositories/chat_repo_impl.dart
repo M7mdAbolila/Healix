@@ -70,12 +70,14 @@ class ChatRepoImpl implements ChatRepo {
                   'System: The current user message is in ${userInput.contains(RegExp(r'[a-zA-Z]')) ? 'English' : 'Arabic'}. Respond in ${userInput.contains(RegExp(r'[a-zA-Z]')) ? 'English' : 'Arabic'}.'),
           if (userInput.isNotEmpty) Part(text: userInput),
           if (images != null && images.isNotEmpty)
-            ...images.map((image) => Part(
-                  inlineData: InlineData(
-                    mimeType: "image/jpeg",
-                    data: image,
-                  ),
-                )),
+            ...images.map(
+              (image) => Part(
+                inlineData: InlineData(
+                  mimeType: "image/jpeg",
+                  data: image,
+                ),
+              ),
+            ),
         ],
       ));
       Logging.info(

@@ -44,14 +44,14 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
-    android12WhiteLogo,
-    android12WhiteLogoPng,
-    authPicture,
-    doctor,
-    temp,
-    virusPic,
-    whiteLogo,
-  ];
+        android12WhiteLogo,
+        android12WhiteLogoPng,
+        authPicture,
+        doctor,
+        temp,
+        virusPic,
+        whiteLogo,
+      ];
 }
 
 class $AssetsLottiesGen {
@@ -77,6 +77,16 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/Allergy.svg
   SvgGenImage get allergy => const SvgGenImage('assets/svgs/Allergy.svg');
 
+  /// File path: assets/svgs/Audiology.svg
+  SvgGenImage get audiology => const SvgGenImage('assets/svgs/Audiology.svg');
+
+  /// File path: assets/svgs/Cardiology.svg
+  SvgGenImage get cardiology => const SvgGenImage('assets/svgs/Cardiology.svg');
+
+  /// File path: assets/svgs/Chest & respiratory.svg
+  SvgGenImage get chestRespiratory =>
+      const SvgGenImage('assets/svgs/Chest & respiratory.svg');
+
   /// File path: assets/svgs/Chronic Disease category.svg
   SvgGenImage get chronicDiseaseCategory =>
       const SvgGenImage('assets/svgs/Chronic Disease category.svg');
@@ -85,13 +95,32 @@ class $AssetsSvgsGen {
   SvgGenImage get chronicDisease =>
       const SvgGenImage('assets/svgs/Chronic Disease.svg');
 
+  /// File path: assets/svgs/Dentistry.svg
+  SvgGenImage get dentistry => const SvgGenImage('assets/svgs/Dentistry.svg');
+
+  /// File path: assets/svgs/Dermatology.svg
+  SvgGenImage get dermatology =>
+      const SvgGenImage('assets/svgs/Dermatology.svg');
+
+  /// File path: assets/svgs/Ear, Nose & Throat.svg
+  SvgGenImage get earNoseThroat =>
+      const SvgGenImage('assets/svgs/Ear, Nose & Throat.svg');
+
   /// File path: assets/svgs/Feeling ill.svg
   SvgGenImage get feelingIll =>
       const SvgGenImage('assets/svgs/Feeling ill.svg');
 
+  /// File path: assets/svgs/General Practice.svg
+  SvgGenImage get generalPractice =>
+      const SvgGenImage('assets/svgs/General Practice.svg');
+
   /// File path: assets/svgs/Hereditary Disease.svg
   SvgGenImage get hereditaryDisease =>
       const SvgGenImage('assets/svgs/Hereditary Disease.svg');
+
+  /// File path: assets/svgs/Internal Medicine.svg
+  SvgGenImage get internalMedicine =>
+      const SvgGenImage('assets/svgs/Internal Medicine.svg');
 
   /// File path: assets/svgs/LAB Test.svg
   SvgGenImage get lABTest => const SvgGenImage('assets/svgs/LAB Test.svg');
@@ -110,6 +139,24 @@ class $AssetsSvgsGen {
   SvgGenImage get medicVisit =>
       const SvgGenImage('assets/svgs/Medic Visit.svg');
 
+  /// File path: assets/svgs/Neuro.svg
+  SvgGenImage get neuro => const SvgGenImage('assets/svgs/Neuro.svg');
+
+  /// File path: assets/svgs/New Bord.svg
+  SvgGenImage get newBorn => const SvgGenImage('assets/svgs/New Born.svg');
+
+  /// File path: assets/svgs/Ophthalmology.svg
+  SvgGenImage get ophthalmology =>
+      const SvgGenImage('assets/svgs/Ophthalmology.svg');
+
+  /// File path: assets/svgs/Orthopedics.svg
+  SvgGenImage get orthopedics =>
+      const SvgGenImage('assets/svgs/Orthopedics.svg');
+
+  /// File path: assets/svgs/Pain Management.svg
+  SvgGenImage get painManagement =>
+      const SvgGenImage('assets/svgs/Pain Management.svg');
+
   /// File path: assets/svgs/Pass-Eye-slash.svg
   SvgGenImage get passEyeSlash =>
       const SvgGenImage('assets/svgs/Pass-Eye-slash.svg');
@@ -120,6 +167,9 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/Password-tips.svg
   SvgGenImage get passwordTips =>
       const SvgGenImage('assets/svgs/Password-tips.svg');
+
+  /// File path: assets/svgs/Psychiatry.svg
+  SvgGenImage get psychiatry => const SvgGenImage('assets/svgs/Psychiatry.svg');
 
   /// File path: assets/svgs/Right Arrow.svg
   SvgGenImage get rightArrow =>
@@ -134,6 +184,10 @@ class $AssetsSvgsGen {
 
   /// File path: assets/svgs/X-Ray.svg
   SvgGenImage get xRay => const SvgGenImage('assets/svgs/X-Ray.svg');
+
+  /// File path: assets/svgs/auth_background_picture.svg
+  SvgGenImage get authBackgroundPicture =>
+      const SvgGenImage('assets/svgs/auth_background_picture.svg');
 
   /// File path: assets/svgs/consult-doc.svg
   SvgGenImage get consultDoc =>
@@ -263,59 +317,74 @@ class $AssetsSvgsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-    aiBot1,
-    allInOne,
-    allergy,
-    chronicDiseaseCategory,
-    chronicDisease,
-    feelingIll,
-    hereditaryDisease,
-    lABTest,
-    logs,
-    mainLogo,
-    medicHistIllustration,
-    medicVisit,
-    passEyeSlash,
-    passEye,
-    passwordTips,
-    rightArrow,
-    searchIcon,
-    surgery,
-    xRay,
-    consultDoc,
-    documentUpload,
-    filterSquare,
-    healixName,
-    location,
-    logoWithWord,
-    logout,
-    messageNotif,
-    myFamily,
-    navActivity1,
-    navActivity2,
-    navHome1,
-    navHome2,
-    navProfile1,
-    navProfile2,
-    navSetting1,
-    navSetting2,
-    onboarding1,
-    onboarding2,
-    onboarding3,
-    onboarding4,
-    sendIcon,
-    tutorialPic1,
-    tutorialPic2,
-    tutorialPic3,
-    tutorialPic4,
-    tutorialText1,
-    tutorialText2,
-    tutorialText3,
-    tutorialText4,
-    viewAllIcon,
-    whiteLogoWithWord,
-    yellowStar,
-  ];
+        aiBot1,
+        allInOne,
+        allergy,
+        audiology,
+        cardiology,
+        chestRespiratory,
+        chronicDiseaseCategory,
+        chronicDisease,
+        dentistry,
+        dermatology,
+        earNoseThroat,
+        feelingIll,
+        generalPractice,
+        hereditaryDisease,
+        internalMedicine,
+        lABTest,
+        logs,
+        mainLogo,
+        medicHistIllustration,
+        medicVisit,
+        neuro,
+        newBorn,
+        ophthalmology,
+        orthopedics,
+        painManagement,
+        passEyeSlash,
+        passEye,
+        passwordTips,
+        psychiatry,
+        rightArrow,
+        searchIcon,
+        surgery,
+        xRay,
+        authBackgroundPicture,
+        consultDoc,
+        documentUpload,
+        filterSquare,
+        healixName,
+        location,
+        logoWithWord,
+        logout,
+        messageNotif,
+        myFamily,
+        navActivity1,
+        navActivity2,
+        navHome1,
+        navHome2,
+        navProfile1,
+        navProfile2,
+        navSetting1,
+        navSetting2,
+        onboarding1,
+        onboarding2,
+        onboarding3,
+        onboarding4,
+        sendIcon,
+        tutorialPic1,
+        tutorialPic2,
+        tutorialPic3,
+        tutorialPic4,
+        tutorialText1,
+        tutorialText2,
+        tutorialText3,
+        tutorialText4,
+        viewAllIcon,
+        whiteLogoWithWord,
+        yellowStar,
+      ];
 }
 
 class Assets {
@@ -402,10 +471,10 @@ class AssetGenImage {
 
 class SvgGenImage {
   const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = false;
+      : _isVecFormat = false;
 
   const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = true;
+      : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -459,8 +528,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter:
-          colorFilter ??
+      colorFilter: colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
@@ -491,7 +559,7 @@ class LottieGenImage {
     Key? key,
     AssetBundle? bundle,
     Widget Function(BuildContext, Widget, _lottie.LottieComposition?)?
-    frameBuilder,
+        frameBuilder,
     ImageErrorWidgetBuilder? errorBuilder,
     double? width,
     double? height,

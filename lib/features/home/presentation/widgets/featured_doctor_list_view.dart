@@ -17,6 +17,7 @@ class FeaturedDoctorListView extends StatelessWidget {
           height: 268.h,
           child: ListView.builder(
             itemCount: 5,
+            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => const FeaturedDoctorItem(),
           ),

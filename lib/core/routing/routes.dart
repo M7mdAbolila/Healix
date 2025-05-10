@@ -32,6 +32,9 @@ class Routes {
       '/addHereditaryDiseaseScreen';
   static const String addAllergyScreen = '/addAllergyScreen';
   static const String addChronicDiseaseScreen = '/addChronicDiseaseScreen';
+  static const String chooseSpecialtyScreen = '/chooseSpecialtyScreen';
+  static const String doctorsListScreen = '/doctorsListScreen';
+  static const String doctorDetailsScreen = '/doctorDetailsScreen';
 
   // static const String Screen = '/Screen';
 }

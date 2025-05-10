@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/core/di/setup_get_it.dart';
+import 'package:healix/features/appointment/presentation/screens/choose_specialty_screen.dart';
+import 'package:healix/features/appointment/presentation/screens/doctor_details_screen.dart';
+import 'package:healix/features/appointment/presentation/screens/doctors_list_screen.dart';
 import 'package:healix/features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
 import 'package:healix/features/chat_bot/presentation/screens/chat_bot_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
@@ -136,6 +139,18 @@ class AppRouter {
       case Routes.addAllergyScreen:
         return MaterialPageRoute(
           builder: (_) => const AddAllergyScreen(),
+        );
+      case Routes.chooseSpecialtyScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChooseSpecialtyScreen(),
+        );
+      case Routes.doctorsListScreen:
+        return MaterialPageRoute(
+          builder: (_) => const DoctorsListScreen(),
+        );
+      case Routes.doctorDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const DoctorDetailsScreen(),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(
