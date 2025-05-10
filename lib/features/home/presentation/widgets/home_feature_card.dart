@@ -12,44 +12,47 @@ class HomeFeatureCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.iconPath,
+    this.onTap,
   });
   final String title;
   final String description;
   final String iconPath;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 12.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(
-          color: ColorsManager.lightGreyText,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 12.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(color: ColorsManager.lightGreyText),
         ),
-      ),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            iconPath,
-            height: 56.h,
-            width: 56.w,
-          ),
-          verticalSpace(16),
-          Text(
-            title,
-            style: AppTextStyles.fontTextInput(
-              color: ColorsManager.darkerGreyText,
+        child: Column(
+          children: [
+            SvgPicture.asset(
+              iconPath,
+              height: 56.h,
+              width: 56.w,
             ),
-          ),
-          verticalSpace(4),
-          Text(
-            description,
-            textAlign: TextAlign.center,
-            style: AppTextStyles.fontSmallerText(
-              color: ColorsManager.darkGreyText,
+            verticalSpace(16),
+            Text(
+              title,
+              style: AppTextStyles.fontTextInput(
+                color: ColorsManager.darkerGreyText,
+              ),
             ),
-          ),
-        ],
+            verticalSpace(4),
+            Text(
+              description,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.fontSmallerText(
+                color: ColorsManager.darkGreyText,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

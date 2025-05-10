@@ -6,8 +6,8 @@ import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class DoctorPhotoAndMainInfoText extends StatelessWidget {
-  const DoctorPhotoAndMainInfoText({super.key});
-
+  const DoctorPhotoAndMainInfoText({super.key, this.hasExperience = false});
+  final bool hasExperience;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -24,19 +24,26 @@ class DoctorPhotoAndMainInfoText extends StatelessWidget {
           child: Column(
             spacing: 5.h,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: <Widget>[
               Text(
                 'Dr. Omar Salama',
                 style: AppTextStyles.fontTextInput(
                   color: ColorsManager.darkerGreyText,
                 ),
               ),
-              Text(
-                'Consultant of dermatology',
-                style: AppTextStyles.fontParagraphText(
-                  color: ColorsManager.darkGreyText,
-                ),
-              ),
+              hasExperience
+                  ? Text(
+                      'Experience: X Years',
+                      style: AppTextStyles.fontParagraphText(
+                        color: ColorsManager.primaryColor,
+                      ),
+                    )
+                  : Text(
+                      'Consultant of dermatology',
+                      style: AppTextStyles.fontParagraphText(
+                        color: ColorsManager.darkGreyText,
+                      ),
+                    ),
               Text(
                 'Professional Title',
                 style: AppTextStyles.fontParagraphText(

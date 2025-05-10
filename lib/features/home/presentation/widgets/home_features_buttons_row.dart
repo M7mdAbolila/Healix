@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:healix/core/helpers/extensions.dart';
 
 import '../../../../core/gen/assets.gen.dart';
+import '../../../../core/routing/routes.dart';
 import 'home_feature_card.dart';
 
 class HomeFeaturesButtonsRow extends StatelessWidget {
@@ -27,6 +29,7 @@ class HomeFeaturesButtonsRow extends StatelessWidget {
           title: 'Consult',
           description: 'Book An\nAppointment',
           iconPath: Assets.svgs.consultDoc.path,
+          onTap: () => context.pushNamed(Routes.chooseSpecialtyScreen),
         ),
       ],
     );
