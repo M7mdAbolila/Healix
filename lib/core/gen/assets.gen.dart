@@ -123,6 +123,10 @@ class $AssetsSvgsGen {
   SvgGenImage get hereditaryDisease =>
       const SvgGenImage('assets/svgs/Hereditary Disease.svg');
 
+  /// File path: assets/svgs/Instgram_logo.svg
+  SvgGenImage get instgramLogo =>
+      const SvgGenImage('assets/svgs/Instgram_logo.svg');
+
   /// File path: assets/svgs/Internal Medicine.svg
   SvgGenImage get internalMedicine =>
       const SvgGenImage('assets/svgs/Internal Medicine.svg');
@@ -211,6 +215,13 @@ class $AssetsSvgsGen {
   SvgGenImage get documentUpload =>
       const SvgGenImage('assets/svgs/document-upload.svg');
 
+  /// File path: assets/svgs/edit.svg
+  SvgGenImage get edit => const SvgGenImage('assets/svgs/edit.svg');
+
+  /// File path: assets/svgs/facebook_logo.svg
+  SvgGenImage get facebookLogo =>
+      const SvgGenImage('assets/svgs/facebook_logo.svg');
+
   /// File path: assets/svgs/fees.svg
   SvgGenImage get fees => const SvgGenImage('assets/svgs/fees.svg');
 
@@ -222,6 +233,10 @@ class $AssetsSvgsGen {
   SvgGenImage get healixName =>
       const SvgGenImage('assets/svgs/healix name.svg');
 
+  /// File path: assets/svgs/linkedIn_logo.svg
+  SvgGenImage get linkedInLogo =>
+      const SvgGenImage('assets/svgs/linkedIn_logo.svg');
+
   /// File path: assets/svgs/location.svg
   SvgGenImage get location => const SvgGenImage('assets/svgs/location.svg');
 
@@ -232,9 +247,17 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/svgs/logout.svg');
 
+  /// File path: assets/svgs/logout_blue.svg
+  SvgGenImage get logoutBlue =>
+      const SvgGenImage('assets/svgs/logout_blue.svg');
+
   /// File path: assets/svgs/message-notif.svg
   SvgGenImage get messageNotif =>
       const SvgGenImage('assets/svgs/message-notif.svg');
+
+  /// File path: assets/svgs/message-question.svg
+  SvgGenImage get messageQuestion =>
+      const SvgGenImage('assets/svgs/message-question.svg');
 
   /// File path: assets/svgs/my-family.svg
   SvgGenImage get myFamily => const SvgGenImage('assets/svgs/my-family.svg');
@@ -292,6 +315,9 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/onboarding-4.svg
   SvgGenImage get onboarding4 =>
       const SvgGenImage('assets/svgs/onboarding-4.svg');
+
+  /// File path: assets/svgs/people.svg
+  SvgGenImage get people => const SvgGenImage('assets/svgs/people.svg');
 
   /// File path: assets/svgs/send icon.svg
   SvgGenImage get sendIcon => const SvgGenImage('assets/svgs/send icon.svg');
@@ -356,6 +382,7 @@ class $AssetsSvgsGen {
     feelingIll,
     generalPractice,
     hereditaryDisease,
+    instgramLogo,
     internalMedicine,
     lABTest,
     logs,
@@ -381,13 +408,18 @@ class $AssetsSvgsGen {
     completed,
     consultDoc,
     documentUpload,
+    edit,
+    facebookLogo,
     fees,
     filterSquare,
     healixName,
+    linkedInLogo,
     location,
     logoWithWord,
     logout,
+    logoutBlue,
     messageNotif,
+    messageQuestion,
     myFamily,
     navHome1,
     navHome2,
@@ -403,6 +435,7 @@ class $AssetsSvgsGen {
     onboarding2,
     onboarding3,
     onboarding4,
+    people,
     sendIcon,
     tutorialPic1,
     tutorialPic2,
