@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/widgets/custom_screen_app_bar.dart';
-import 'package:healix/features/settings/presentation/screens/setting_button.dart';
+import 'package:healix/features/settings/presentation/widgets/setting_button.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors_manager.dart';

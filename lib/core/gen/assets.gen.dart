@@ -35,8 +35,8 @@ class $AssetsImagesGen {
   /// File path: assets/images/doctor.png
   AssetGenImage get doctor => const AssetGenImage('assets/images/doctor.png');
 
-  /// File path: assets/images/temp.png
-  AssetGenImage get temp => const AssetGenImage('assets/images/temp.png');
+  /// File path: assets/images/temp.jpg
+  AssetGenImage get temp => const AssetGenImage('assets/images/temp.jpg');
 
   /// File path: assets/images/virus_pic.jpg
   AssetGenImage get virusPic =>

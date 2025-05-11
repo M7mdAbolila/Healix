@@ -4,6 +4,7 @@ import 'package:healix/core/gen/assets.gen.dart';
 
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/widgets/search_bar_widget.dart';
+import 'show_profile_menu.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({super.key});
@@ -38,15 +39,18 @@ class HomeHeaderWidget extends StatelessWidget {
                 height: 32.h,
                 width: 137.w,
               ),
-              Container(
-                height: 40.h,
-                width: 40.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  border: Border.all(color: Colors.white, width: 2.w),
-                  image: DecorationImage(
-                    image: AssetImage(Assets.images.temp.path),
+              GestureDetector(
+                onTap: () => showProfileMenu(context),
+                child: Container(
+                  height: 40.h,
+                  width: 40.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    border: Border.all(color: Colors.white, width: 2.w),
+                    image: DecorationImage(
+                      image: AssetImage(Assets.images.temp.path),
+                    ),
                   ),
                 ),
               ),
