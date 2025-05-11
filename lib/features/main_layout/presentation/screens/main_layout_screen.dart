@@ -58,16 +58,16 @@ class _HealixMainLayoutScreenState extends State<HealixMainLayoutScreen> {
           NavButton(
             title: 'Medic Hist.',
             unactiveWidget:
-                Assets.svgs.navActivity1.svg(height: 32.h, width: 32.w),
+                Assets.svgs.navMedicalHist1.svg(height: 32.h, width: 32.w),
             activeWidget:
-                Assets.svgs.navActivity2.svg(height: 32.h, width: 32.w),
+                Assets.svgs.navMedicalHist2.svg(height: 32.h, width: 32.w),
           ),
           NavButton(
-            title: 'Profile',
+            title: 'My Activity',
             unactiveWidget:
-                Assets.svgs.navProfile1.svg(height: 32.h, width: 32.w),
+                Assets.svgs.navMyActivity1.svg(height: 32.h, width: 32.w),
             activeWidget:
-                Assets.svgs.navProfile2.svg(height: 32.h, width: 32.w),
+                Assets.svgs.navMyActivity2.svg(height: 32.h, width: 32.w),
           ),
           NavButton(
             title: 'Settings',

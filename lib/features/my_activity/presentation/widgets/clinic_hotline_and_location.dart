@@ -5,9 +5,9 @@ import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 
-class FeesLocationExperienceWidgets extends StatelessWidget {
-  const FeesLocationExperienceWidgets({super.key, this.hasExperience = true});
-  final bool hasExperience;
+class ClinicHotlineAndLocation extends StatelessWidget {
+  const ClinicHotlineAndLocation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,15 +17,15 @@ class FeesLocationExperienceWidgets extends StatelessWidget {
         Row(
           spacing: 8.w,
           children: [
-            Assets.svgs.fees.svg(height: 24.h, width: 24.w),
+            Assets.svgs.call.svg(height: 24.h, width: 24.w),
             Text(
-              'Fees:',
+              'Hotline: ',
               style: AppTextStyles.fontBodyText(
                 color: ColorsManager.darkGreyText,
               ),
             ),
             Text(
-              '500 EGP',
+              '19019',
               style: AppTextStyles.fontTextInput(
                 color: ColorsManager.darkGreyText,
               ),
@@ -50,13 +50,6 @@ class FeesLocationExperienceWidgets extends StatelessWidget {
             ),
           ],
         ),
-        if (hasExperience)
-          Text(
-            'Experience: X Years',
-            style: AppTextStyles.fontParagraphText(
-              color: ColorsManager.primaryColor,
-            ),
-          ),
       ],
     );
   }

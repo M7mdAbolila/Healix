@@ -28,6 +28,10 @@ class $AssetsImagesGen {
   AssetGenImage get authPicture =>
       const AssetGenImage('assets/images/auth-picture.png');
 
+  /// File path: assets/images/clinic-pic.jpg
+  AssetGenImage get clinicPic =>
+      const AssetGenImage('assets/images/clinic-pic.jpg');
+
   /// File path: assets/images/doctor.png
   AssetGenImage get doctor => const AssetGenImage('assets/images/doctor.png');
 
@@ -47,6 +51,7 @@ class $AssetsImagesGen {
     android12WhiteLogo,
     android12WhiteLogoPng,
     authPicture,
+    clinicPic,
     doctor,
     temp,
     virusPic,
@@ -189,6 +194,15 @@ class $AssetsSvgsGen {
   SvgGenImage get authBackgroundPicture =>
       const SvgGenImage('assets/svgs/auth_background_picture.svg');
 
+  /// File path: assets/svgs/call.svg
+  SvgGenImage get call => const SvgGenImage('assets/svgs/call.svg');
+
+  /// File path: assets/svgs/cancelled.svg
+  SvgGenImage get cancelled => const SvgGenImage('assets/svgs/cancelled.svg');
+
+  /// File path: assets/svgs/completed.svg
+  SvgGenImage get completed => const SvgGenImage('assets/svgs/completed.svg');
+
   /// File path: assets/svgs/consult-doc.svg
   SvgGenImage get consultDoc =>
       const SvgGenImage('assets/svgs/consult-doc.svg');
@@ -225,19 +239,27 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/my-family.svg
   SvgGenImage get myFamily => const SvgGenImage('assets/svgs/my-family.svg');
 
-  /// File path: assets/svgs/nav-activity1.svg
-  SvgGenImage get navActivity1 =>
-      const SvgGenImage('assets/svgs/nav-activity1.svg');
-
-  /// File path: assets/svgs/nav-activity2.svg
-  SvgGenImage get navActivity2 =>
-      const SvgGenImage('assets/svgs/nav-activity2.svg');
-
   /// File path: assets/svgs/nav-home1.svg
   SvgGenImage get navHome1 => const SvgGenImage('assets/svgs/nav-home1.svg');
 
   /// File path: assets/svgs/nav-home2.svg
   SvgGenImage get navHome2 => const SvgGenImage('assets/svgs/nav-home2.svg');
+
+  /// File path: assets/svgs/nav-medical-hist1.svg
+  SvgGenImage get navMedicalHist1 =>
+      const SvgGenImage('assets/svgs/nav-medical-hist1.svg');
+
+  /// File path: assets/svgs/nav-medical-hist2.svg
+  SvgGenImage get navMedicalHist2 =>
+      const SvgGenImage('assets/svgs/nav-medical-hist2.svg');
+
+  /// File path: assets/svgs/nav-my-activity1.svg
+  SvgGenImage get navMyActivity1 =>
+      const SvgGenImage('assets/svgs/nav-my-activity1.svg');
+
+  /// File path: assets/svgs/nav-my-activity2.svg
+  SvgGenImage get navMyActivity2 =>
+      const SvgGenImage('assets/svgs/nav-my-activity2.svg');
 
   /// File path: assets/svgs/nav-profile1.svg
   SvgGenImage get navProfile1 =>
@@ -354,6 +376,9 @@ class $AssetsSvgsGen {
     surgery,
     xRay,
     authBackgroundPicture,
+    call,
+    cancelled,
+    completed,
     consultDoc,
     documentUpload,
     fees,
@@ -364,10 +389,12 @@ class $AssetsSvgsGen {
     logout,
     messageNotif,
     myFamily,
-    navActivity1,
-    navActivity2,
     navHome1,
     navHome2,
+    navMedicalHist1,
+    navMedicalHist2,
+    navMyActivity1,
+    navMyActivity2,
     navProfile1,
     navProfile2,
     navSetting1,

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/features/my_activity/presentation/widgets/show_clinic_details_dailog.dart';
 
 import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
-import 'clinc_container.dart';
-import 'fees_Location_experience_widgets.dart';
+import '../../../appointment/presentation/widgets/clinc_container.dart';
+import '../../../appointment/presentation/widgets/fees_location_experience_widgets.dart';
 
-Future<dynamic> showConfirmBookingDialog(BuildContext context) {
+Future<dynamic> showAppointmentDetailsDailog(BuildContext context) {
   return showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -29,7 +30,7 @@ Future<dynamic> showConfirmBookingDialog(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Confirm Booking',
+                    'Appointment Details',
                     style: AppTextStyles.fontTextInput(
                       color: ColorsManager.grey700,
                     ),
@@ -99,15 +100,38 @@ Future<dynamic> showConfirmBookingDialog(BuildContext context) {
                       ),
                     ),
                     CustomButton(
-                      width: 120.w,
-                      title: 'Confirm Book',
+                      width: 100.w,
+                      title: 'Cancel',
+                      backgroundColor: ColorsManager.dimmedBackground,
+                      border: Border.all(color: ColorsManager.alertColor),
                       textStyle: AppTextStyles.fontParagraphText(
-                        color: Colors.white,
+                        color: ColorsManager.alertColor,
                       ),
                       onTap: () {},
                     ),
                   ],
                 ),
+              ),
+              verticalSpace(16),
+              Row(
+                spacing: 8.w,
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      title: 'Clinic Details',
+                      backgroundColor: ColorsManager.blue10,
+                      border: Border.all(color: ColorsManager.blue40),
+                      textColor: ColorsManager.primaryColor,
+                      onTap: () => showClinicDetailsDialog(context),
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomButton(
+                      title: 'Location',
+                      onTap: () {},
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/helpers/extensions.dart';
+import 'package:healix/features/my_activity/presentation/widgets/clinic_hotline_and_location.dart';
 
 import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
-import 'clinc_container.dart';
-import 'fees_Location_experience_widgets.dart';
 
-Future<dynamic> showConfirmBookingDialog(BuildContext context) {
+Future<dynamic> showClinicDetailsDialog(BuildContext context) {
   return showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -29,7 +29,7 @@ Future<dynamic> showConfirmBookingDialog(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Confirm Booking',
+                    'Clinic Details',
                     style: AppTextStyles.fontTextInput(
                       color: ColorsManager.grey700,
                     ),
@@ -56,7 +56,7 @@ Future<dynamic> showConfirmBookingDialog(BuildContext context) {
                 alignment: Alignment.center,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(4.r),
-                  child: Assets.images.doctor.image(
+                  child: Assets.images.clinicPic.image(
                     height: 300.h,
                     width: 300.w,
                     fit: BoxFit.cover,
@@ -65,49 +65,65 @@ Future<dynamic> showConfirmBookingDialog(BuildContext context) {
               ),
               verticalSpace(16),
               Text(
-                'Dr. Omar Salama',
+                'Katameya Clinic',
                 style: AppTextStyles.fontTextInput(
                   color: ColorsManager.darkerGreyText,
                 ),
               ),
               verticalSpace(8),
               Text(
-                'Consultant of dermatology',
+                'New Cairo',
                 style: AppTextStyles.fontParagraphText(
                   color: ColorsManager.darkGreyText,
                 ),
               ),
               verticalSpace(16),
-              const ClincContainer(),
-              verticalSpace(16),
-              const FeesLocationExperienceWidgets(hasExperience: false),
+              const ClinicHotlineAndLocation(),
               verticalSpace(16),
               Container(
-                padding: EdgeInsets.fromLTRB(16.w, 8.h, 8.w, 8.h),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                 decoration: BoxDecoration(
                   color: ColorsManager.dimmedBackground,
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Row(
-                  spacing: 8.w,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Today 4:00 PM',
-                      style: AppTextStyles.fontTextInput(
+                      'Working Hours: ',
+                      style: AppTextStyles.fontParagraphText(
                         color: ColorsManager.darkGreyText,
                       ),
                     ),
-                    CustomButton(
-                      width: 120.w,
-                      title: 'Confirm Book',
-                      textStyle: AppTextStyles.fontParagraphText(
-                        color: Colors.white,
+                    Text(
+                      '19:00 AM - 11:00 AM',
+                      style: AppTextStyles.fontBodyText(
+                        color: ColorsManager.darkGreyText,
                       ),
-                      onTap: () {},
                     ),
                   ],
                 ),
+              ),
+              verticalSpace(16),
+              Row(
+                spacing: 8.w,
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      title: 'Back',
+                      backgroundColor: ColorsManager.blue10,
+                      border: Border.all(color: ColorsManager.blue40),
+                      textColor: ColorsManager.primaryColor,
+                      onTap: () => context.pop(),
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomButton(
+                      title: 'Location',
+                      onTap: () {},
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

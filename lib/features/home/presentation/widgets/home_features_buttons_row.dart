@@ -18,7 +18,7 @@ class HomeFeaturesButtonsRow extends StatelessWidget {
         HomeFeatureCard(
           title: 'Med Hist',
           description: 'Your Medical\nHistory',
-          iconPath: Assets.svgs.navActivity2.path,
+          iconPath: Assets.svgs.navMedicalHist2.path,
         ),
         HomeFeatureCard(
           title: 'My Family',
