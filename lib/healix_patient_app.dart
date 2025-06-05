@@ -5,8 +5,8 @@ import 'package:healix/core/theming/colors_manager.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 
-class HealixApp extends StatelessWidget {
-  const HealixApp({super.key, required this.appRouter});
+class HealixPatientApp extends StatelessWidget {
+  const HealixPatientApp({super.key, required this.appRouter});
   final AppRouter appRouter;
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class HealixApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
-        title: 'Healix',
+        title: 'Healix Patient',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: ColorsManager.dimmedBackground,
