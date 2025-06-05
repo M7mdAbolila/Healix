@@ -24,6 +24,7 @@ class HomeFeaturesButtonsRow extends StatelessWidget {
           title: 'My Family',
           description: 'My Family\nMembers',
           iconPath: Assets.svgs.myFamily.path,
+          onTap: () => context.pushNamed(Routes.myFamilyScreen),
         ),
         HomeFeatureCard(
           title: 'Consult',

@@ -211,6 +211,14 @@ class $AssetsSvgsGen {
   SvgGenImage get consultDoc =>
       const SvgGenImage('assets/svgs/consult-doc.svg');
 
+  /// File path: assets/svgs/copy_family_code.svg
+  SvgGenImage get copyFamilyCode =>
+      const SvgGenImage('assets/svgs/copy_family_code.svg');
+
+  /// File path: assets/svgs/create_family_group.svg
+  SvgGenImage get createFamilyGroup =>
+      const SvgGenImage('assets/svgs/create_family_group.svg');
+
   /// File path: assets/svgs/document-upload.svg
   SvgGenImage get documentUpload =>
       const SvgGenImage('assets/svgs/document-upload.svg');
@@ -221,6 +229,10 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/facebook_logo.svg
   SvgGenImage get facebookLogo =>
       const SvgGenImage('assets/svgs/facebook_logo.svg');
+
+  /// File path: assets/svgs/family_list_icon.svg
+  SvgGenImage get familyListIcon =>
+      const SvgGenImage('assets/svgs/family_list_icon.svg');
 
   /// File path: assets/svgs/fees.svg
   SvgGenImage get fees => const SvgGenImage('assets/svgs/fees.svg');
@@ -407,9 +419,12 @@ class $AssetsSvgsGen {
     cancelled,
     completed,
     consultDoc,
+    copyFamilyCode,
+    createFamilyGroup,
     documentUpload,
     edit,
     facebookLogo,
+    familyListIcon,
     fees,
     filterSquare,
     healixName,

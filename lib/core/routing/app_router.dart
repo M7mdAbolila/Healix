@@ -8,6 +8,8 @@ import 'package:healix/features/appointment/presentation/screens/doctor_details_
 import 'package:healix/features/appointment/presentation/screens/doctors_list_screen.dart';
 import 'package:healix/features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
 import 'package:healix/features/chat_bot/presentation/screens/chat_bot_screen.dart';
+import 'package:healix/features/family_group/presentation/screens/family_group_screen.dart';
+import 'package:healix/features/family_group/presentation/screens/my_family_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
@@ -38,10 +40,6 @@ import 'routes.dart';
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.featureScreen:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const FeatureScreen(),
-      //   );
       case Routes.onboardingScreen:
         return MaterialPageRoute(
           builder: (_) => const OnboardingScreen(),
@@ -111,7 +109,6 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const AddMedicalVisitScreen(),
         );
-
       case Routes.addLabTestScreen:
         return MaterialPageRoute(
           builder: (_) => const AddLabTestScreen(),
@@ -151,6 +148,14 @@ class AppRouter {
       case Routes.doctorDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => const DoctorDetailsScreen(),
+        );
+      case Routes.myFamilyScreen:
+        return MaterialPageRoute(
+          builder: (_) => const MyFamilyScreen(),
+        );
+      case Routes.familyGroupMembersScreen:
+        return MaterialPageRoute(
+          builder: (_) => const FamilyGroupScreen(),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(
