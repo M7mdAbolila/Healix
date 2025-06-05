@@ -8,7 +8,7 @@ import 'package:healix/features/appointment/presentation/screens/doctor_details_
 import 'package:healix/features/appointment/presentation/screens/doctors_list_screen.dart';
 import 'package:healix/features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
 import 'package:healix/features/chat_bot/presentation/screens/chat_bot_screen.dart';
-import 'package:healix/features/family_group/presentation/screens/family_group_screen.dart';
+import 'package:healix/features/family_group/presentation/screens/family_group_members_screen.dart';
 import 'package:healix/features/family_group/presentation/screens/my_family_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
@@ -155,7 +155,7 @@ class AppRouter {
         );
       case Routes.familyGroupMembersScreen:
         return MaterialPageRoute(
-          builder: (_) => const FamilyGroupScreen(),
+          builder: (_) => const FamilyGroupMembersScreen(),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(
