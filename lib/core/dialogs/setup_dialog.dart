@@ -8,6 +8,7 @@ void showAwesomeSnackbar(
   required String title,
   required String message,
   bool isError = false,
+  bool isWarning = false,
 }) {
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
@@ -19,7 +20,11 @@ void showAwesomeSnackbar(
         content: AwesomeSnackbarContent(
           title: title,
           message: message,
-          contentType: isError ? ContentType.failure : ContentType.success,
+          contentType: isError
+              ? ContentType.failure
+              : isWarning
+                  ? ContentType.warning
+                  : ContentType.success,
         ),
       ),
     );

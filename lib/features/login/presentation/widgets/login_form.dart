@@ -17,7 +17,7 @@ class EmailAndPasswordForm extends StatefulWidget {
 }
 
 class _EmailAndPasswordFormState extends State<EmailAndPasswordForm> {
-  bool isVisible = false;
+  bool isVisible = true;
 
   @override
   Widget build(BuildContext context) {

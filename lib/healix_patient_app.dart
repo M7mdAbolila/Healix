@@ -19,7 +19,7 @@ class HealixPatientApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: ColorsManager.dimmedBackground,
         ),
-        initialRoute: Routes.loginScreen,
+        initialRoute: Routes.signUpScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

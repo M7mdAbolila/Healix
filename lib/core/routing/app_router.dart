@@ -24,14 +24,13 @@ import 'package:healix/features/medical_history/presentation/screens/add_x_ray_s
 import 'package:healix/features/medical_history/presentation/screens/all_medical_records_screen.dart';
 import 'package:healix/features/medical_history/presentation/screens/medical_categories_screen.dart';
 import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
-import 'package:healix/features/sign_up/presentation/add_medical_history/add_old_medical_history_screen.dart';
-import 'package:healix/features/sign_up/presentation/chronic_disease/chronic_disease_screen.dart';
-import 'package:healix/features/sign_up/presentation/physical_info/screens/physical_info_screen.dart';
-import 'package:healix/features/sign_up/presentation/sign_up/screens/sign_up_screen.dart';
+import 'package:healix/features/sign_up/presentation/screens/physical_info_screen.dart';
+import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
 import '../../features/chat_bot/presentation/screens/chat_screen.dart';
 import '../../features/login/presentation/logic/login_cubit.dart';
-import '../../features/sign_up/presentation/create_profile/screens/create_profile_screen.dart';
+import '../../features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
+import '../../features/sign_up/presentation/screens/create_profile_screen.dart';
 import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 import 'routes.dart';
@@ -45,7 +44,10 @@ class AppRouter {
         );
       case Routes.signUpScreen:
         return MaterialPageRoute(
-          builder: (_) => const SignUpScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<SignUpCubit>(),
+            child: const SignUpScreen(),
+          ),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
@@ -73,15 +75,6 @@ class AppRouter {
       case Routes.createProfileScreen:
         return MaterialPageRoute(
           builder: (_) => const CreateProfileScreen(),
-        );
-
-      case Routes.addOldMidcalHistScreen:
-        return MaterialPageRoute(
-          builder: (_) => const AddOldMedicalHistoryScreen(),
-        );
-      case Routes.chronicDiseaseScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ChronicDiseaseScreen(),
         );
       case Routes.mainLayoutScreen:
         return MaterialPageRoute(

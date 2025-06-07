@@ -56,9 +56,11 @@ dependencies:
   geolocator: ^13.0.4
   google_maps_flutter: ^2.12.1
   # Carousel slider
-  carousel_slider_plus: ^7.1.0
+  carousel_slider_plus: ^7.1.0  
   # File picker
   file_picker: ^10.1.2
+  # Image picker
+  image_picker: ^1.1.2
   # Customize Flutter's default white native splash screen with background color and splash image
   flutter_native_splash: ^2.4.4
   table_calendar: ^3.1.3

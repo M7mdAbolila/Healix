@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/helpers/logging.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/shadows_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
@@ -55,7 +56,8 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
               setState(() {
                 _selectedDate = pickedDate;
                 widget.controller.text =
-                    DateFormat('dd/MM/yyyy').format(pickedDate);
+                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                Logging.info('Selected date: ${widget.controller.text}');
               });
             }
           },
