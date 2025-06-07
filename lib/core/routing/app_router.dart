@@ -30,6 +30,7 @@ import 'package:healix/features/sign_up/presentation/physical_info/screens/physi
 import 'package:healix/features/sign_up/presentation/sign_up/screens/sign_up_screen.dart';
 
 import '../../features/chat_bot/presentation/screens/chat_screen.dart';
+import '../../features/login/presentation/logic/login_cubit.dart';
 import '../../features/sign_up/presentation/create_profile/screens/create_profile_screen.dart';
 import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
@@ -46,9 +47,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SignUpScreen(),
         );
-      case Routes.signInScreen:
+      case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginScreen(),
+          ),
         );
       case Routes.verifyEmailScreen:
         return MaterialPageRoute(

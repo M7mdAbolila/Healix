@@ -1,25 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/core/widgets/custom_button.dart';
-import 'package:healix/features/login/presentation/widgets/dont_have_account.dart';
-import 'package:healix/features/login/presentation/widgets/forget_pass_widget.dart';
-import 'package:healix/features/login/presentation/widgets/login_form.dart';
+import 'package:healix/features/login/presentation/widgets/login_bloc_listener.dart';
+import '../widgets/login_form_container.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +19,15 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: ColorsManager.authBackground,
         body: Stack(
           children: [
-            _buildBackgroundImage(),
-            _buildContent(),
+            _buildLoginBackgroundImage(),
+            _buildBodyContent(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildBackgroundImage() {
+  Widget _buildLoginBackgroundImage() {
     return Assets.images.authPicture.image(
       width: double.infinity,
       height: 360.h,
@@ -46,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildBodyContent() {
     return Padding(
       padding: EdgeInsets.only(top: 90.h),
       child: Column(
@@ -61,55 +50,11 @@ class _LoginScreenState extends State<LoginScreen> {
             style: AppTextStyles.fontBodyText(color: Colors.white),
           ),
           verticalSpace(32),
-          Expanded(
-            child: _buildFormContainer(),
+          const Expanded(
+            child: LoginFormContainer(),
           ),
+          const LoginBlocListener(),
         ],
-      ),
-    );
-  }
-
-  Widget _buildFormContainer() {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: ColorsManager.dimmedBackground,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24.r),
-          topRight: Radius.circular(24.r),
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              verticalSpace(32),
-              Text(
-                'Sign in',
-                style: AppTextStyles.fontTitleText(color: Colors.black),
-              ),
-              verticalSpace(32),
-              Form(
-                key: _formKey,
-                child: const EmailAndPasswordForm(),
-              ),
-              verticalSpace(16),
-              const ForgotPassWidget(),
-              verticalSpace(32),
-              CustomButton(
-                title: 'Sign in',
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    log('sign in');
-                  }
-                },
-              ),
-              verticalSpace(145),
-              const DontHaveAccount(),
-            ],
-          ),
-        ),
       ),
     );
   }

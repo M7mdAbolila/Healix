@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
@@ -15,20 +16,23 @@ class DontHaveAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Don\'t have an account? ',
+          'Don\'t have an account?',
           style: AppTextStyles.fontParagraphText(
             color: ColorsManager.darkerGreyText,
           ),
         ),
-        GestureDetector(
+        InkWell(
           onTap: () => context.pop(),
-          child: Text(
-            'Sign up',
-            style: AppTextStyles.fontParagraphText(
-              color: ColorsManager.informingColor,
-            ).copyWith(
-              decoration: TextDecoration.underline,
-              decorationColor: ColorsManager.informingColor,
+          child: Padding(
+            padding: EdgeInsets.all(8.r),
+            child: Text(
+              'Sign up',
+              style: AppTextStyles.fontParagraphText(
+                color: ColorsManager.informingColor,
+              ).copyWith(
+                decoration: TextDecoration.underline,
+                decorationColor: ColorsManager.informingColor,
+              ),
             ),
           ),
         ),

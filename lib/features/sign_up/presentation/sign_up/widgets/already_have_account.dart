@@ -22,7 +22,7 @@ class AlreadyHaveAccount extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () => context.pushNamed(Routes.signInScreen),
+          onTap: () => context.pushNamed(Routes.loginScreen),
           child: Text(
             'Log in',
             style: AppTextStyles.fontParagraphText(

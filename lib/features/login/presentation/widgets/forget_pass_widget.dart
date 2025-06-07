@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/routing/routes.dart';
 
@@ -12,15 +13,20 @@ class ForgotPassWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
-      child: GestureDetector(
+      child: InkWell(
         onTap: () => context.pushNamed(Routes.forgetPasswordScreen),
-        child: Text(
-          'Forgot Password?',
-          style: AppTextStyles.fontParagraphText(
-            color: ColorsManager.darkerGreyText,
-          ).copyWith(
+        borderRadius: BorderRadius.circular(4.r),
+        child: Padding(
+          padding: EdgeInsets.all(8.r),
+          child: Text(
+            'Forgot Password?',
+            style: AppTextStyles.fontParagraphText(
+              color: ColorsManager.darkerGreyText,
+            ).copyWith(
               decoration: TextDecoration.underline,
-              decorationColor: ColorsManager.darkerGreyText),
+              decorationColor: ColorsManager.darkerGreyText,
+            ),
+          ),
         ),
       ),
     );

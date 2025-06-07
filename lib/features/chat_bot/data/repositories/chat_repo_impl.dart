@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../../../../core/helpers/logging.dart';
 import '../../../../core/constants/prompt_constants.dart';
 import '../../../../core/networking/api_error_handler.dart';
@@ -96,7 +95,7 @@ class ChatRepoImpl implements ChatRepo {
       Logging.info(
           'API request prepared: ${requestString.length > 100 ? '${requestString.substring(0, 100)}...' : requestString}');
 
-      final apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
+      final apiKey = '';
       if (apiKey.isEmpty) {
         Logging.error('API Key not found');
         return left(ApiErrorModel(errMessage: "API Key not found"));

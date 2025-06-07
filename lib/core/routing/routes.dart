@@ -1,6 +1,6 @@
 class Routes {
   static const String featureScreen = '/featureScreen';
-  static const String signInScreen = '/signInScreen';
+  static const String loginScreen = '/loginScreen';
   static const String signUpScreen = '/signUpScreen';
   static const String onboardingScreen = '/onboardingScreen';
   static const String createProfileScreen = '/createProfileScreen';
