@@ -37,6 +37,5 @@ class Routes {
   static const String doctorDetailsScreen = '/doctorDetailsScreen';
   static const String myFamilyScreen = '/myFamilyScreen';
   static const String familyGroupMembersScreen = '/familyGroupMembersScreen';
-
   // static const String Screen = '/Screen';
 }

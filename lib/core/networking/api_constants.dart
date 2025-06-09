@@ -8,4 +8,5 @@ class ApiConstants {
   static const String loginEndpoint = "/api/users/login";
   static const String verifyEmailEndpoint = "/api/users/verify-email";
   static const String signUpEndpoint = "/api/users/signup";
+  static const String familyGroupsEndpoint = "/api/family-groups";
 }

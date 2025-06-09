@@ -5,6 +5,13 @@ import '../../features/chat_bot/data/repositories/chatbot_repo_impl.dart';
 import '../../features/chat_bot/domain/repositories/chat_repo.dart';
 import '../../features/chat_bot/domain/usecases/send_message_use_case.dart';
 import '../../features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
+import '../../features/family_group/data/datasources/family_group_api_service.dart';
+import '../../features/family_group/data/repositories_impl/family_group_repository_impl.dart';
+import '../../features/family_group/domain/repositories/family_group_repository.dart';
+import '../../features/family_group/domain/usecases/get_family_group_usecase.dart';
+import '../../features/family_group/domain/usecases/create_family_group_usecase.dart';
+import '../../features/family_group/domain/usecases/join_family_group_usecase.dart';
+import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
 import '../../features/login/data/datasources/login_api_service.dart';
 import '../../features/login/data/repositories_impl/login_repository_impl.dart';
 import '../../features/login/domain/repositories/login_repository.dart';
@@ -22,13 +29,14 @@ final getIt = GetIt.instance;
 
 Future<void> setUpGetIt() async {
   // Dio
-  getIt.registerLazySingleton(() => DioFactory.getDio());
-  // ApiService
+  getIt.registerLazySingleton(() => DioFactory.getDio()); // ApiService
   getIt.registerLazySingleton<ChatbotApiService>(
       () => ChatbotApiService(getIt()));
   getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(getIt()));
   getIt
       .registerLazySingleton<SignUpApiService>(() => SignUpApiService(getIt()));
+  getIt.registerLazySingleton<FamilyGroupApiService>(
+      () => FamilyGroupApiService(getIt()));
 
   // Repo
   getIt.registerLazySingleton<ChatRepo>(() => ChatbotRepoImpl(getIt()));
@@ -36,15 +44,21 @@ Future<void> setUpGetIt() async {
       () => LoginRepositoryImpl(getIt()));
   getIt.registerLazySingleton<SignUpRepository>(
       () => SignUpRepositoryImpl(getIt()));
+  getIt.registerLazySingleton<FamilyGroupRepository>(
+      () => FamilyGroupRepositoryImpl(getIt()));
 
   // UseCase
   getIt.registerLazySingleton(() => SendMessageUseCase(getIt()));
   getIt.registerLazySingleton(() => LoginUseCase(getIt()));
   getIt.registerLazySingleton(() => SignUpUseCase(getIt()));
   getIt.registerLazySingleton(() => VerifyEmailUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetFamilyGroupUseCase(getIt()));
+  getIt.registerLazySingleton(() => CreateFamilyGroupUseCase(getIt()));
+  getIt.registerLazySingleton(() => JoinFamilyGroupUseCase(getIt()));
 
   // Cubit
   getIt.registerFactory(() => ChatCubit(getIt()));
   getIt.registerFactory(() => LoginCubit(getIt()));
   getIt.registerFactory(() => SignUpCubit(getIt(), getIt()));
+  getIt.registerFactory(() => FamilyGroupCubit(getIt(), getIt(), getIt()));
 }
