@@ -72,19 +72,26 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                   ),
                 ),
-                ChatTextFieldContainer(
-                  controller: cubit.messageController,
-                  onSend: () => cubit.sendMessage(),
-                ),
+                const ChatTextFieldContainer(),
               ],
             );
           },
           listener: (BuildContext context, state) {
             if (state is ChatLoading ||
                 state is ChatSuccess ||
-                state is ChatFailure) {
+                state is ChatFailure ||
+                state is ChatFilesSelected) {
               WidgetsBinding.instance
                   .addPostFrameCallback((_) => scrollToBottom());
+            } else if (state is ChatMessage) {
+              // Show snackbar for user feedback
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.message),
+                  backgroundColor: state.isError ? Colors.red : Colors.blue,
+                  duration: const Duration(seconds: 2),
+                ),
+              );
             }
           },
         ),

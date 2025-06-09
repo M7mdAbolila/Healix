@@ -4,9 +4,8 @@ class ApiConstants {
       "https://generativelanguage.googleapis.com/";
   static const String chatEndpoint =
       "/v1beta/models/gemini-2.0-flash:generateContent";
-  // static const String  = "";
+  static const String sendMessageEndpoint = "/api/chatbot";
   static const String loginEndpoint = "/api/users/login";
   static const String verifyEmailEndpoint = "/api/users/verify-email";
   static const String signUpEndpoint = "/api/users/signup";
-
 }

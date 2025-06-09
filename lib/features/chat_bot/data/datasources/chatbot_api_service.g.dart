@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_api_service.dart';
+part of 'chatbot_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,9 +8,9 @@ part of 'chat_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _ChatApiService implements ChatApiService {
-  _ChatApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://generativelanguage.googleapis.com/';
+class _ChatbotApiService implements ChatbotApiService {
+  _ChatbotApiService(this._dio, {this.baseUrl, this.errorLogger}) {
+    baseUrl ??= 'http://13.61.226.187:5136';
   }
 
   final Dio _dio;
@@ -20,29 +20,25 @@ class _ChatApiService implements ChatApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SendMessageResponse> sendMessage(
-    SendMessageRequest request,
-    String apiKey,
-  ) async {
+  Future<SendMessageResponseModel> sendMessage(FormData formData) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'key': apiKey};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(request.toJson());
-    final _options = _setStreamType<SendMessageResponse>(
+    final _data = formData;
+    final _options = _setStreamType<SendMessageResponseModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1beta/models/gemini-2.0-flash:generateContent',
+            '/api/chatbot',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SendMessageResponse _value;
+    late SendMessageResponseModel _value;
     try {
-      _value = SendMessageResponse.fromJson(_result.data!);
+      _value = SendMessageResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import '../../../../core/networking/api_error_model.dart';
 import '../entities/message.dart';
@@ -10,14 +11,14 @@ class SendMessageUseCase {
   SendMessageUseCase(this._chatRepo);
 
   Future<Either<ApiErrorModel, Message>> call({
-    required String userInput,
-    required List<Message> conversationHistory,
-    List<String>? images,
+    required String message,
+    String? chatId,
+    List<MultipartFile>? files,
   }) async {
     return await _chatRepo.sendMessage(
-      userInput: userInput,
-      conversationHistory: conversationHistory,
-      images: images,
+      message: message,
+      chatId: chatId,
+      files: files,
     );
   }
 }

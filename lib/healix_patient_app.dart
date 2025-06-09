@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/constants/constants.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 
 import 'core/routing/app_router.dart';
@@ -19,7 +20,8 @@ class HealixPatientApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: ColorsManager.dimmedBackground,
         ),
-        initialRoute: Routes.signUpScreen,
+        initialRoute:
+            isLoggedInUser ? Routes.mainLayoutScreen : Routes.loginScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
