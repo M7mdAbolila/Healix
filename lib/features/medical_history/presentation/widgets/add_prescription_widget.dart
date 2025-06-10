@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
 
 import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/theming/colors_manager.dart';
@@ -12,11 +14,17 @@ class AddPrescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const AddPrescriptionScreen(),
-        ),
-      ),
+      onTap: () {
+        final medicalHistoryCubit = context.read<MedicalHistoryCubit>();
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => BlocProvider.value(
+              value: medicalHistoryCubit,
+              child: const AddPrescriptionScreen(),
+            ),
+          ),
+        );
+      },
       child: Container(
         padding: EdgeInsets.all(16.r),
         decoration: BoxDecoration(

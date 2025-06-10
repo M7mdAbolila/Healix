@@ -12,28 +12,39 @@ class MedicalHistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const CustomScreenAppBar(title: 'Medical History'),
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  verticalSpace(16),
-                  const SearchBarWidget(hasFilter: true),
-                  verticalSpace(32),
-                  const MedicalRecordTypeSection(),
-                  const MedHealthSummarySection(),
-                  const RecentUpdatesSection(),
-                  verticalSpace(32),
-                ],
-              ),
+    return const Scaffold(
+      body: MedicalHistoryScreenBody(),
+    );
+  }
+}
+
+class MedicalHistoryScreenBody extends StatelessWidget {
+  const MedicalHistoryScreenBody({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const CustomScreenAppBar(title: 'Medical History'),
+        Expanded(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                verticalSpace(16),
+                const SearchBarWidget(hasFilter: true),
+                verticalSpace(32),
+                const MedicalRecordTypeSection(),
+                const MedHealthSummarySection(),
+                const RecentUpdatesSection(),
+                verticalSpace(32),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

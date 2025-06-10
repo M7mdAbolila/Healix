@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helpers/enms.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_date_picker_widget.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import '../logic/medical_history_cubit/medical_history_cubit.dart';
 import '../widgets/upload_report_widget.dart';
 
 class AddSurgeryScreen extends StatelessWidget {
@@ -13,6 +16,9 @@ class AddSurgeryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final medicalHistoryCubit = context.read<MedicalHistoryCubit>();
+    medicalHistoryCubit.clearForm();
+    medicalHistoryCubit.medicalHistoryType = MedicalHistoryType.surgery.index;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -29,34 +35,34 @@ class AddSurgeryScreen extends StatelessWidget {
                       verticalSpace(24),
                       CustomDatePickerWidget(
                         title: 'Surgery Date',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.dateController,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Specialty',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.specialityController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Procedure Name',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.procedureNameController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Surgeon Name',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.surgeonNameController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Clinic/ Hospital Name',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.clinicNameController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
@@ -64,7 +70,7 @@ class AddSurgeryScreen extends StatelessWidget {
                         title: 'Notes',
                         hintText: 'Type here any notes..',
                         maxLines: 7,
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.notesController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
@@ -72,7 +78,9 @@ class AddSurgeryScreen extends StatelessWidget {
                       verticalSpace(32),
                       CustomButton(
                         title: 'Save',
-                        onTap: () {},
+                        onTap: () {
+                          medicalHistoryCubit.addHistoryRecord();
+                        },
                       ),
                       verticalSpace(100),
                     ],

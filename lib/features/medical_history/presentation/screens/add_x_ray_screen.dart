@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/features/medical_history/presentation/widgets/upload_report_widget.dart';
 
+import '../../../../core/helpers/enms.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_date_picker_widget.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import '../logic/medical_history_cubit/medical_history_cubit.dart';
+import 'add_record_bloc_lisneter.dart';
 
 class AddXRayScreen extends StatelessWidget {
   const AddXRayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<MedicalHistoryCubit>();
+    cubit.clearForm();
+    cubit.medicalHistoryType = MedicalHistoryType.xRays.index;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -29,34 +36,34 @@ class AddXRayScreen extends StatelessWidget {
                       verticalSpace(24),
                       CustomDatePickerWidget(
                         title: 'Scan Date',
-                        controller: TextEditingController(),
+                        controller: cubit.dateController,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Scan Type',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: cubit.scanTypeController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Scan Name',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: cubit.scanNameController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Facility Name',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: cubit.facilityNameController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Scanned Part',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: cubit.scannedPartController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
@@ -64,7 +71,7 @@ class AddXRayScreen extends StatelessWidget {
                         title: 'Notes',
                         hintText: 'Type here any notes..',
                         maxLines: 7,
-                        controller: TextEditingController(),
+                        controller: cubit.notesController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
@@ -72,9 +79,12 @@ class AddXRayScreen extends StatelessWidget {
                       verticalSpace(32),
                       CustomButton(
                         title: 'Save',
-                        onTap: () {},
+                        onTap: () {
+                          cubit.addHistoryRecord();
+                        },
                       ),
                       verticalSpace(100),
+                      const AddRecordBlocListener(title: 'X-Ray/ECG'),
                     ],
                   ),
                 ),

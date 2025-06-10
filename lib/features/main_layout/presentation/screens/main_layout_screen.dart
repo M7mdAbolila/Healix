@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/core/di/setup_get_it.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/routing/routes.dart';
 import 'package:healix/core/theming/colors_manager.dart';
@@ -9,6 +11,7 @@ import 'package:healix/features/my_activity/presentation/screens/my_activity_scr
 import 'package:healix/features/settings/presentation/screens/settings_screen.dart';
 
 import '../../../../core/gen/assets.gen.dart';
+import '../../../medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
 import '../widgets/custom_nav_bar/custom_nav_bar.dart';
 import '../widgets/custom_nav_bar/nav_button.dart';
 
@@ -82,11 +85,14 @@ class _HealixMainLayoutScreenState extends State<HealixMainLayoutScreen> {
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
         onPageChanged: _onTabChanged,
-        children: const [
-          HomeScreen(),
-          MedicalHistoryScreen(),
-          MyActivityScreen(),
-          SettingsScreen(),
+        children: [
+          const HomeScreen(),
+          BlocProvider(
+            create: (context) => getIt<MedicalHistoryCubit>(),
+            child: const MedicalHistoryScreen(),
+          ),
+          const MyActivityScreen(),
+          const SettingsScreen(),
         ],
       ),
     );

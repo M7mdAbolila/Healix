@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 import 'package:healix/core/widgets/custom_date_picker_widget.dart';
 import 'package:healix/core/widgets/custom_text_form_field.dart';
+import 'package:healix/features/medical_history/presentation/screens/add_record_bloc_lisneter.dart';
 import 'package:healix/features/medical_history/presentation/widgets/add_prescription_widget.dart';
 import 'package:healix/features/medical_history/presentation/widgets/visit_or_follow_up_button.dart';
 
+import '../../../../core/helpers/enms.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
+import '../logic/medical_history_cubit/medical_history_cubit.dart';
 
 class AddMedicalVisitScreen extends StatelessWidget {
   const AddMedicalVisitScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final medicalHistoryCubit = context.read<MedicalHistoryCubit>();
+    medicalHistoryCubit.clearForm();
+    medicalHistoryCubit.medicalHistoryType =
+        MedicalHistoryType.medicalVisit.index;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -30,7 +38,7 @@ class AddMedicalVisitScreen extends StatelessWidget {
                       verticalSpace(24),
                       CustomDatePickerWidget(
                         title: 'Visit Date',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.dateController,
                       ),
                       verticalSpace(16),
                       const VisitOrFollowUpButton(),
@@ -38,28 +46,29 @@ class AddMedicalVisitScreen extends StatelessWidget {
                       CustomTextFormField(
                         title: 'Doctor\'s Name',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.doctorNameController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Specialty',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.specialityController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Clinic/ Hospital Name',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.clinicNameController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
                       CustomTextFormField(
                         title: 'Medical Diagnoses',
                         hintText: 'Type Here..',
-                        controller: TextEditingController(),
+                        controller:
+                            medicalHistoryCubit.medicalDiagnosesController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
@@ -67,7 +76,7 @@ class AddMedicalVisitScreen extends StatelessWidget {
                         title: 'Notes',
                         hintText: 'Type here any notes..',
                         maxLines: 7,
-                        controller: TextEditingController(),
+                        controller: medicalHistoryCubit.notesController,
                         textInputAction: TextInputAction.next,
                       ),
                       verticalSpace(16),
@@ -75,9 +84,12 @@ class AddMedicalVisitScreen extends StatelessWidget {
                       verticalSpace(32),
                       CustomButton(
                         title: 'Save',
-                        onTap: () {},
+                        onTap: () {
+                          medicalHistoryCubit.addHistoryRecord();
+                        },
                       ),
                       verticalSpace(100),
+                      const AddRecordBlocListener(title: 'Medical Visit'),
                     ],
                   ),
                 ),

@@ -23,6 +23,11 @@ import '../../features/sign_up/domain/repositories/sign_up_repository.dart';
 import '../../features/sign_up/domain/usecases/sign_up_usecase.dart';
 import '../../features/sign_up/domain/usecases/verify_email_usecase.dart';
 import '../../features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
+import '../../features/medical_history/data/datasources/medical_history_api_service.dart';
+import '../../features/medical_history/data/repositories_impl/medical_history_repository_impl.dart';
+import '../../features/medical_history/domain/repositories/medical_history_repository.dart';
+import '../../features/medical_history/domain/usecases/add_history_record_usecase.dart';
+import '../../features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
 import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
@@ -36,6 +41,8 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton<SignUpApiService>(() => SignUpApiService(dio));
   getIt.registerLazySingleton<FamilyGroupApiService>(
       () => FamilyGroupApiService(dio));
+  getIt.registerLazySingleton<MedicalHistoryApiService>(
+      () => MedicalHistoryApiService(dio));
 
   // Repo
   getIt.registerLazySingleton<ChatRepo>(() => ChatbotRepoImpl(getIt()));
@@ -45,6 +52,8 @@ Future<void> setUpGetIt() async {
       () => SignUpRepositoryImpl(getIt()));
   getIt.registerLazySingleton<FamilyGroupRepository>(
       () => FamilyGroupRepositoryImpl(getIt()));
+  getIt.registerLazySingleton<MedicalHistoryRepository>(
+      () => MedicalHistoryRepositoryImpl(getIt()));
 
   // UseCase
   getIt.registerLazySingleton(() => SendMessageUseCase(getIt()));
@@ -54,10 +63,11 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => CreateFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => JoinFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => GetFamilyGroupWithCodeUseCase(getIt()));
-
+  getIt.registerLazySingleton(() => AddHistoryRecordUseCase(getIt()));
   // Cubit
   getIt.registerFactory(() => ChatCubit(getIt()));
   getIt.registerFactory(() => LoginCubit(getIt()));
   getIt.registerFactory(() => SignUpCubit(getIt(), getIt()));
   getIt.registerFactory(() => FamilyGroupCubit(getIt(), getIt(), getIt()));
+  getIt.registerFactory(() => MedicalHistoryCubit(getIt()));
 }

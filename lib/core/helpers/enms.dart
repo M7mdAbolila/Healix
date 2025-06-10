@@ -13,3 +13,32 @@ enum Gender {
   male,
   female,
 }
+
+enum MedicalHistoryType {
+  medicalVisit,
+  lapTests,
+  xRays,
+  surgery,
+  allergy,
+  logs,
+  chronic,
+  hereditary,
+}
+
+enum ReactionSeverity {
+  low,
+  moderate,
+  high,
+}
+
+enum RiskLevel {
+  low,
+  moderate,
+  high,
+}
+
+enum AllergyStatus {
+  active,
+  inactive,
+  resolved,
+}
