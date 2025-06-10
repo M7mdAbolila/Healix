@@ -5,8 +5,8 @@ import 'package:healix/core/theming/text_styles.dart';
 import '../../../../core/theming/colors_manager.dart';
 
 class HealthSummaryWidget extends StatelessWidget {
-  const HealthSummaryWidget({super.key});
-
+  const HealthSummaryWidget({super.key, this.summaryText});
+  final String? summaryText;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,9 +20,12 @@ class HealthSummaryWidget extends StatelessWidget {
           ),
         ),
         Text(
-          'Lorem ipsum dolor sit amet consectetur. Ridiculus congue sapien ut fermentum. Mi pulvinar scelerisque lectus convallis mauris amet etiam adipiscing turpis. Hendrerit id amet cras lacus erat.',
+          summaryText ??
+              'Health summary is generated automatically by AI after creating a group”',
           style: AppTextStyles.fontBodyText(
-            color: ColorsManager.darkerGreyText,
+            color: summaryText != null
+                ? ColorsManager.darkerGreyText
+                : ColorsManager.darkGreyText,
           ),
         ),
       ],

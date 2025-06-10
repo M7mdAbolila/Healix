@@ -8,8 +8,8 @@ import '../../features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
 import '../../features/family_group/data/datasources/family_group_api_service.dart';
 import '../../features/family_group/data/repositories_impl/family_group_repository_impl.dart';
 import '../../features/family_group/domain/repositories/family_group_repository.dart';
-import '../../features/family_group/domain/usecases/get_family_group_usecase.dart';
 import '../../features/family_group/domain/usecases/create_family_group_usecase.dart';
+import '../../features/family_group/domain/usecases/get_family_group_with_code_usecase.dart';
 import '../../features/family_group/domain/usecases/join_family_group_usecase.dart';
 import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
 import '../../features/login/data/datasources/login_api_service.dart';
@@ -29,14 +29,13 @@ final getIt = GetIt.instance;
 
 Future<void> setUpGetIt() async {
   // Dio
-  getIt.registerLazySingleton(() => DioFactory.getDio()); // ApiService
-  getIt.registerLazySingleton<ChatbotApiService>(
-      () => ChatbotApiService(getIt()));
-  getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(getIt()));
-  getIt
-      .registerLazySingleton<SignUpApiService>(() => SignUpApiService(getIt()));
+  final dio = DioFactory.getDio();
+  // ApiService
+  getIt.registerLazySingleton<ChatbotApiService>(() => ChatbotApiService(dio));
+  getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(dio));
+  getIt.registerLazySingleton<SignUpApiService>(() => SignUpApiService(dio));
   getIt.registerLazySingleton<FamilyGroupApiService>(
-      () => FamilyGroupApiService(getIt()));
+      () => FamilyGroupApiService(dio));
 
   // Repo
   getIt.registerLazySingleton<ChatRepo>(() => ChatbotRepoImpl(getIt()));
@@ -52,9 +51,9 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => LoginUseCase(getIt()));
   getIt.registerLazySingleton(() => SignUpUseCase(getIt()));
   getIt.registerLazySingleton(() => VerifyEmailUseCase(getIt()));
-  getIt.registerLazySingleton(() => GetFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => CreateFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => JoinFamilyGroupUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetFamilyGroupWithCodeUseCase(getIt()));
 
   // Cubit
   getIt.registerFactory(() => ChatCubit(getIt()));

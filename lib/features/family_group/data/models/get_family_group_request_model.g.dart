@@ -9,7 +9,7 @@ part of 'get_family_group_request_model.dart';
 GetFamilyGroupRequestModel _$GetFamilyGroupRequestModelFromJson(
         Map<String, dynamic> json) =>
     GetFamilyGroupRequestModel(
-      code: json['code'] as String?,
+      code: json['code'] as String,
     );
 
 Map<String, dynamic> _$GetFamilyGroupRequestModelToJson(

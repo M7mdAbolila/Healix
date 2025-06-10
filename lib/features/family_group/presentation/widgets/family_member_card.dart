@@ -4,9 +4,11 @@ import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
-class FamilyMemberCard extends StatelessWidget {
-  const FamilyMemberCard({super.key});
+import '../../data/models/family_member_model.dart';
 
+class FamilyMemberCard extends StatelessWidget {
+  const FamilyMemberCard({super.key, this.member});
+  final FamilyMemberModel? member;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,13 +29,13 @@ class FamilyMemberCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Mohamed',
+                member?.fname ?? '',
                 style: AppTextStyles.fontBodyText(
                   color: ColorsManager.darkerGreyText,
                 ),
               ),
               Text(
-                '0123456789',
+                member?.phoneNumber ?? '',
                 style: AppTextStyles.fontParagraphText(
                   color: ColorsManager.darkGreyText,
                 ),

@@ -4,12 +4,12 @@ import '../../data/models/get_family_group_response_model.dart';
 import '../entities/get_family_group_request_entity.dart';
 import '../repositories/family_group_repository.dart';
 
-class GetFamilyGroupUseCase {
+class GetFamilyGroupWithCodeUseCase {
   final FamilyGroupRepository repository;
-  GetFamilyGroupUseCase(this.repository);
+  GetFamilyGroupWithCodeUseCase(this.repository);
 
   Future<Either<ApiErrorModel, GetFamilyGroupResponseModel>> call(
       GetFamilyGroupRequestEntity request) {
-    return repository.getFamilyGroup(request);
+    return repository.getFamilyGroupWithCode(request);
   }
 }

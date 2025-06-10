@@ -6,14 +6,18 @@ import 'package:healix/core/theming/text_styles.dart';
 
 import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/routing/routes.dart';
+import '../../data/models/family_group_model.dart';
 
 class MyFamilyListCard extends StatelessWidget {
-  const MyFamilyListCard({super.key});
-
+  const MyFamilyListCard({super.key, this.familyGroup});
+  final FamilyGroupModel? familyGroup;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(Routes.familyGroupMembersScreen),
+      onTap: () => context.pushNamed(
+        Routes.familyGroupMembersScreen,
+        arguments: familyGroup,
+      ),
       child: Container(
         padding: EdgeInsets.all(16.r),
         decoration: BoxDecoration(
@@ -37,13 +41,13 @@ class MyFamilyListCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '12345',
+                  familyGroup?.code ?? 'Family Code',
                   style: AppTextStyles.fontBodyText(
                     color: ColorsManager.darkGreyText,
                   ),
                 ),
                 Text(
-                  '5 Members',
+                  '${familyGroup?.members?.length ?? 0} Members',
                   style: AppTextStyles.fontBodyText(
                     color: ColorsManager.darkGreyText,
                   ),

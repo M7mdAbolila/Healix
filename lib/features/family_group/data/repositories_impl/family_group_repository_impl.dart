@@ -16,13 +16,13 @@ class FamilyGroupRepositoryImpl implements FamilyGroupRepository {
   FamilyGroupRepositoryImpl(this.apiService);
 
   @override
-  Future<Either<ApiErrorModel, GetFamilyGroupResponseModel>> getFamilyGroup(
-      GetFamilyGroupRequestEntity request) async {
+  Future<Either<ApiErrorModel, GetFamilyGroupResponseModel>>
+      getFamilyGroupWithCode(GetFamilyGroupRequestEntity request) async {
     final GetFamilyGroupRequestModel requestModel = GetFamilyGroupRequestModel(
       code: request.code,
     );
     try {
-      final response = await apiService.getFamilyGroup(requestModel);
+      final response = await apiService.getFamilyGroupWithCode(requestModel);
       return right(response);
     } catch (e) {
       return left(ApiErrorHandler.handle(e));

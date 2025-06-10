@@ -28,6 +28,8 @@ import 'package:healix/features/sign_up/presentation/screens/physical_info_scree
 import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
 import '../../features/chat_bot/presentation/screens/chat_screen.dart';
+import '../../features/family_group/data/models/family_group_model.dart';
+import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
 import '../../features/login/presentation/logic/login_cubit.dart';
 import '../../features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
 import '../../features/sign_up/presentation/screens/create_profile_screen.dart';
@@ -146,11 +148,16 @@ class AppRouter {
         );
       case Routes.myFamilyScreen:
         return MaterialPageRoute(
-          builder: (_) => const MyFamilyScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<FamilyGroupCubit>(),
+            child: const MyFamilyScreen(),
+          ),
         );
       case Routes.familyGroupMembersScreen:
+        final args = settings.arguments;
+        final familyGroup = args is FamilyGroupModel ? args : null;
         return MaterialPageRoute(
-          builder: (_) => const FamilyGroupMembersScreen(),
+          builder: (_) => FamilyGroupMembersScreen(familyGroup: familyGroup),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

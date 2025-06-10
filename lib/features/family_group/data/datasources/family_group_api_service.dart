@@ -14,7 +14,10 @@ abstract class FamilyGroupApiService {
       _FamilyGroupApiService;
 
   @GET(ApiConstants.familyGroupsEndpoint)
-  Future<GetFamilyGroupResponseModel> getFamilyGroup(
+  Future<GetFamilyGroupResponseModel> getFamilyGroup();
+
+  @GET(ApiConstants.familyGroupsEndpoint)
+  Future<GetFamilyGroupResponseModel> getFamilyGroupWithCode(
     @Body() GetFamilyGroupRequestModel body,
   );
 

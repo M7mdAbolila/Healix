@@ -20,7 +20,34 @@ class _FamilyGroupApiService implements FamilyGroupApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<GetFamilyGroupResponseModel> getFamilyGroup(
+  Future<GetFamilyGroupResponseModel> getFamilyGroup() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetFamilyGroupResponseModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/family-groups',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetFamilyGroupResponseModel _value;
+    try {
+      _value = GetFamilyGroupResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetFamilyGroupResponseModel> getFamilyGroupWithCode(
     GetFamilyGroupRequestModel body,
   ) async {
     final _extra = <String, dynamic>{};

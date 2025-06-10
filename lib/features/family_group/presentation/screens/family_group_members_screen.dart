@@ -6,10 +6,11 @@ import 'package:healix/features/family_group/presentation/widgets/family_member_
 import 'package:healix/features/family_group/presentation/widgets/family_name_and_code_column.dart';
 
 import '../../../../core/helpers/spacing.dart';
+import '../../data/models/family_group_model.dart';
 
 class FamilyGroupMembersScreen extends StatelessWidget {
-  const FamilyGroupMembersScreen({super.key});
-
+  const FamilyGroupMembersScreen({super.key, this.familyGroup});
+  final FamilyGroupModel? familyGroup;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,15 +24,20 @@ class FamilyGroupMembersScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   verticalSpace(24),
-                  const FamilyNameAndCodeColumn(),
+                  FamilyNameAndCodeColumn(
+                    familyCode: familyGroup?.code ?? 'Family Code',
+                    familyName: familyGroup?.name ?? 'Family Name',
+                  ),
                   verticalSpace(24),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: 8,
+                      itemCount: familyGroup?.members?.length ?? 0,
                       physics: const BouncingScrollPhysics(),
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
-                        return const FamilyMemberCard();
+                        return FamilyMemberCard(
+                          member: familyGroup?.members?[index],
+                        );
                       },
                     ),
                   ),

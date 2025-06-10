@@ -194,6 +194,9 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/X-Ray.svg
   SvgGenImage get xRay => const SvgGenImage('assets/svgs/X-Ray.svg');
 
+  /// File path: assets/svgs/add-square.svg
+  SvgGenImage get addSquare => const SvgGenImage('assets/svgs/add-square.svg');
+
   /// File path: assets/svgs/auth_background_picture.svg
   SvgGenImage get authBackgroundPicture =>
       const SvgGenImage('assets/svgs/auth_background_picture.svg');
@@ -414,6 +417,7 @@ class $AssetsSvgsGen {
     searchIcon,
     surgery,
     xRay,
+    addSquare,
     authBackgroundPicture,
     call,
     cancelled,

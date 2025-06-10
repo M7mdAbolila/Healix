@@ -7,8 +7,8 @@ import 'core/functions/check_if_logged_in_user.dart';
 import 'core/routing/app_router.dart';
 
 void main() async {
-  await setUpGetIt();
   WidgetsFlutterBinding.ensureInitialized();
+  await setUpGetIt();
   await ScreenUtil.ensureScreenSize();
   await checkIfLoggedInUser();
   runApp(

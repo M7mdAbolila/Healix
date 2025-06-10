@@ -6,7 +6,7 @@ part 'get_family_group_request_model.g.dart';
 @JsonSerializable()
 class GetFamilyGroupRequestModel extends GetFamilyGroupRequestEntity {
   const GetFamilyGroupRequestModel({
-    super.code,
+    required super.code,
   });
 
   factory GetFamilyGroupRequestModel.fromJson(Map<String, dynamic> json) =>
