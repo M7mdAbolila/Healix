@@ -32,6 +32,32 @@ class ChatCubit extends Cubit<ChatState> {
     emit(ChatInitial());
   }
 
+  void setExistingChatId(String chatId) {
+    currentChatId = chatId;
+    emit(ChatSuccess());
+  }
+
+  /// Load messages directly into the chat
+  void loadMessages(List<Message> chatMessages, String chatId) {
+    currentChatId = chatId;
+    messages.clear();
+    messages.addAll(chatMessages);
+
+    // Extract options from the last bot message if any
+    final lastBotMessage = chatMessages
+        .where((msg) =>
+            !msg.isUser && msg.options != null && msg.options!.isNotEmpty)
+        .lastOrNull;
+
+    if (lastBotMessage != null) {
+      options = lastBotMessage.options ?? [];
+    } else {
+      options.clear();
+    }
+
+    emit(ChatSuccess());
+  }
+
   Future<void> sendMessage({
     List<MultipartFile>? files,
     String? option,
@@ -64,7 +90,7 @@ class ChatCubit extends Cubit<ChatState> {
       selectedFiles.clear();
     }
 
-    final response = await _sendMessageUseCase(
+    final response = await _sendMessageUseCase.call(
       message: messageText,
       chatId: currentChatId,
       files: filesToSend,

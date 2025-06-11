@@ -191,7 +191,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => getIt<ChatCubit>(),
-            child: const ChatScreen(),
+            child: ChatScreen(arguments: settings.arguments),
           ),
         );
       default:

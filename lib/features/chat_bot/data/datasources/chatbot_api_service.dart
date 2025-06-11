@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../core/networking/api_constants.dart';
 import '../models/responses/send_message_response_model.dart';
+import '../models/responses/get_all_chats_response_model.dart';
 
 part 'chatbot_api_service.g.dart';
 
@@ -13,4 +14,7 @@ abstract class ChatbotApiService {
   Future<SendMessageResponseModel> sendMessage(
     @Body() FormData formData,
   );
+
+  @GET(ApiConstants.getAllChatsEndpoint)
+  Future<GetAllChatsResponseModel> getAllChats();
 }

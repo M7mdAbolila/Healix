@@ -7,9 +7,12 @@ import '../logic/chat_cubit/chat_cubit.dart';
 import '../widgets/chat_screen_widgets/chat_header_widget.dart';
 import '../widgets/chat_screen_widgets/chat_text_field_container.dart';
 import '../widgets/chat_screen_widgets/message_bubble.dart';
+import '../../domain/entities/message.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  final Object? arguments;
+
+  const ChatScreen({super.key, this.arguments});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -19,10 +22,28 @@ class _ChatScreenState extends State<ChatScreen> {
   final ScrollController scrollController = ScrollController();
   void scrollToBottom() =>
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
+
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => scrollToBottom());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      scrollToBottom();
+
+      // Handle different argument types
+      if (widget.arguments != null) {
+        if (widget.arguments is Map<String, dynamic>) {
+          // Arguments from previous discussions card
+          final args = widget.arguments as Map<String, dynamic>;
+          final chatId = args['chatId'] as String;
+          final messages = args['messages'] as List<Message>;
+          context.read<ChatCubit>().loadMessages(messages, chatId);
+        } else if (widget.arguments is String) {
+          // Just chat ID (for new chat or simple navigation)
+          final chatId = widget.arguments as String;
+          context.read<ChatCubit>().setExistingChatId(chatId);
+        }
+      }
+    });
     scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
