@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/features/medical_history/presentation/widgets/add_record_bloc_lisneter.dart';
 import 'package:healix/features/medical_history/presentation/widgets/allergin_status_drop_down.dart';
 import 'package:healix/features/medical_history/presentation/widgets/reaction_severity_drop_down.dart';
 
@@ -65,6 +66,7 @@ class AddAllergyScreen extends StatelessWidget {
                         },
                       ),
                       verticalSpace(100),
+                      const AddRecordBlocListener(title: 'Allergy'),
                     ],
                   ),
                 ),

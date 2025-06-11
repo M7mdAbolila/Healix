@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healix/features/medical_history/presentation/screens/add_record_bloc_lisneter.dart';
+import 'package:healix/features/medical_history/presentation/widgets/add_record_bloc_lisneter.dart';
 import 'package:healix/features/medical_history/presentation/widgets/upload_report_widget.dart';
 
 import '../../../../core/helpers/enms.dart';

@@ -10,6 +10,7 @@ import '../../../../core/widgets/custom_screen_app_bar.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../logic/medical_history_cubit/medical_history_cubit.dart';
 import '../widgets/upload_report_widget.dart';
+import '../widgets/add_record_bloc_lisneter.dart';
 
 class AddLogsScreen extends StatelessWidget {
   const AddLogsScreen({super.key});
@@ -76,6 +77,7 @@ class AddLogsScreen extends StatelessWidget {
                         },
                       ),
                       verticalSpace(100),
+                      const AddRecordBlocListener(title: 'Logs'),
                     ],
                   ),
                 ),

@@ -5,7 +5,7 @@ import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 import 'package:healix/core/widgets/custom_date_picker_widget.dart';
 import 'package:healix/core/widgets/custom_text_form_field.dart';
-import 'package:healix/features/medical_history/presentation/screens/add_record_bloc_lisneter.dart';
+import 'package:healix/features/medical_history/presentation/widgets/add_record_bloc_lisneter.dart';
 import 'package:healix/features/medical_history/presentation/widgets/add_prescription_widget.dart';
 import 'package:healix/features/medical_history/presentation/widgets/visit_or_follow_up_button.dart';
 

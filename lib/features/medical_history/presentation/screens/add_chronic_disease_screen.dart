@@ -10,6 +10,7 @@ import '../../../../core/widgets/custom_date_picker_widget.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../logic/medical_history_cubit/medical_history_cubit.dart';
+import '../widgets/add_record_bloc_lisneter.dart';
 
 class AddChronicDiseaseScreen extends StatelessWidget {
   const AddChronicDiseaseScreen({super.key});
@@ -76,6 +77,7 @@ class AddChronicDiseaseScreen extends StatelessWidget {
                         },
                       ),
                       verticalSpace(100),
+                      const AddRecordBlocListener(title: 'Chronic Disease'),
                     ],
                   ),
                 ),

@@ -10,7 +10,7 @@ import '../../../../core/widgets/custom_date_picker_widget.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../logic/medical_history_cubit/medical_history_cubit.dart';
-import 'add_record_bloc_lisneter.dart';
+import '../widgets/add_record_bloc_lisneter.dart';
 
 class AddXRayScreen extends StatelessWidget {
   const AddXRayScreen({super.key});

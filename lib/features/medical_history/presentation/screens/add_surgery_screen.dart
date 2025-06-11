@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healix/features/medical_history/presentation/widgets/add_record_bloc_lisneter.dart';
 
 import '../../../../core/helpers/enms.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -83,6 +84,7 @@ class AddSurgeryScreen extends StatelessWidget {
                         },
                       ),
                       verticalSpace(100),
+                      const AddRecordBlocListener(title: 'Surgery'),
                     ],
                   ),
                 ),

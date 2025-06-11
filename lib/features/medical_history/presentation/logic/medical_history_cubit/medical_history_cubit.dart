@@ -193,7 +193,6 @@ class MedicalHistoryCubit extends Cubit<MedicalHistoryState> {
     reactionSeverity = null;
     allergyStatus = null;
     riskLevel = null;
-    medicalHistoryType = null;
     // Clear medical visit specific controllers
     doctorNameController.clear();
     specialityController.clear();
