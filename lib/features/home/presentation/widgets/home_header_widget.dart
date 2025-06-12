@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 
+import '../../../../core/constants/constants.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/widgets/search_bar_widget.dart';
 import 'show_profile_menu.dart';
@@ -48,8 +50,24 @@ class HomeHeaderWidget extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Colors.white,
                     border: Border.all(color: Colors.white, width: 2.w),
-                    image: DecorationImage(
-                      image: AssetImage(Assets.images.temp.path),
+                  ),
+                  child: ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl: userProfileImage,
+                      height: 40.h,
+                      width: 40.w,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => CircularProgressIndicator(
+                        strokeWidth: 2.w,
+                        valueColor: const AlwaysStoppedAnimation<Color>(
+                            ColorsManager.primaryColor),
+                      ),
+                      errorWidget: (context, url, error) =>
+                          Assets.svgs.consultDoc.svg(
+                        height: 40.h,
+                        width: 40.w,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

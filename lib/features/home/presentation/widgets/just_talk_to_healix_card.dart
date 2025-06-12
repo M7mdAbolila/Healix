@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
+import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
+
+import '../../../../core/routing/routes.dart';
 
 class JustTalkToHealixCard extends StatelessWidget {
   const JustTalkToHealixCard({super.key});
@@ -20,31 +23,34 @@ class JustTalkToHealixCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _buildTitleAndDescriptionCoulmn(),
-          _buildMessageImageAndTryButtonCoulmn(),
+          _buildMessageImageAndTryButtonCoulmn(context),
         ],
       ),
     );
   }
 
-  Column _buildMessageImageAndTryButtonCoulmn() {
+  Column _buildMessageImageAndTryButtonCoulmn(BuildContext context) {
     return Column(
-      spacing: 8.h,
+      spacing: 16.h,
       children: [
         Assets.svgs.messageNotif.svg(
           height: 64.h,
           width: 64.w,
         ),
-        Container(
-          margin: EdgeInsets.only(left: 16.w),
-          padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 5.h),
-          decoration: BoxDecoration(
-            color: ColorsManager.primaryColor,
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Text(
-            'Try Now!',
-            style: AppTextStyles.fontParagraphText(
-              color: Colors.white,
+        GestureDetector(
+          onTap: () => context.pushNamed(Routes.mainChatBotScreen),
+          child: Container(
+            margin: EdgeInsets.only(left: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 5.h),
+            decoration: BoxDecoration(
+              color: ColorsManager.primaryColor,
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Text(
+              'Try Now!',
+              style: AppTextStyles.fontParagraphText(
+                color: Colors.white,
+              ),
             ),
           ),
         ),

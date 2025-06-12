@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/spacing.dart';
 
+import '../../../../core/constants/constants.dart';
 import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
@@ -56,7 +58,7 @@ Future<dynamic> showProfileMenu(BuildContext context) {
                             ),
                             verticalSpace(8),
                             Text(
-                              'Ahmed Essam',
+                              userFullName,
                               style: AppTextStyles.fontBodyText(
                                 color: ColorsManager.darkerGreyText,
                               ),
@@ -98,9 +100,25 @@ Future<dynamic> showProfileMenu(BuildContext context) {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.white,
-                    border: Border.all(color: Colors.white, width: 10.w),
-                    image: DecorationImage(
-                      image: AssetImage(Assets.images.temp.path),
+                    border: Border.all(color: Colors.white, width: 8.w),
+                  ),
+                  child: ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl: userProfileImage,
+                      height: 80.h,
+                      width: 80.w,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => CircularProgressIndicator(
+                        strokeWidth: 2.w,
+                        valueColor: const AlwaysStoppedAnimation<Color>(
+                            ColorsManager.primaryColor),
+                      ),
+                      errorWidget: (context, url, error) =>
+                          Assets.svgs.consultDoc.svg(
+                        height: 80.h,
+                        width: 80.w,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

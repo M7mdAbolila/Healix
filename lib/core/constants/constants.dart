@@ -1,4 +1,6 @@
 bool isLoggedInUser = false;
+String userProfileImage = '';
+String userFullName = '';
 
 class Constants {
   static const String appName = "Healix";

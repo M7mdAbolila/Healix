@@ -25,6 +25,10 @@ class LoginBlocListener extends StatelessWidget {
             SharedPrefKeys.userPhotoUrl,
             state.response.user?.user?.photoUrl ?? '',
           );
+          SharedPrefHelper.setData(
+            SharedPrefKeys.userFullName,
+            '${state.response.user?.user?.fname ?? ''} ${state.response.user?.user?.lname ?? ''}',
+          );
           DioFactory.setTokenIntoHeaderAfterLogin(state.response.token ?? '');
           showAwesomeSnackbar(
             context,

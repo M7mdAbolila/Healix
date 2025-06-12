@@ -11,5 +11,9 @@ checkIfLoggedInUser() async {
     isLoggedInUser = false;
   } else {
     isLoggedInUser = true;
+    userProfileImage =
+        await SharedPrefHelper.getString(SharedPrefKeys.userPhotoUrl);
+    userFullName =
+        await SharedPrefHelper.getString(SharedPrefKeys.userFullName);
   }
 }
