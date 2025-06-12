@@ -18,7 +18,7 @@ class _CategoreisGridViewState extends State<CategoreisGridView> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
-      itemCount: _categories.length,
+      itemCount: categories.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 16.h,
@@ -27,14 +27,14 @@ class _CategoreisGridViewState extends State<CategoreisGridView> {
       ),
       itemBuilder: (context, index) {
         return CategoryCard(
-          category: _categories[index],
+          category: categories[index],
         );
       },
     );
   }
 }
 
-List<CategoryModel> _categories = [
+final List<CategoryModel> categories = [
   CategoryModel(
     'Medical Visit',
     'Add a Medical Visit Record',

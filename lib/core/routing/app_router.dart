@@ -103,8 +103,10 @@ class AppRouter {
           ),
         );
       case Routes.viewAllMedicalRecordsScreen:
+      final args = settings.arguments;
+        final index = args as int;
         return MaterialPageRoute(
-          builder: (_) => const AllMedicalRecordsScreen(),
+          builder: (_) => AllMedicalRecordsScreen(selectedIndex: index),
         );
       case Routes.addMedicalVistScreen:
         return MaterialPageRoute(

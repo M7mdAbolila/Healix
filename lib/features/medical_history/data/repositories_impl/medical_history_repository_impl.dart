@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:healix/core/networking/api_error_handler.dart';
 import 'package:healix/core/networking/api_error_model.dart';
 import '../../domain/entities/history_record_entity.dart';
+import '../../domain/entities/get_medical_records_response_entity.dart';
 import '../../domain/repositories/medical_history_repository.dart';
 import '../datasources/medical_history_api_service.dart';
 import '../models/history_record_model.dart';
@@ -55,6 +56,21 @@ class MedicalHistoryRepositoryImpl implements MedicalHistoryRepository {
       );
       final formData = await historyRecordModel.toFormData();
       final response = await _apiService.addHistoryRecord(formData);
+      return right(response);
+    } catch (error) {
+      return left(
+        ApiErrorHandler.handle(error),
+      );
+    }
+  }
+
+  @override
+  Future<Either<ApiErrorModel, GetMedicalRecordsResponseEntity>>
+      getMedicalRecordsByType(
+    int recordType,
+  ) async {
+    try {
+      final response = await _apiService.getMedicalRecordsByType(recordType);
       return right(response);
     } catch (error) {
       return left(

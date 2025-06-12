@@ -29,7 +29,9 @@ import '../../features/medical_history/data/datasources/medical_history_api_serv
 import '../../features/medical_history/data/repositories_impl/medical_history_repository_impl.dart';
 import '../../features/medical_history/domain/repositories/medical_history_repository.dart';
 import '../../features/medical_history/domain/usecases/add_history_record_usecase.dart';
+import '../../features/medical_history/domain/usecases/get_medical_records_by_type_usecase.dart';
 import '../../features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
+import '../../features/medical_history/presentation/logic/get_medical_records_cubit/get_medical_records_cubit.dart';
 import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
@@ -65,8 +67,9 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => CreateFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => JoinFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => GetFamilyGroupWithCodeUseCase(getIt()));
-  getIt.registerLazySingleton(() => AddHistoryRecordUseCase(getIt())); 
-  
+  getIt.registerLazySingleton(() => AddHistoryRecordUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetMedicalRecordsByTypeUseCase(getIt()));
+
   // Cubit
   getIt.registerFactory(() => ChatCubit(getIt()));
   getIt.registerFactory(() => AllChatsCubit(getIt()));
@@ -74,4 +77,5 @@ Future<void> setUpGetIt() async {
   getIt.registerFactory(() => SignUpCubit(getIt(), getIt()));
   getIt.registerFactory(() => FamilyGroupCubit(getIt(), getIt(), getIt()));
   getIt.registerFactory(() => MedicalHistoryCubit(getIt()));
+  getIt.registerFactory(() => GetMedicalRecordsCubit(getIt()));
 }
