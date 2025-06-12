@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:healix/core/helpers/logging.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 
@@ -25,6 +26,7 @@ class ChatCubit extends Cubit<ChatState> {
   List<PlatformFile> selectedFiles = [];
 
   void startNewChat() {
+    Logging.info('Starting new chat');
     currentChatId = null;
     messages.clear();
     options.clear();

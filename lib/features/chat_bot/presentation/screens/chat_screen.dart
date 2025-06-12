@@ -32,16 +32,16 @@ class _ChatScreenState extends State<ChatScreen> {
       // Handle different argument types
       if (widget.arguments != null) {
         if (widget.arguments is Map<String, dynamic>) {
-          // Arguments from previous discussions card
           final args = widget.arguments as Map<String, dynamic>;
           final chatId = args['chatId'] as String;
           final messages = args['messages'] as List<Message>;
           context.read<ChatCubit>().loadMessages(messages, chatId);
         } else if (widget.arguments is String) {
-          // Just chat ID (for new chat or simple navigation)
           final chatId = widget.arguments as String;
           context.read<ChatCubit>().setExistingChatId(chatId);
         }
+      } else {
+        context.read<ChatCubit>().startNewChat();
       }
     });
     scrollController.addListener(() {

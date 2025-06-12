@@ -55,7 +55,6 @@ class PreviousDiscussionsCard extends StatelessWidget {
         // Convert chat messages to domain messages using the repository
         final convertedMessages = convertChatMessagesToMessages(chat.messages);
 
-        // Navigate to chat screen with converted messages
         context.pushNamed(
           Routes.chatScreen,
           arguments: {

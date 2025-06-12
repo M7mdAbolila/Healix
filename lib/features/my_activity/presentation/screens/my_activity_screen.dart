@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/widgets/custom_screen_app_bar.dart';
 import 'package:healix/core/widgets/feature_title_text.dart';
 import 'package:healix/core/widgets/view_all_button.dart';
 import 'package:healix/features/my_activity/presentation/widgets/activity_appointment_card.dart';
+
+import '../../../main_layout/presentation/logic/navigation_cubit/navigation_cubit.dart';
 
 class MyActivityScreen extends StatelessWidget {
   const MyActivityScreen({super.key});
@@ -14,7 +17,10 @@ class MyActivityScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const CustomScreenAppBar(title: 'My Activity'),
+          CustomScreenAppBar(
+            title: 'My Activity',
+            onBackTap: () => context.read<NavigationCubit>().previousPage(),
+          ),
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),

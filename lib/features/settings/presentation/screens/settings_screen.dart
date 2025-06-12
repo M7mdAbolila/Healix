@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/widgets/custom_screen_app_bar.dart';
@@ -7,6 +8,7 @@ import 'package:healix/features/settings/presentation/widgets/setting_button.dar
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
+import '../../../main_layout/presentation/logic/navigation_cubit/navigation_cubit.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -16,7 +18,10 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const CustomScreenAppBar(title: 'Settings'),
+          CustomScreenAppBar(
+            title: 'Settings',
+            onBackTap: () => context.read<NavigationCubit>().previousPage(),
+          ),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),

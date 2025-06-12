@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
+import 'package:healix/core/helpers/extensions.dart';
+import 'package:healix/core/routing/routes.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
@@ -32,13 +34,13 @@ class ChatWithHealixCard extends StatelessWidget {
         spacing: 24.h,
         children: [
           _buildTitleTextAndLogoRow(),
-          _buildSubTitleTextAndTryNowButtonRow(),
+          _buildSubTitleTextAndTryNowButtonRow(context),
         ],
       ),
     );
   }
 
-  Row _buildSubTitleTextAndTryNowButtonRow() {
+  Row _buildSubTitleTextAndTryNowButtonRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -50,17 +52,20 @@ class ChatWithHealixCard extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(left: 16.w),
-          padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 5.h),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Text(
-            'Try Now!',
-            style: AppTextStyles.fontParagraphText(
-              color: ColorsManager.grey800,
+        GestureDetector(
+          onTap: () => context.pushNamed(Routes.mainChatBotScreen),
+          child: Container(
+            margin: EdgeInsets.only(left: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 5.h),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Text(
+              'Try Now!',
+              style: AppTextStyles.fontParagraphText(
+                color: ColorsManager.grey800,
+              ),
             ),
           ),
         ),

@@ -12,89 +12,109 @@ import 'package:healix/features/settings/presentation/screens/settings_screen.da
 
 import '../../../../core/gen/assets.gen.dart';
 import '../../../medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
+import '../logic/navigation_cubit/navigation_cubit.dart';
+import '../logic/navigation_cubit/navigation_state.dart';
 import '../widgets/custom_nav_bar/custom_nav_bar.dart';
 import '../widgets/custom_nav_bar/nav_button.dart';
 
-class HealixMainLayoutScreen extends StatefulWidget {
+class HealixMainLayoutScreen extends StatelessWidget {
   const HealixMainLayoutScreen({super.key});
 
   @override
-  State<HealixMainLayoutScreen> createState() => _HealixMainLayoutScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<NavigationCubit>(),
+      child: const _HealixMainLayoutView(),
+    );
+  }
 }
 
-class _HealixMainLayoutScreenState extends State<HealixMainLayoutScreen> {
-  final PageController _pageController = PageController();
-  int _selectedIndex = 0;
+class _HealixMainLayoutView extends StatefulWidget {
+  const _HealixMainLayoutView();
 
+  @override
+  State<_HealixMainLayoutView> createState() => _HealixMainLayoutViewState();
+}
+
+class _HealixMainLayoutViewState extends State<_HealixMainLayoutView> {
   void _onTabChanged(int index) {
-    setState(() {
-      _selectedIndex = index;
-      _pageController.jumpToPage(index);
-    });
+    context.read<NavigationCubit>().changeTab(index);
+    context.read<NavigationCubit>().pageController.jumpToPage(index);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: Padding(
-        padding: EdgeInsets.only(top: 24.h),
-        child: FloatingActionButton(
-          shape: const CircleBorder(),
-          backgroundColor: ColorsManager.primaryColor,
-          child: Assets.svgs.mainLogo.svg(
-            height: 26.h,
-            width: 26.w,
+    return BlocBuilder<NavigationCubit, NavigationState>(
+      builder: (context, state) {
+        final selectedIndex = context.read<NavigationCubit>().selectedIndex;
+
+        return Scaffold(
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(top: 24.h),
+            child: FloatingActionButton(
+              shape: const CircleBorder(),
+              backgroundColor: ColorsManager.primaryColor,
+              child: Assets.svgs.mainLogo.svg(
+                height: 26.h,
+                width: 26.w,
+              ),
+              onPressed: () => context.pushNamed(Routes.mainChatBotScreen),
+            ),
           ),
-          onPressed: () => context.pushNamed(Routes.mainChatBotScreen),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: CustomNavBar(
-        selectedIndex: _selectedIndex,
-        onTabChange: _onTabChanged,
-        tabs: [
-          NavButton(
-            title: 'Home',
-            unactiveWidget: Assets.svgs.navHome1.svg(height: 32.h, width: 32.w),
-            activeWidget: Assets.svgs.navHome2.svg(height: 32.h, width: 32.w),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: CustomNavBar(
+            selectedIndex: selectedIndex,
+            onTabChange: _onTabChanged,
+            tabs: [
+              NavButton(
+                title: 'Home',
+                unactiveWidget:
+                    Assets.svgs.navHome1.svg(height: 32.h, width: 32.w),
+                activeWidget:
+                    Assets.svgs.navHome2.svg(height: 32.h, width: 32.w),
+              ),
+              NavButton(
+                title: 'Medic Hist.',
+                unactiveWidget:
+                    Assets.svgs.navMedicalHist1.svg(height: 32.h, width: 32.w),
+                activeWidget:
+                    Assets.svgs.navMedicalHist2.svg(height: 32.h, width: 32.w),
+              ),
+              NavButton(
+                title: 'My Activity',
+                unactiveWidget:
+                    Assets.svgs.navMyActivity1.svg(height: 32.h, width: 32.w),
+                activeWidget:
+                    Assets.svgs.navMyActivity2.svg(height: 32.h, width: 32.w),
+              ),
+              NavButton(
+                title: 'Settings',
+                unactiveWidget:
+                    Assets.svgs.navSetting1.svg(height: 32.h, width: 32.w),
+                activeWidget:
+                    Assets.svgs.navSetting2.svg(height: 32.h, width: 32.w),
+              ),
+            ],
           ),
-          NavButton(
-            title: 'Medic Hist.',
-            unactiveWidget:
-                Assets.svgs.navMedicalHist1.svg(height: 32.h, width: 32.w),
-            activeWidget:
-                Assets.svgs.navMedicalHist2.svg(height: 32.h, width: 32.w),
+          body: PageView(
+            controller: context.read<NavigationCubit>().pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            onPageChanged: (index) {
+              context.read<NavigationCubit>().changeTab(index);
+            },
+            children: [
+              const HomeScreen(),
+              BlocProvider(
+                create: (context) => getIt<MedicalHistoryCubit>(),
+                child: const MedicalHistoryScreen(),
+              ),
+              const MyActivityScreen(),
+              const SettingsScreen(),
+            ],
           ),
-          NavButton(
-            title: 'My Activity',
-            unactiveWidget:
-                Assets.svgs.navMyActivity1.svg(height: 32.h, width: 32.w),
-            activeWidget:
-                Assets.svgs.navMyActivity2.svg(height: 32.h, width: 32.w),
-          ),
-          NavButton(
-            title: 'Settings',
-            unactiveWidget:
-                Assets.svgs.navSetting1.svg(height: 32.h, width: 32.w),
-            activeWidget:
-                Assets.svgs.navSetting2.svg(height: 32.h, width: 32.w),
-          ),
-        ],
-      ),
-      body: PageView(
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        onPageChanged: _onTabChanged,
-        children: [
-          const HomeScreen(),
-          BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const MedicalHistoryScreen(),
-          ),
-          const MyActivityScreen(),
-          const SettingsScreen(),
-        ],
-      ),
+        );
+      },
     );
   }
 }

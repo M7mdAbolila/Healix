@@ -99,7 +99,6 @@ class PreviousDiscussionsSection extends StatelessWidget {
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 itemCount: chats.length,
-                reverse: true,
                 padding: EdgeInsets.zero,
                 itemBuilder: (context, index) {
                   final chat = chats[index];
