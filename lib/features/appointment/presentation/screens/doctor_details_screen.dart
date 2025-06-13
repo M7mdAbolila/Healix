@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healix/features/appointment/presentation/widgets/available_slots_list.dart';
+import 'package:healix/features/appointment/presentation/widgets/available_doctor_schedule_list.dart';
 import 'package:healix/features/appointment/presentation/widgets/certificate_section.dart';
 import 'package:healix/features/appointment/presentation/widgets/clinc_container.dart';
 import 'package:healix/features/appointment/presentation/widgets/doctor_photo_and_main_info_text.dart';
@@ -11,10 +11,11 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
-import '../widgets/about_doctor_section.dart';
+import '../../domain/entities/get_doctors_response_entity.dart';
 
 class DoctorDetailsScreen extends StatelessWidget {
-  const DoctorDetailsScreen({super.key});
+  const DoctorDetailsScreen({super.key, this.doctor});
+  final DoctorEntity? doctor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +33,27 @@ class DoctorDetailsScreen extends StatelessWidget {
                   spacing: 16.h,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const DoctorPhotoAndMainInfoText(hasExperience: true),
+                    DoctorPhotoAndMainInfoText(
+                      hasExperience: true,
+                      doctor: doctor,
+                    ),
                     Text(
-                      'Consultant of dermatology',
+                      doctor?.professionalTitle ?? '',
                       style: AppTextStyles.fontParagraphText(
                         color: ColorsManager.darkGreyText,
                       ),
                     ),
                     const DoctorTagsRow(),
-                    const ClincContainer(),
-                    const FeesAndLocationAndExperienceWidgets(
-                        hasExperience: false),
-                    const AvailableSlotsList(),
-                    const AboutDoctorSection(),
+                    ClincContainer(
+                      clinic: doctor?.clinic,
+                    ),
+                    FeesLocationExperienceWidgets(
+                      hasExperience: false,
+                      fees: doctor?.clinic?.fees.toString(),
+                      location: doctor?.clinic?.city,
+                      experience: doctor?.yearsOfExperience?.toString(),
+                    ),
+                    AvailableDoctorScheduleList(doctor: doctor),
                     const CertificateSection(),
                     verticalSpace(50),
                   ],

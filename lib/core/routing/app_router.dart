@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/core/di/setup_get_it.dart';
+import 'package:healix/features/appointment/presentation/logic/get_schedule_cubit/get_schedule_cubit.dart';
 import 'package:healix/features/appointment/presentation/screens/choose_specialty_screen.dart';
 import 'package:healix/features/appointment/presentation/screens/doctor_details_screen.dart';
 import 'package:healix/features/appointment/presentation/screens/doctors_list_screen.dart';
@@ -27,6 +28,7 @@ import 'package:healix/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:healix/features/sign_up/presentation/screens/physical_info_screen.dart';
 import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
+import '../../features/appointment/domain/entities/get_doctors_response_entity.dart';
 import '../../features/chat_bot/presentation/screens/chat_screen.dart';
 import '../../features/family_group/data/models/family_group_model.dart';
 import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
@@ -177,8 +179,13 @@ class AppRouter {
           ),
         );
       case Routes.doctorDetailsScreen:
+        final args = settings.arguments;
+        final doctor = args is DoctorEntity ? args : null;
         return MaterialPageRoute(
-          builder: (_) => const DoctorDetailsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<GetScheduleCubit>(),
+            child: DoctorDetailsScreen(doctor: doctor),
+          ),
         );
       case Routes.myFamilyScreen:
         return MaterialPageRoute(

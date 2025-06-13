@@ -8,8 +8,8 @@ import '../../domain/entities/get_doctors_response_entity.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors_manager.dart';
-import '../../../../core/theming/text_styles.dart';
 import 'clinc_container.dart';
+import 'fees_location_experience_widgets.dart';
 
 class DoctorCardWidget extends StatelessWidget {
   final DoctorEntity doctor;
@@ -36,46 +36,21 @@ class DoctorCardWidget extends StatelessWidget {
             verticalSpace(16),
             ClincContainer(clinic: doctor.clinic),
             verticalSpace(16),
-            // const FeesLocationExperienceWidgets(),
+            FeesLocationExperienceWidgets(
+              fees: doctor.clinic?.fees.toString(),
+              location: doctor.clinic?.city,
+              experience: doctor.yearsOfExperience?.toString(),
+            ),
             verticalSpace(16),
-            _buildAvailabilityAndBookButtonContainer(context),
+            CustomButton(
+              title: 'Book',
+              onTap: () => context.pushNamed(
+                Routes.doctorDetailsScreen,
+                arguments: doctor,
+              ),
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildAvailabilityAndBookButtonContainer(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(16.w, 8.h, 8.w, 8.h),
-      decoration: BoxDecoration(
-        color: ColorsManager.dimmedBackground,
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      child: Row(
-        children: [
-          Text(
-            'Availability: ',
-            style: AppTextStyles.fontParagraphText(
-              color: ColorsManager.darkGreyText,
-            ),
-          ),
-          Text(
-            'Today 6:10 PM',
-            style: AppTextStyles.fontTextInput(
-              color: ColorsManager.darkGreyText,
-            ),
-          ),
-          const Spacer(),
-          CustomButton(
-            width: 66.w,
-            title: 'Book',
-            textStyle: AppTextStyles.fontParagraphText(
-              color: Colors.white,
-            ),
-            onTap: () => context.pushNamed(Routes.doctorDetailsScreen),
-          ),
-        ],
       ),
     );
   }

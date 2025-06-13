@@ -42,3 +42,10 @@ enum AllergyStatus {
   inactive,
   resolved,
 }
+
+enum AppointmentStatus {
+  pending,
+  completed,
+  cancelled,
+  checkedIn,
+}

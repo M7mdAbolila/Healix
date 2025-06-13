@@ -81,7 +81,7 @@ Future<dynamic> showAppointmentDetailsDailog(BuildContext context) {
               verticalSpace(16),
               const ClincContainer(),
               verticalSpace(16),
-              const FeesAndLocationAndExperienceWidgets(hasExperience: false),
+              const FeesLocationExperienceWidgets(hasExperience: false),
               verticalSpace(16),
               Container(
                 padding: EdgeInsets.fromLTRB(16.w, 8.h, 8.w, 8.h),
