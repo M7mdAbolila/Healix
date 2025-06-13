@@ -30,7 +30,7 @@ class ActivityAppointmentCard extends StatelessWidget {
           const DoctorPhotoAndMainInfoText(),
           const ClincContainer(),
           status.isNullOrEmpty()
-              ? const FeesLocationExperienceWidgets()
+              ? const FeesAndLocationAndExperienceWidgets()
               : AppointmentStatusWidget(
                   status: status!,
                 ),

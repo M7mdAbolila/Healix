@@ -33,6 +33,11 @@ import '../../features/medical_history/domain/usecases/get_medical_records_by_ty
 import '../../features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
 import '../../features/medical_history/presentation/logic/get_medical_records_cubit/get_medical_records_cubit.dart';
 import '../../features/main_layout/presentation/logic/navigation_cubit/navigation_cubit.dart';
+import '../../features/appointment/data/datasources/appointment_api_service.dart';
+import '../../features/appointment/data/repositories_impl/appointment_repository_impl.dart';
+import '../../features/appointment/domain/repositories/appointment_repository.dart';
+import '../../features/appointment/domain/usecases/get_doctors_usecase.dart';
+import '../../features/appointment/presentation/logic/appointment_cubit/appointment_cubit.dart';
 import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
@@ -48,6 +53,8 @@ Future<void> setUpGetIt() async {
       () => FamilyGroupApiService(dio));
   getIt.registerLazySingleton<MedicalHistoryApiService>(
       () => MedicalHistoryApiService(dio));
+  getIt.registerLazySingleton<AppointmentApiService>(
+      () => AppointmentApiService(dio));
 
   // Repo
   getIt.registerLazySingleton<ChatRepo>(() => ChatbotRepoImpl(getIt()));
@@ -59,6 +66,8 @@ Future<void> setUpGetIt() async {
       () => FamilyGroupRepositoryImpl(getIt()));
   getIt.registerLazySingleton<MedicalHistoryRepository>(
       () => MedicalHistoryRepositoryImpl(getIt()));
+  getIt.registerLazySingleton<AppointmentRepository>(
+      () => AppointmentRepositoryImpl(getIt()));
   // UseCase
   getIt.registerLazySingleton(() => SendMessageUseCase(getIt()));
   getIt.registerLazySingleton(() => GetAllChatsUseCase(getIt()));
@@ -70,6 +79,7 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => GetFamilyGroupWithCodeUseCase(getIt()));
   getIt.registerLazySingleton(() => AddHistoryRecordUseCase(getIt()));
   getIt.registerLazySingleton(() => GetMedicalRecordsByTypeUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetDoctorsUseCase(getIt()));
   // Cubit
   getIt.registerFactory(() => ChatCubit(getIt()));
   getIt.registerFactory(() => AllChatsCubit(getIt()));
@@ -78,5 +88,6 @@ Future<void> setUpGetIt() async {
   getIt.registerFactory(() => FamilyGroupCubit(getIt(), getIt(), getIt()));
   getIt.registerFactory(() => MedicalHistoryCubit(getIt()));
   getIt.registerFactory(() => GetMedicalRecordsCubit(getIt()));
+  getIt.registerFactory(() => AppointmentCubit(getIt()));
   getIt.registerLazySingleton(() => NavigationCubit());
 }

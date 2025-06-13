@@ -4,7 +4,7 @@ import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/routing/routes.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 import 'package:healix/features/appointment/presentation/widgets/doctor_photo_and_main_info_text.dart';
-import 'package:healix/features/appointment/presentation/widgets/fees_Location_experience_widgets.dart';
+import '../../domain/entities/get_doctors_response_entity.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors_manager.dart';
@@ -12,12 +12,15 @@ import '../../../../core/theming/text_styles.dart';
 import 'clinc_container.dart';
 
 class DoctorCardWidget extends StatelessWidget {
-  const DoctorCardWidget({super.key});
+  final DoctorEntity doctor;
+
+  const DoctorCardWidget({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(Routes.doctorDetailsScreen),
+      onTap: () =>
+          context.pushNamed(Routes.doctorDetailsScreen, arguments: doctor),
       child: Container(
         padding: EdgeInsets.all(16.r),
         margin: EdgeInsets.only(bottom: 16.h),
@@ -29,11 +32,11 @@ class DoctorCardWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const DoctorPhotoAndMainInfoText(),
+            DoctorPhotoAndMainInfoText(doctor: doctor),
             verticalSpace(16),
-            const ClincContainer(),
+            ClincContainer(clinic: doctor.clinic),
             verticalSpace(16),
-            const FeesLocationExperienceWidgets(),
+            // const FeesLocationExperienceWidgets(),
             verticalSpace(16),
             _buildAvailabilityAndBookButtonContainer(context),
           ],

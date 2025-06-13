@@ -11,4 +11,5 @@ class ApiConstants {
   static const String signUpEndpoint = "/api/users/signup";
   static const String familyGroupsEndpoint = "/api/family-groups";
   static const String addHistoryRecordEndpoint = "/api/patient-records";
+  static const String getDoctorsEndpoint = "/api/users/doctors";
 }

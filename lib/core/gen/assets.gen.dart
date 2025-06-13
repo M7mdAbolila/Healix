@@ -222,6 +222,10 @@ class $AssetsSvgsGen {
   SvgGenImage get createFamilyGroup =>
       const SvgGenImage('assets/svgs/create_family_group.svg');
 
+  /// File path: assets/svgs/doctor_place_holder.svg
+  SvgGenImage get doctorPlaceHolder =>
+      const SvgGenImage('assets/svgs/doctor_place_holder.svg');
+
   /// File path: assets/svgs/document-upload.svg
   SvgGenImage get documentUpload =>
       const SvgGenImage('assets/svgs/document-upload.svg');
@@ -425,6 +429,7 @@ class $AssetsSvgsGen {
     consultDoc,
     copyFamilyCode,
     createFamilyGroup,
+    doctorPlaceHolder,
     documentUpload,
     edit,
     facebookLogo,

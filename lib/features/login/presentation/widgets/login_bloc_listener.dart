@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/core/dialogs/setup_dialog.dart';
+import 'package:healix/core/functions/set_data.dart';
 import 'package:healix/core/helpers/extensions.dart';
-import 'package:healix/core/helpers/shared_pref_keys.dart';
-import 'package:healix/core/networking/dio_factory.dart';
 import 'package:healix/core/routing/routes.dart';
 
-import '../../../../core/helpers/shared_pref_helper.dart';
 import '../logic/login_cubit.dart';
 
 class LoginBlocListener extends StatelessWidget {
@@ -17,19 +15,7 @@ class LoginBlocListener extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          SharedPrefHelper.setSecuredString(
-            SharedPrefKeys.userToken,
-            state.response.token ?? '',
-          );
-          SharedPrefHelper.setData(
-            SharedPrefKeys.userPhotoUrl,
-            state.response.user?.user?.photoUrl ?? '',
-          );
-          SharedPrefHelper.setData(
-            SharedPrefKeys.userFullName,
-            '${state.response.user?.user?.fname ?? ''} ${state.response.user?.user?.lname ?? ''}',
-          );
-          DioFactory.setTokenIntoHeaderAfterLogin(state.response.token ?? '');
+          setData(state: state);
           showAwesomeSnackbar(
             context,
             title: 'Login Successful',

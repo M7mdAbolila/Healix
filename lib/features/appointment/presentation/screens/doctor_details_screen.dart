@@ -41,7 +41,8 @@ class DoctorDetailsScreen extends StatelessWidget {
                     ),
                     const DoctorTagsRow(),
                     const ClincContainer(),
-                    const FeesLocationExperienceWidgets(hasExperience: false),
+                    const FeesAndLocationAndExperienceWidgets(
+                        hasExperience: false),
                     const AvailableSlotsList(),
                     const AboutDoctorSection(),
                     const CertificateSection(),

@@ -6,8 +6,9 @@ import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class ClinicHotlineAndLocation extends StatelessWidget {
-  const ClinicHotlineAndLocation({super.key});
-
+  const ClinicHotlineAndLocation({super.key, this.hotline, this.location});
+  final String? hotline;
+  final String? location;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +26,7 @@ class ClinicHotlineAndLocation extends StatelessWidget {
               ),
             ),
             Text(
-              '19019',
+              hotline ?? 'Not Available',
               style: AppTextStyles.fontTextInput(
                 color: ColorsManager.darkGreyText,
               ),
@@ -43,7 +44,7 @@ class ClinicHotlineAndLocation extends StatelessWidget {
               ),
             ),
             Text(
-              'Cairo Business Plaza',
+              location ?? 'Not Available',
               style: AppTextStyles.fontTextInput(
                 color: ColorsManager.darkGreyText,
               ),

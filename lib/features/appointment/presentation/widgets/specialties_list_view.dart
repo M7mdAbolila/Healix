@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/features/appointment/presentation/widgets/specialt_card_widget.dart';
 
 import '../../../../core/gen/assets.gen.dart';
@@ -10,12 +11,12 @@ class SpecialtiesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: _specialties.length,
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => SpecialtCardWidget(
         title: _specialties[index].title,
         iconPath: _specialties[index].iconPath,
+        index: index,
       ),
     );
   }
@@ -32,8 +33,8 @@ final List<_SpecialtModel> _specialties = [
   _SpecialtModel(
       title: 'General Practice', iconPath: Assets.svgs.generalPractice.path),
   _SpecialtModel(title: 'Allergy', iconPath: Assets.svgs.allergy.path),
-  _SpecialtModel(title: 'Audiology', iconPath: Assets.svgs.audiology.path),
   _SpecialtModel(title: 'Cardiology', iconPath: Assets.svgs.cardiology.path),
+  _SpecialtModel(title: 'Audiology', iconPath: Assets.svgs.audiology.path),
   _SpecialtModel(
       title: 'Chest & Respiratory',
       iconPath: Assets.svgs.chestRespiratory.path),

@@ -12,13 +12,16 @@ class SpecialtCardWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.iconPath,
+    required this.index,
   });
   final String title;
   final String iconPath;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(Routes.doctorsListScreen),
+      onTap: () =>
+          context.pushNamed(Routes.doctorsListScreen, arguments: index),
       child: Container(
         padding: EdgeInsets.all(16.r),
         margin: EdgeInsets.only(bottom: 8.h),
