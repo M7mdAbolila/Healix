@@ -5,7 +5,6 @@ import 'package:healix/core/gen/assets.gen.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/theming/colors_manager.dart';
-import '../../../../core/widgets/search_bar_widget.dart';
 import 'show_profile_menu.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
@@ -74,7 +73,7 @@ class HomeHeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-          const SearchBarWidget(padding: EdgeInsets.zero),
+          // const SearchBarWidget(padding: EdgeInsets.zero),
         ],
       ),
     );

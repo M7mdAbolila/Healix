@@ -10,11 +10,21 @@ import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../main_layout/presentation/logic/navigation_cubit/navigation_cubit.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
   @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen>
+    with AutomaticKeepAliveClientMixin<SettingsScreen> {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Column(
         children: [

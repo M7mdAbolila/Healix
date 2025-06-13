@@ -9,11 +9,21 @@ import 'package:healix/features/medical_history/presentation/widgets/recent_upda
 import '../../../main_layout/presentation/logic/navigation_cubit/navigation_cubit.dart';
 import '../widgets/med_record_type_section.dart';
 
-class MedicalHistoryScreen extends StatelessWidget {
+class MedicalHistoryScreen extends StatefulWidget {
   const MedicalHistoryScreen({super.key});
 
   @override
+  State<MedicalHistoryScreen> createState() => _MedicalHistoryScreenState();
+}
+
+class _MedicalHistoryScreenState extends State<MedicalHistoryScreen>
+    with AutomaticKeepAliveClientMixin<MedicalHistoryScreen> {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return const Scaffold(
       body: MedicalHistoryScreenBody(),
     );

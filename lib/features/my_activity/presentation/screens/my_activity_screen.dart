@@ -9,11 +9,21 @@ import 'package:healix/features/my_activity/presentation/widgets/activity_appoin
 
 import '../../../main_layout/presentation/logic/navigation_cubit/navigation_cubit.dart';
 
-class MyActivityScreen extends StatelessWidget {
+class MyActivityScreen extends StatefulWidget {
   const MyActivityScreen({super.key});
 
   @override
+  State<MyActivityScreen> createState() => _MyActivityScreenState();
+}
+
+class _MyActivityScreenState extends State<MyActivityScreen>
+    with AutomaticKeepAliveClientMixin<MyActivityScreen> {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Column(
         children: [
