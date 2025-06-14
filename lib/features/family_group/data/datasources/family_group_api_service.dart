@@ -5,6 +5,8 @@ import '../models/get_family_group_request_model.dart';
 import '../models/get_family_group_response_model.dart';
 import '../models/create_family_group_request_model.dart';
 import '../models/create_family_group_response_model.dart';
+import '../models/family_summary_request_model.dart';
+import '../models/family_summary_response_model.dart';
 
 part 'family_group_api_service.g.dart';
 
@@ -28,4 +30,9 @@ abstract class FamilyGroupApiService {
 
   @POST('${ApiConstants.familyGroupsEndpoint}/{id}')
   Future<void> joinFamilyGroup(@Path('id') String id);
+
+  @POST(ApiConstants.familySummaryEndpoint)
+  Future<FamilySummaryResponseModel> getFamilySummary(
+    @Body() FamilySummaryRequestModel body,
+  );
 }

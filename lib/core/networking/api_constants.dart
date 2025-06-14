@@ -10,6 +10,7 @@ class ApiConstants {
   static const String verifyEmailEndpoint = "/api/users/verify-email";
   static const String signUpEndpoint = "/api/users/signup";
   static const String familyGroupsEndpoint = "/api/family-groups";
+  static const String familySummaryEndpoint = "/api/chatbot/family-summary";
   static const String addHistoryRecordEndpoint = "/api/patient-records";
   static const String getDoctorsEndpoint = "/api/users/doctors";
   static const String doctorSchedulesEndpoint = "/api/doctor-schedules";

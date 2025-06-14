@@ -5,3 +5,5 @@ export 'get_family_group_request_entity.dart';
 export 'get_family_group_response_entity.dart';
 export 'create_family_group_request_entity.dart';
 export 'create_family_group_response_entity.dart';
+export 'family_summary_request_entity.dart';
+export 'family_summary_entity.dart';

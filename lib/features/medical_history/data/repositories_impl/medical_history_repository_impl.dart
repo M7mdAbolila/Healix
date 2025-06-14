@@ -66,6 +66,7 @@ class MedicalHistoryRepositoryImpl implements MedicalHistoryRepository {
       );
     }
   }
+
   @override
   Future<Either<ApiErrorModel, GetMedicalRecordsResponseEntity>>
       getMedicalRecordsByType(
@@ -80,6 +81,7 @@ class MedicalHistoryRepositoryImpl implements MedicalHistoryRepository {
       );
     }
   }
+
   @override
   Future<Either<ApiErrorModel, PatientSummaryEntity>> getPatientSummary(
     PatientSummaryRequestEntity request,

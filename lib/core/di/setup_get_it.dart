@@ -17,6 +17,7 @@ import '../../features/family_group/domain/repositories/family_group_repository.
 import '../../features/family_group/domain/usecases/create_family_group_usecase.dart';
 import '../../features/family_group/domain/usecases/get_family_group_with_code_usecase.dart';
 import '../../features/family_group/domain/usecases/join_family_group_usecase.dart';
+import '../../features/family_group/domain/usecases/get_family_summary_usecase.dart';
 import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
 import '../../features/login/data/datasources/login_api_service.dart';
 import '../../features/login/data/repositories_impl/login_repository_impl.dart';
@@ -83,6 +84,7 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => CreateFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => JoinFamilyGroupUseCase(getIt()));
   getIt.registerLazySingleton(() => GetFamilyGroupWithCodeUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetFamilySummaryUseCase(getIt()));
   getIt.registerLazySingleton(() => AddHistoryRecordUseCase(getIt()));
   getIt.registerLazySingleton(() => GetMedicalRecordsByTypeUseCase(getIt()));
   getIt.registerLazySingleton(() => GetDoctorsUseCase(getIt()));
@@ -94,7 +96,8 @@ Future<void> setUpGetIt() async {
   getIt.registerFactory(() => AllChatsCubit(getIt()));
   getIt.registerFactory(() => LoginCubit(getIt()));
   getIt.registerFactory(() => SignUpCubit(getIt(), getIt()));
-  getIt.registerFactory(() => FamilyGroupCubit(getIt(), getIt(), getIt()));
+  getIt.registerFactory(
+      () => FamilyGroupCubit(getIt(), getIt(), getIt(), getIt()));
   getIt.registerFactory(() => MedicalHistoryCubit(getIt()));
   getIt.registerFactory(() => GetMedicalRecordsCubit(getIt()));
   getIt.registerFactory(() => AppointmentCubit(getIt()));

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import '../../../data/models/get_family_group_response_model.dart';
 import '../../../data/models/create_family_group_response_model.dart';
+import '../../../domain/entities/family_summary_entity.dart';
 
 abstract class FamilyGroupState extends Equatable {
   const FamilyGroupState();
@@ -18,6 +19,8 @@ class FindFamilyGroupLoading extends FamilyGroupState {}
 class CreateFamilyGroupLoading extends FamilyGroupState {}
 
 class JoinFamilyGroupLoading extends FamilyGroupState {}
+
+class GetFamilySummaryLoading extends FamilyGroupState {}
 
 class GetFamilyGroupSuccess extends FamilyGroupState {
   final GetFamilyGroupResponseModel familyGroupResponse;
@@ -79,6 +82,24 @@ class JoinFamilyGroupFailure extends FamilyGroupState {
   final String errMessage;
 
   const JoinFamilyGroupFailure(this.errMessage);
+
+  @override
+  List<Object> get props => [errMessage];
+}
+
+class GetFamilySummarySuccess extends FamilyGroupState {
+  final FamilySummaryEntity familySummary;
+
+  const GetFamilySummarySuccess(this.familySummary);
+
+  @override
+  List<Object> get props => [familySummary];
+}
+
+class GetFamilySummaryFailure extends FamilyGroupState {
+  final String errMessage;
+
+  const GetFamilySummaryFailure(this.errMessage);
 
   @override
   List<Object> get props => [errMessage];

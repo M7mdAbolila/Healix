@@ -5,7 +5,6 @@ import '../../data/models/get_family_group_response_model.dart';
 import '../../data/models/create_family_group_response_model.dart';
 
 abstract class FamilyGroupRepository {
-
   Future<Either<ApiErrorModel, GetFamilyGroupResponseModel>>
       getFamilyGroupWithCode(GetFamilyGroupRequestEntity request);
 
@@ -13,4 +12,7 @@ abstract class FamilyGroupRepository {
       createFamilyGroup(CreateFamilyGroupRequestEntity request);
 
   Future<Either<ApiErrorModel, void>> joinFamilyGroup(String familyGroupId);
+
+  Future<Either<ApiErrorModel, FamilySummaryEntity>> getFamilySummary(
+      FamilySummaryRequestEntity request);
 }

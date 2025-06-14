@@ -159,7 +159,9 @@ class MyFamilyGroupData extends StatelessWidget {
           familyName: familyGroup?.name ?? '',
         ),
         MyFamilyListCard(familyGroup: familyGroup),
-        const HealthSummaryWidget(),
+        HealthSummaryWidget(
+          familyId: familyGroup?.id ?? '',
+        ),
       ],
     );
   }

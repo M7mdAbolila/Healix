@@ -3,12 +3,15 @@ import 'package:healix/core/networking/api_error_handler.dart';
 import 'package:healix/core/networking/api_error_model.dart';
 import 'package:healix/features/family_group/domain/entities/get_family_group_request_entity.dart';
 import 'package:healix/features/family_group/domain/entities/create_family_group_request_entity.dart';
+import 'package:healix/features/family_group/domain/entities/family_summary_request_entity.dart';
+import 'package:healix/features/family_group/domain/entities/family_summary_entity.dart';
 import '../../domain/repositories/family_group_repository.dart';
 import '../datasources/family_group_api_service.dart';
 import '../models/get_family_group_request_model.dart';
 import '../models/get_family_group_response_model.dart';
 import '../models/create_family_group_request_model.dart';
 import '../models/create_family_group_response_model.dart';
+import '../models/family_summary_request_model.dart';
 
 class FamilyGroupRepositoryImpl implements FamilyGroupRepository {
   final FamilyGroupApiService apiService;
@@ -49,6 +52,20 @@ class FamilyGroupRepositoryImpl implements FamilyGroupRepository {
       String familyGroupId) async {
     try {
       final response = await apiService.joinFamilyGroup(familyGroupId);
+      return right(response);
+    } catch (e) {
+      return left(ApiErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiErrorModel, FamilySummaryEntity>> getFamilySummary(
+      FamilySummaryRequestEntity request) async {
+    final FamilySummaryRequestModel requestModel = FamilySummaryRequestModel(
+      familyId: request.familyId,
+    );
+    try {
+      final response = await apiService.getFamilySummary(requestModel);
       return right(response);
     } catch (e) {
       return left(ApiErrorHandler.handle(e));
