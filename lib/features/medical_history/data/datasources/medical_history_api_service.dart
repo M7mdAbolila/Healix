@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:healix/core/networking/api_constants.dart';
 import 'package:retrofit/retrofit.dart';
 import '../models/get_medical_records_response_model.dart';
+import '../models/patient_summary_model.dart';
+import '../models/patient_summary_request_model.dart';
 
 part 'medical_history_api_service.g.dart';
 
@@ -18,5 +20,10 @@ abstract class MedicalHistoryApiService {
   @GET(ApiConstants.addHistoryRecordEndpoint)
   Future<GetMedicalRecordsResponseModel> getMedicalRecordsByType(
     @Query('RecordType') int recordType,
+  );
+
+  @POST(ApiConstants.patientSummaryEndpoint)
+  Future<PatientSummaryModel> getPatientSummary(
+    @Body() PatientSummaryRequestModel request,
   );
 }

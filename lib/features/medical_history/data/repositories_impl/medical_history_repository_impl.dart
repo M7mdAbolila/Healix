@@ -3,10 +3,13 @@ import 'package:healix/core/networking/api_error_handler.dart';
 import 'package:healix/core/networking/api_error_model.dart';
 import '../../domain/entities/history_record_entity.dart';
 import '../../domain/entities/get_medical_records_response_entity.dart';
+import '../../domain/entities/patient_summary_entity.dart';
+import '../../domain/entities/patient_summary_request_entity.dart';
 import '../../domain/repositories/medical_history_repository.dart';
 import '../datasources/medical_history_api_service.dart';
 import '../models/history_record_model.dart';
 import '../models/medicine_model.dart';
+import '../models/patient_summary_request_model.dart';
 
 class MedicalHistoryRepositoryImpl implements MedicalHistoryRepository {
   final MedicalHistoryApiService _apiService;
@@ -63,7 +66,6 @@ class MedicalHistoryRepositoryImpl implements MedicalHistoryRepository {
       );
     }
   }
-
   @override
   Future<Either<ApiErrorModel, GetMedicalRecordsResponseEntity>>
       getMedicalRecordsByType(
@@ -71,6 +73,22 @@ class MedicalHistoryRepositoryImpl implements MedicalHistoryRepository {
   ) async {
     try {
       final response = await _apiService.getMedicalRecordsByType(recordType);
+      return right(response);
+    } catch (error) {
+      return left(
+        ApiErrorHandler.handle(error),
+      );
+    }
+  }
+  @override
+  Future<Either<ApiErrorModel, PatientSummaryEntity>> getPatientSummary(
+    PatientSummaryRequestEntity request,
+  ) async {
+    try {
+      final requestModel = PatientSummaryRequestModel(
+        patientId: request.patientId,
+      );
+      final response = await _apiService.getPatientSummary(requestModel);
       return right(response);
     } catch (error) {
       return left(

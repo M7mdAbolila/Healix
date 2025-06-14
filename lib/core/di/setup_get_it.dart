@@ -23,6 +23,8 @@ import '../../features/login/data/repositories_impl/login_repository_impl.dart';
 import '../../features/login/domain/repositories/login_repository.dart';
 import '../../features/login/domain/usecases/login_usecase.dart';
 import '../../features/login/presentation/logic/login_cubit.dart';
+import '../../features/medical_history/domain/usecases/get_patient_summary_usecase.dart';
+import '../../features/medical_history/presentation/logic/patient_summary_cubit/patient_summary_cubit.dart';
 import '../../features/sign_up/data/datasources/sign_up_api_service.dart';
 import '../../features/sign_up/data/repositories_impl/sign_up_repository_impl.dart';
 import '../../features/sign_up/domain/repositories/sign_up_repository.dart';
@@ -86,6 +88,7 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => GetDoctorsUseCase(getIt()));
   getIt.registerLazySingleton(() => GetScheduleUseCase(getIt()));
   getIt.registerLazySingleton(() => BookAppointmentUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetPatientSummaryUseCase(getIt()));
   // Cubit
   getIt.registerFactory(() => ChatCubit(getIt()));
   getIt.registerFactory(() => AllChatsCubit(getIt()));
@@ -98,4 +101,5 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => NavigationCubit());
   getIt.registerFactory(() => GetScheduleCubit(getIt()));
   getIt.registerFactory(() => BookAppointmentCubit(getIt()));
+  getIt.registerFactory(() => PatientSummaryCubit(getIt()));
 }

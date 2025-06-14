@@ -14,4 +14,5 @@ class ApiConstants {
   static const String getDoctorsEndpoint = "/api/users/doctors";
   static const String doctorSchedulesEndpoint = "/api/doctor-schedules";
   static const String appointmentsEndpoint = "/api/appointments";
+  static const String patientSummaryEndpoint = "/api/chatbot/patient-summary";
 }
