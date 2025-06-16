@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/widgets/custom_screen_app_bar.dart';
-import 'package:healix/core/widgets/search_bar_widget.dart';
 import 'package:healix/features/medical_history/presentation/widgets/med_health_summary_section.dart';
 import 'package:healix/features/medical_history/presentation/widgets/recent_updates_section.dart';
 
@@ -49,8 +48,8 @@ class MedicalHistoryScreenBody extends StatelessWidget {
             child: Column(
               children: [
                 verticalSpace(16),
-                const SearchBarWidget(hasFilter: true),
-                verticalSpace(32),
+                // const SearchBarWidget(hasFilter: true),
+                // verticalSpace(32),
                 const MedicalRecordTypeSection(),
                 const MedHealthSummarySection(),
                 const RecentUpdatesSection(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/core/dialogs/setup_dialog.dart';
-import 'package:healix/core/functions/set_data.dart';
+import 'package:healix/core/functions/save_user_data.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/routing/routes.dart';
 
@@ -15,7 +15,7 @@ class SignUpBlocListener extends StatelessWidget {
     return BlocListener<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpSuccess) {
-          setData(state: state);
+          saveUserData(state: state);
           context.pop();
           showAwesomeSnackbar(
             context,

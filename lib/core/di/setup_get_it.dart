@@ -23,7 +23,7 @@ import '../../features/login/data/datasources/login_api_service.dart';
 import '../../features/login/data/repositories_impl/login_repository_impl.dart';
 import '../../features/login/domain/repositories/login_repository.dart';
 import '../../features/login/domain/usecases/login_usecase.dart';
-import '../../features/login/presentation/logic/login_cubit.dart';
+import '../../features/login/presentation/state_management/login_cubit.dart';
 import '../../features/medical_history/domain/usecases/get_patient_summary_usecase.dart';
 import '../../features/medical_history/presentation/logic/patient_summary_cubit/patient_summary_cubit.dart';
 import '../../features/sign_up/data/datasources/sign_up_api_service.dart';
@@ -46,13 +46,22 @@ import '../../features/appointment/domain/repositories/appointment_repository.da
 import '../../features/appointment/domain/usecases/get_doctors_usecase.dart';
 import '../../features/appointment/presentation/logic/appointment_cubit/appointment_cubit.dart';
 import '../networking/dio_factory.dart';
+import '../domain/services/input_validation_service.dart';
+import '../presentation/form/form_manager.dart';
+import '../services/input_validation_service_impl.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> setUpGetIt() async {
-  // Dio
+  // Core Services
+  getIt.registerLazySingleton<InputValidationService>(
+    () => InputValidationServiceImpl(),
+  );
+
+  /// Dio
   final dio = DioFactory.getDio();
-  // ApiService
+
+  /// ApiService
   getIt.registerLazySingleton<ChatbotApiService>(() => ChatbotApiService(dio));
   getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(dio));
   getIt.registerLazySingleton<SignUpApiService>(() => SignUpApiService(dio));
@@ -63,7 +72,7 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton<AppointmentApiService>(
       () => AppointmentApiService(dio));
 
-  // Repo
+  /// Repo
   getIt.registerLazySingleton<ChatRepo>(() => ChatbotRepoImpl(getIt()));
   getIt.registerLazySingleton<LoginRepository>(
       () => LoginRepositoryImpl(getIt()));
@@ -75,7 +84,8 @@ Future<void> setUpGetIt() async {
       () => MedicalHistoryRepositoryImpl(getIt()));
   getIt.registerLazySingleton<AppointmentRepository>(
       () => AppointmentRepositoryImpl(getIt()));
-  // UseCase
+
+  /// UseCase
   getIt.registerLazySingleton(() => SendMessageUseCase(getIt()));
   getIt.registerLazySingleton(() => GetAllChatsUseCase(getIt()));
   getIt.registerLazySingleton(() => LoginUseCase(getIt()));
@@ -91,10 +101,11 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => GetScheduleUseCase(getIt()));
   getIt.registerLazySingleton(() => BookAppointmentUseCase(getIt()));
   getIt.registerLazySingleton(() => GetPatientSummaryUseCase(getIt()));
-  // Cubit
+
+  /// Cubit
   getIt.registerFactory(() => ChatCubit(getIt()));
   getIt.registerFactory(() => AllChatsCubit(getIt()));
-  getIt.registerFactory(() => LoginCubit(getIt()));
+  getIt.registerFactory(() => LoginCubit(getIt(), getIt(), LoginFormManager()));
   getIt.registerFactory(() => SignUpCubit(getIt(), getIt()));
   getIt.registerFactory(
       () => FamilyGroupCubit(getIt(), getIt(), getIt(), getIt()));

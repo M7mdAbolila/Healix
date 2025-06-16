@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healix/core/gen/assets.gen.dart';
-import 'package:healix/core/helpers/spacing.dart';
-import 'package:healix/core/theming/colors_manager.dart';
-import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/features/login/presentation/widgets/login_bloc_listener.dart';
+
+import '../../../../core/gen/assets.gen.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theming/colors_manager.dart';
+import '../../../../core/theming/text_styles.dart';
+
 import '../widgets/login_form_container.dart';
+import '../widgets/login_bloc_listener.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -19,15 +21,16 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: ColorsManager.authBackground,
         body: Stack(
           children: [
-            _buildLoginBackgroundImage(),
-            _buildBodyContent(),
+            _buildBackgroundImage(),
+            _buildContent(),
+            const LoginBlocListener(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildLoginBackgroundImage() {
+  Widget _buildBackgroundImage() {
     return Assets.images.authPicture.image(
       width: double.infinity,
       height: 360.h,
@@ -35,27 +38,34 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBodyContent() {
+  Widget _buildContent() {
     return Padding(
       padding: EdgeInsets.only(top: 90.h),
       child: Column(
         children: [
-          Assets.svgs.whiteLogoWithWord.svg(
-            width: 162.w,
-            height: 93.h,
-          ),
+          _buildLogo(),
           verticalSpace(8),
-          Text(
-            'Smarter Health, Safer Future!',
-            style: AppTextStyles.fontBodyText(color: Colors.white),
-          ),
+          _buildSubtitle(),
           verticalSpace(32),
           const Expanded(
             child: LoginFormContainer(),
           ),
-          const LoginBlocListener(),
         ],
       ),
+    );
+  }
+
+  Widget _buildLogo() {
+    return Assets.svgs.whiteLogoWithWord.svg(
+      width: 162.w,
+      height: 93.h,
+    );
+  }
+
+  Widget _buildSubtitle() {
+    return Text(
+      'Smarter Health, Safer Future!',
+      style: AppTextStyles.fontBodyText(color: Colors.white),
     );
   }
 }

@@ -12,7 +12,7 @@ import 'package:healix/features/family_group/presentation/screens/my_family_scre
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
-import 'package:healix/features/login/presentation/screens/login_screen.dart';
+import 'package:healix/features/login/presentation/state_management/login_cubit.dart';
 import 'package:healix/features/main_layout/presentation/screens/main_layout_screen.dart';
 import 'package:healix/features/medical_history/presentation/screens/add_allergy_screen.dart';
 import 'package:healix/features/medical_history/presentation/screens/add_chronic_disease_screen.dart';
@@ -32,11 +32,12 @@ import '../../features/appointment/domain/entities/get_doctors_response_entity.d
 import '../../features/chat_bot/presentation/screens/chat_screen.dart';
 import '../../features/family_group/data/models/family_group_model.dart';
 import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
-import '../../features/login/presentation/logic/login_cubit.dart';
+import '../../features/login/presentation/screens/login_screen.dart';
 import '../../features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
 import '../../features/sign_up/presentation/screens/create_profile_screen.dart';
 import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
+
 import 'routes.dart';
 import 'package:healix/features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
 
@@ -56,11 +57,12 @@ class AppRouter {
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
+          builder: (_) => BlocProvider<LoginCubit>(
             create: (context) => getIt<LoginCubit>(),
             child: const LoginScreen(),
           ),
         );
+
       case Routes.verifyEmailScreen:
         return MaterialPageRoute(
           builder: (_) => const VerfiyEmailScreen(),

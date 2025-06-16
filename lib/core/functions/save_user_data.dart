@@ -4,7 +4,7 @@ import '../helpers/shared_pref_helper.dart';
 import '../helpers/shared_pref_keys.dart';
 import '../networking/dio_factory.dart';
 
-setData({required dynamic state}) {
+saveUserData({required dynamic state}) {
   SharedPrefHelper.setSecuredString(
     SharedPrefKeys.userToken,
     state.response.token ?? '',
