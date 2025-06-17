@@ -6,7 +6,7 @@ import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/core/helpers/extensions.dart';
 import 'package:healix/core/routing/routes.dart';
 import 'package:healix/features/chat_bot/domain/entities/chat_entity.dart';
-import 'package:healix/features/chat_bot/presentation/logic/all_chats_cubit/all_chats_cubit.dart';
+import 'package:healix/features/chat_bot/presentation/state_management/all_chats_cubit/all_chats_cubit.dart';
 
 import '../../../../../core/functions/convert_and_parse_messages.dart';
 import '../../../../../core/theming/colors_manager.dart';

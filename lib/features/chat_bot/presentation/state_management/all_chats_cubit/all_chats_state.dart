@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:healix/features/chat_bot/domain/entities/get_all_chats_response_entity.dart';
+
+import '../../../domain/entities/entities.dart';
 
 abstract class AllChatsState extends Equatable {
   const AllChatsState();
@@ -26,10 +27,10 @@ class AllChatsSuccess extends AllChatsState {
 }
 
 class AllChatsError extends AllChatsState {
-  final String errMessage;
+  final String errorMessage;
 
-  const AllChatsError(this.errMessage);
+  const AllChatsError(this.errorMessage);
 
   @override
-  List<Object?> get props => [errMessage];
+  List<Object?> get props => [errorMessage];
 }

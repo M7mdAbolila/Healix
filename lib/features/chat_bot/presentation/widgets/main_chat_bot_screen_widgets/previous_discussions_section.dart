@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:healix/core/helpers/spacing.dart';
 import 'package:healix/core/widgets/custom_button.dart';
 import 'package:healix/features/chat_bot/presentation/widgets/main_chat_bot_screen_widgets/previous_discussions_card.dart';
-import '../../logic/all_chats_cubit/all_chats_cubit.dart';
-import '../../logic/all_chats_cubit/all_chats_state.dart';
+import '../../state_management/all_chats_cubit/all_chats_cubit.dart';
+import '../../state_management/all_chats_cubit/all_chats_state.dart';
 
 class PreviousDiscussionsSection extends StatelessWidget {
   const PreviousDiscussionsSection({super.key});
@@ -29,7 +30,7 @@ class PreviousDiscussionsSection extends StatelessWidget {
                     size: 48,
                     color: Colors.grey[400],
                   ),
-                  const SizedBox(height: 16),
+                  verticalSpace(16),
                   Text(
                     'Error loading chats',
                     style: TextStyle(
@@ -37,16 +38,16 @@ class PreviousDiscussionsSection extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  verticalSpace(8),
                   Text(
-                    state.errMessage,
+                    state.errorMessage,
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: 14,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16),
+                  verticalSpace(16),
                   CustomButton(
                     onTap: () => context.read<AllChatsCubit>().refreshChats(),
                     title: 'Retry',
@@ -69,7 +70,7 @@ class PreviousDiscussionsSection extends StatelessWidget {
                       size: 48,
                       color: Colors.grey[400],
                     ),
-                    const SizedBox(height: 16),
+                    verticalSpace(16),
                     Text(
                       'No previous discussions',
                       style: TextStyle(
@@ -77,7 +78,7 @@ class PreviousDiscussionsSection extends StatelessWidget {
                         fontSize: 16,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    verticalSpace(8),
                     Text(
                       'Start a new conversation to see your chat history',
                       style: TextStyle(

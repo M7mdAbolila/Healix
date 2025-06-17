@@ -5,8 +5,8 @@ import 'package:healix/features/appointment/presentation/logic/get_schedule_cubi
 import 'package:healix/features/appointment/presentation/screens/choose_specialty_screen.dart';
 import 'package:healix/features/appointment/presentation/screens/doctor_details_screen.dart';
 import 'package:healix/features/appointment/presentation/screens/doctors_list_screen.dart';
-import 'package:healix/features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
 import 'package:healix/features/chat_bot/presentation/screens/chat_bot_screen.dart';
+import 'package:healix/features/chat_bot/presentation/screens/all_chats_screen.dart';
 import 'package:healix/features/family_group/presentation/screens/family_group_members_screen.dart';
 import 'package:healix/features/family_group/presentation/screens/my_family_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
@@ -29,7 +29,7 @@ import 'package:healix/features/sign_up/presentation/screens/physical_info_scree
 import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart';
 
 import '../../features/appointment/domain/entities/get_doctors_response_entity.dart';
-import '../../features/chat_bot/presentation/screens/chat_screen.dart';
+import '../../features/chat_bot/presentation/state_management/chat_cubit/chat_bot_cubit.dart';
 import '../../features/family_group/data/models/family_group_model.dart';
 import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
 import '../../features/login/presentation/screens/login_screen.dart';
@@ -97,7 +97,7 @@ class AppRouter {
         );
       case Routes.mainChatBotScreen:
         return MaterialPageRoute(
-          builder: (_) => const ChatBotScreen(),
+          builder: (_) => const AllChatsScreen(),
         );
       case Routes.medicalCategoriesScreen:
         return MaterialPageRoute(
@@ -205,8 +205,8 @@ class AppRouter {
       case Routes.chatScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => getIt<ChatCubit>(),
-            child: ChatScreen(arguments: settings.arguments),
+            create: (context) => getIt<ChatBotCubit>(),
+            child: ChatBotScreen(arguments: settings.arguments),
           ),
         );
       default:

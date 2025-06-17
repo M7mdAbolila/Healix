@@ -5,12 +5,12 @@ import '../../features/appointment/domain/usecases/book_appointment_usecase.dart
 import '../../features/appointment/presentation/logic/get_schedule_cubit/get_schedule_cubit.dart';
 import '../../features/appointment/presentation/logic/book_appointment_cubit/book_appointment_cubit.dart';
 import '../../features/chat_bot/data/datasources/chatbot_api_service.dart';
-import '../../features/chat_bot/data/repositories/chatbot_repo_impl.dart';
-import '../../features/chat_bot/domain/repositories/chat_repo.dart';
-import '../../features/chat_bot/domain/usecases/send_message_use_case.dart';
-import '../../features/chat_bot/domain/usecases/get_all_chats_use_case.dart';
-import '../../features/chat_bot/presentation/logic/chat_cubit/chat_cubit.dart';
-import '../../features/chat_bot/presentation/logic/all_chats_cubit/all_chats_cubit.dart';
+import '../../features/chat_bot/data/repositories_impl/chat_bot_repository_impl.dart';
+import '../../features/chat_bot/domain/repositories/chat_bot_repository.dart';
+import '../../features/chat_bot/domain/usecases/send_message_usecase.dart';
+import '../../features/chat_bot/domain/usecases/get_all_chats_usecase.dart';
+import '../../features/chat_bot/presentation/state_management/all_chats_cubit/all_chats_cubit.dart';
+import '../../features/chat_bot/presentation/state_management/chat_cubit/chat_bot_cubit.dart';
 import '../../features/family_group/data/datasources/family_group_api_service.dart';
 import '../../features/family_group/data/repositories_impl/family_group_repository_impl.dart';
 import '../../features/family_group/domain/repositories/family_group_repository.dart';
@@ -73,7 +73,8 @@ Future<void> setUpGetIt() async {
       () => AppointmentApiService(dio));
 
   /// Repo
-  getIt.registerLazySingleton<ChatRepo>(() => ChatbotRepoImpl(getIt()));
+  getIt.registerLazySingleton<ChatBotRepository>(
+      () => ChatBotRepositoryImpl(getIt()));
   getIt.registerLazySingleton<LoginRepository>(
       () => LoginRepositoryImpl(getIt()));
   getIt.registerLazySingleton<SignUpRepository>(
@@ -103,7 +104,11 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton(() => GetPatientSummaryUseCase(getIt()));
 
   /// Cubit
-  getIt.registerFactory(() => ChatCubit(getIt()));
+  getIt.registerFactory(() => ChatBotCubit(
+        sendMessageUseCase: getIt(),
+        validationService: getIt(),
+        formManager: ChatFormManager(),
+      ));
   getIt.registerFactory(() => AllChatsCubit(getIt()));
   getIt.registerFactory(() => LoginCubit(getIt(), getIt(), LoginFormManager()));
   getIt.registerFactory(() => SignUpCubit(

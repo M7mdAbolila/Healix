@@ -127,3 +127,24 @@ class PhysicalInfoFormManager extends BaseFormManager {
     _dateOfBirthController.dispose();
   }
 }
+
+class ChatFormManager extends BaseFormManager {
+  final FormFieldController _messageController = FormFieldController();
+
+  FormFieldController get messageController => _messageController;
+
+  @override
+  bool validateForm() {
+    return formKey.currentState?.validate() ?? false;
+  }
+
+  @override
+  void clearForm() {
+    _messageController.clear();
+  }
+
+  @override
+  void dispose() {
+    _messageController.dispose();
+  }
+}

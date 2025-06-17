@@ -7,4 +7,5 @@ abstract class InputValidationService {
   String? validatePhoneNumber(String? phoneNumber);
   String? validateNationalId(String? nationalId);
   String? validateNumericField(String? value, String fieldName);
+  String? validateChatMessage(String? message);
 }

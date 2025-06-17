@@ -115,4 +115,19 @@ class InputValidationServiceImpl implements InputValidationService {
 
     return null;
   }
+
+  @override
+  String? validateChatMessage(String? message) {
+    final String? trimmedMessage = message?.trim();
+
+    if (trimmedMessage.isNullOrEmpty()) {
+      return 'Message cannot be empty';
+    }
+
+    if (trimmedMessage!.length > 1000) {
+      return 'Message is too long (max 1000 characters)';
+    }
+
+    return null;
+  }
 }

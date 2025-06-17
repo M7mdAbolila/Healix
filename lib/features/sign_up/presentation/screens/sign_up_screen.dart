@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/features/sign_up/presentation/widgets/sign_up/verfiy_email_bloc_listener.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../widgets/sign_up/sign_up_form_container.dart';
+import '../widgets/sign_up/verfiy_email_bloc_listener.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -54,7 +54,7 @@ class SignUpScreen extends StatelessWidget {
           const Expanded(
             child: SignUpFromContainer(),
           ),
-          const VerfiyEmailBlocListener(),
+          const VerifyEmailBlocListener(),
         ],
       ),
     );
