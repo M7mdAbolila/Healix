@@ -41,4 +41,78 @@ class InputValidationServiceImpl implements InputValidationService {
 
     return null;
   }
+
+  @override
+  String? validateConfirmPassword(String? password, String? confirmPassword) {
+    if (confirmPassword.isNullOrEmpty()) {
+      return 'Please confirm your password';
+    }
+
+    if (password != confirmPassword) {
+      return 'Passwords do not match';
+    }
+
+    return null;
+  }
+
+  @override
+  String? validateFullName(String? fullName) {
+    final String? trimmedName = fullName?.trim();
+
+    if (trimmedName.isNullOrEmpty()) {
+      return 'Full name is required';
+    }
+
+    if (trimmedName!.length < 2) {
+      return 'Full name must be at least 2 characters';
+    }
+
+    return null;
+  }
+
+  @override
+  String? validatePhoneNumber(String? phoneNumber) {
+    final String? trimmedPhone = phoneNumber?.trim();
+
+    if (trimmedPhone.isNullOrEmpty()) {
+      return 'Phone number is required';
+    }
+
+    if (!AppRegex.isPhoneNumberValid(trimmedPhone!)) {
+      return 'Enter a valid phone number';
+    }
+
+    return null;
+  }
+
+  @override
+  String? validateNationalId(String? nationalId) {
+    final String? trimmedId = nationalId?.trim();
+
+    if (trimmedId.isNullOrEmpty()) {
+      return 'National ID is required';
+    }
+
+    if (!AppRegex.isEgyptianNationalIdValid(trimmedId!)) {
+      return 'Enter a valid National ID';
+    }
+
+    return null;
+  }
+
+  @override
+  String? validateNumericField(String? value, String fieldName) {
+    final String? trimmedValue = value?.trim();
+
+    if (trimmedValue.isNullOrEmpty()) {
+      return '$fieldName is required';
+    }
+
+    final numericValue = double.tryParse(trimmedValue!);
+    if (numericValue == null || numericValue <= 0) {
+      return 'Enter a valid $fieldName';
+    }
+
+    return null;
+  }
 }

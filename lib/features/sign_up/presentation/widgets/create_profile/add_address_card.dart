@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:healix/core/gen/assets.gen.dart';
 import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
+import 'package:healix/features/sign_up/presentation/state_management/sign_up_cubit.dart';
 
 import '../../screens/map_picker_screen.dart';
 

@@ -5,7 +5,7 @@ import 'package:healix/core/helpers/logging.dart';
 import 'package:healix/core/widgets/custom_dropdown.dart';
 
 import '../../../../../core/helpers/enms.dart';
-import '../../logic/sign_up_cubit/sign_up_cubit.dart';
+import '../../state_management/sign_up_cubit.dart';
 
 class ChooseGenderDropDown extends StatelessWidget {
   const ChooseGenderDropDown({super.key});

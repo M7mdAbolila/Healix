@@ -33,9 +33,9 @@ import '../../features/chat_bot/presentation/screens/chat_screen.dart';
 import '../../features/family_group/data/models/family_group_model.dart';
 import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
 import '../../features/login/presentation/screens/login_screen.dart';
-import '../../features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
 import '../../features/sign_up/presentation/screens/create_profile_screen.dart';
 import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
+import '../../features/sign_up/presentation/state_management/sign_up_cubit.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 
 import 'routes.dart';

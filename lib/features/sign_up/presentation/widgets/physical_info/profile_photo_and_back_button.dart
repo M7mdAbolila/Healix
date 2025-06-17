@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/gen/assets.gen.dart';
 import '../../../../../core/widgets/grey_back_button.dart';
-import '../../logic/sign_up_cubit/sign_up_cubit.dart';
+import '../../state_management/sign_up_cubit.dart';
 
 class ProfilePhotoAndBackButton extends StatelessWidget {
   const ProfilePhotoAndBackButton({

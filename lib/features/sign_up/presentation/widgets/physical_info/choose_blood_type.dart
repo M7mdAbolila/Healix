@@ -6,7 +6,7 @@ import 'package:healix/core/dialogs/show_blood_type_dialog.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/shadows_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
+import 'package:healix/features/sign_up/presentation/state_management/sign_up_cubit.dart';
 
 import '../../../../../core/helpers/spacing.dart';
 

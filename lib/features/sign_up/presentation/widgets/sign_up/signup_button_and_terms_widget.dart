@@ -5,7 +5,7 @@ import '../../../../../core/theming/text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_check_box.dart';
 import '../../../../../core/helpers/spacing.dart';
-import '../../logic/sign_up_cubit/sign_up_cubit.dart';
+import '../../state_management/sign_up_cubit.dart';
 
 class SignUpButtonAndTermsWidget extends StatefulWidget {
   const SignUpButtonAndTermsWidget({
@@ -30,12 +30,9 @@ class _SignUpButtonAndTermsWidgetState
           enable: _isAgree,
           onTap: () {
             FocusScope.of(context).unfocus();
-            if (context
-                .read<SignUpCubit>()
-                .signUpFormKey
-                .currentState!
-                .validate()) {
-              context.read<SignUpCubit>().verifyEmail();
+            final cubit = context.read<SignUpCubit>();
+            if (cubit.signUpFormManager.emailFormKey.currentState!.validate()) {
+              cubit.verifyEmail();
             }
           },
         ),

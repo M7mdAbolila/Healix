@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healix/features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
+import 'package:healix/features/sign_up/presentation/state_management/sign_up_cubit.dart';
 
 import '../../../../../core/gen/assets.gen.dart';
 import '../../../../../core/helpers/spacing.dart';

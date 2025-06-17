@@ -31,7 +31,7 @@ import '../../features/sign_up/data/repositories_impl/sign_up_repository_impl.da
 import '../../features/sign_up/domain/repositories/sign_up_repository.dart';
 import '../../features/sign_up/domain/usecases/sign_up_usecase.dart';
 import '../../features/sign_up/domain/usecases/verify_email_usecase.dart';
-import '../../features/sign_up/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
+import '../../features/sign_up/presentation/state_management/sign_up_cubit.dart';
 import '../../features/medical_history/data/datasources/medical_history_api_service.dart';
 import '../../features/medical_history/data/repositories_impl/medical_history_repository_impl.dart';
 import '../../features/medical_history/domain/repositories/medical_history_repository.dart';
@@ -106,7 +106,14 @@ Future<void> setUpGetIt() async {
   getIt.registerFactory(() => ChatCubit(getIt()));
   getIt.registerFactory(() => AllChatsCubit(getIt()));
   getIt.registerFactory(() => LoginCubit(getIt(), getIt(), LoginFormManager()));
-  getIt.registerFactory(() => SignUpCubit(getIt(), getIt()));
+  getIt.registerFactory(() => SignUpCubit(
+        signUpUseCase: getIt(),
+        verifyEmailUseCase: getIt(),
+        validationService: getIt(),
+        signUpFormManager: SignUpFormManager(),
+        profileFormManager: CreateProfileFormManager(),
+        physicalFormManager: PhysicalInfoFormManager(),
+      ));
   getIt.registerFactory(
       () => FamilyGroupCubit(getIt(), getIt(), getIt(), getIt()));
   getIt.registerFactory(() => MedicalHistoryCubit(getIt()));
