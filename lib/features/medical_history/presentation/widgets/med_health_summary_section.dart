@@ -7,7 +7,7 @@ import 'package:healix/core/theming/text_styles.dart';
 
 import '../../../../../core/theming/colors_manager.dart';
 import '../../../../core/widgets/feature_title_text.dart';
-import '../logic/patient_summary_cubit/patient_summary_cubit.dart';
+import '../state_management/patient_summary_cubit/patient_summary_cubit.dart';
 import '../screens/patient_summary_screen.dart';
 
 class MedHealthSummarySection extends StatelessWidget {

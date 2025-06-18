@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/core/widgets/custom_screen_app_bar.dart';
-import '../logic/patient_summary_cubit/patient_summary_cubit.dart';
-import '../logic/patient_summary_cubit/patient_summary_state.dart';
+import '../state_management/patient_summary_cubit/patient_summary_cubit.dart';
+import '../state_management/patient_summary_cubit/patient_summary_state.dart';
 
 class PatientSummaryScreen extends StatefulWidget {
   const PatientSummaryScreen({super.key});

@@ -36,7 +36,6 @@ import '../../features/sign_up/presentation/state_management/sign_up_cubit.dart'
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 
 import 'routes.dart';
-import 'package:healix/features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -98,10 +97,7 @@ class AppRouter {
         );
       case Routes.medicalCategoriesScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const MedicalCategoriesScreen(),
-          ),
+          builder: (_) => const MedicalCategoriesScreen(),
         );
       case Routes.viewAllMedicalRecordsScreen:
         final args = settings.arguments;
@@ -111,59 +107,35 @@ class AppRouter {
         );
       case Routes.addMedicalVistScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddMedicalVisitScreen(),
-          ),
+          builder: (_) => const AddMedicalVisitScreen(),
         );
       case Routes.addLabTestScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddLabTestScreen(),
-          ),
+          builder: (_) => const AddLabTestScreen(),
         );
       case Routes.addXRayScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddXRayScreen(),
-          ),
+          builder: (_) => const AddXRayScreen(),
         );
       case Routes.addSurgeryScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddSurgeryScreen(),
-          ),
+          builder: (_) => const AddSurgeryScreen(),
         );
       case Routes.addLogsScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddLogsScreen(),
-          ),
+          builder: (_) => const AddLogsScreen(),
         );
       case Routes.addChronicDiseaseScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddChronicDiseaseScreen(),
-          ),
+          builder: (_) => const AddChronicDiseaseScreen(),
         );
       case Routes.addHereditaryDiseaseScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddHereditaryDiseaseScreen(),
-          ),
+          builder: (_) => const AddHereditaryDiseaseScreen(),
         );
       case Routes.addAllergyScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<MedicalHistoryCubit>(),
-            child: const AddAllergyScreen(),
-          ),
+          builder: (_) => const AddAllergyScreen(),
         );
       case Routes.chooseSpecialtyScreen:
         return MaterialPageRoute(

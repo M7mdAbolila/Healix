@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/dialogs/setup_dialog.dart';
 import 'package:healix/core/helpers/logging.dart';
-import 'package:healix/features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
+import 'package:healix/features/medical_history/presentation/state_management/add_medical_record_cubit/add_medical_record_cubit.dart';
 
 import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/theming/colors_manager.dart';
@@ -21,9 +21,9 @@ class UploadAReportWidget extends StatefulWidget {
 
 class _UploadAReportWidgetState extends State<UploadAReportWidget> {
   List<PlatformFile> selectedFiles = [];
+
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<MedicalHistoryCubit>();
     return GestureDetector(
       onTap: () async {
         try {
@@ -34,12 +34,17 @@ class _UploadAReportWidgetState extends State<UploadAReportWidget> {
           if (result != null) {
             setState(() {
               selectedFiles = result.files;
-              cubit.files = result.files
+              final files = result.files
                   .where((file) => file.path != null)
                   .map((file) => File(file.path!))
                   .toList();
+
+              // Set files in the cubit if available
+              final cubit = context.read<AddMedicalRecordCubit>();
+              cubit.setFiles(files);
+
               Logging.info(
-                'Selected files: ${cubit.files?.map((file) => file.path).join(', ')}',
+                'Selected files: ${files.map((file) => file.path).join(', ')}',
               );
             });
           }

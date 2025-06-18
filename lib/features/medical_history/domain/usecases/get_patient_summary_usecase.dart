@@ -5,13 +5,13 @@ import '../entities/patient_summary_request_entity.dart';
 import '../repositories/medical_history_repository.dart';
 
 class GetPatientSummaryUseCase {
-  final MedicalHistoryRepository repository;
+  final MedicalHistoryRepository _repository;
 
-  GetPatientSummaryUseCase(this.repository);
+  GetPatientSummaryUseCase(this._repository);
 
   Future<Either<ApiErrorModel, PatientSummaryEntity>> call(
     PatientSummaryRequestEntity request,
   ) async {
-    return await repository.getPatientSummary(request);
+    return await _repository.getPatientSummary(request);
   }
 }

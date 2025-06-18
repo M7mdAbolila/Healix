@@ -5,10 +5,10 @@ import 'package:healix/core/widgets/custom_date_picker_widget.dart';
 
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
-import '../logic/medicine_form_data.dart';
+import '../form_managers/medicine_form_manager.dart';
 
 class MedicineDataForm extends StatefulWidget {
-  final MedicineFormData medicineData;
+  final MedicineFormManager medicineData;
   final VoidCallback? onSave;
   final VoidCallback? onDelete;
   final bool showDeleteButton;

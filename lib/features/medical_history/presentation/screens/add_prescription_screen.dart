@@ -9,8 +9,7 @@ import 'package:healix/features/medical_history/presentation/widgets/medicine_da
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
-import '../logic/medical_history_cubit/medical_history_cubit.dart';
-import '../logic/medical_history_cubit/medical_history_state.dart';
+import '../state_management/add_medical_record_cubit/add_medical_record_cubit.dart';
 
 class AddPrescriptionScreen extends StatelessWidget {
   const AddPrescriptionScreen({super.key});
@@ -28,9 +27,10 @@ class AddPrescriptionScreen extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.all(16.r),
-                  child: BlocBuilder<MedicalHistoryCubit, MedicalHistoryState>(
+                  child:
+                      BlocBuilder<AddMedicalRecordCubit, AddMedicalRecordState>(
                     builder: (context, state) {
-                      final cubit = context.read<MedicalHistoryCubit>();
+                      final cubit = context.read<AddMedicalRecordCubit>();
                       return Column(
                         spacing: 16.h,
                         children: [
@@ -40,7 +40,7 @@ class AddPrescriptionScreen extends StatelessWidget {
                               const FeatureTitleText(
                                   title: 'Prescription Details'),
                               TextButton(
-                                onPressed: () => cubit.clearAllMedicines(),
+                                onPressed: () => cubit.clearMedicines(),
                                 child: Text(
                                   'Clear All',
                                   style: AppTextStyles.fontParagraphText(

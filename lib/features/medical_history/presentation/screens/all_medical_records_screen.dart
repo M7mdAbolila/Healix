@@ -10,8 +10,8 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/search_bar_widget.dart';
 import '../widgets/categoreis_grid_view.dart';
 import '../widgets/medical_record_api_card.dart';
-import '../logic/get_medical_records_cubit/get_medical_records_cubit.dart';
-import '../logic/get_medical_records_cubit/get_medical_records_state.dart';
+import '../state_management/get_medical_records_cubit/get_medical_records_cubit.dart';
+import '../state_management/get_medical_records_cubit/get_medical_records_state.dart';
 
 class AllMedicalRecordsScreen extends StatelessWidget {
   const AllMedicalRecordsScreen({super.key, required this.selectedIndex});

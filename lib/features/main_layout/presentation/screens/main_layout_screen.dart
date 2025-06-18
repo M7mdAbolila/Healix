@@ -11,7 +11,6 @@ import 'package:healix/features/my_activity/presentation/screens/my_activity_scr
 import 'package:healix/features/settings/presentation/screens/settings_screen.dart';
 
 import '../../../../core/gen/assets.gen.dart';
-import '../../../medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
 import '../logic/navigation_cubit/navigation_cubit.dart';
 import '../logic/navigation_cubit/navigation_state.dart';
 import '../widgets/custom_nav_bar/custom_nav_bar.dart';
@@ -102,14 +101,11 @@ class _HealixMainLayoutViewState extends State<_HealixMainLayoutView> {
             onPageChanged: (index) {
               context.read<NavigationCubit>().changeTab(index);
             },
-            children: [
-              const HomeScreen(),
-              BlocProvider(
-                create: (context) => getIt<MedicalHistoryCubit>(),
-                child: const MedicalHistoryScreen(),
-              ),
-              const MyActivityScreen(),
-              const SettingsScreen(),
+            children: const [
+              HomeScreen(),
+              MedicalHistoryScreen(),
+              MyActivityScreen(),
+              SettingsScreen(),
             ],
           ),
         );

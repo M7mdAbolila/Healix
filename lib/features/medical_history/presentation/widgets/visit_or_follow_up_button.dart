@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:healix/core/theming/colors_manager.dart';
 import 'package:healix/core/theming/text_styles.dart';
-import 'package:healix/features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
-
-import '../../../../core/theming/colors_manager.dart';
+import '../form_managers/medical_visit_form_manager.dart';
 
 class VisitOrFollowUpButton extends StatefulWidget {
-  const VisitOrFollowUpButton({super.key});
+  final MedicalVisitFormManager formManager;
+
+  const VisitOrFollowUpButton({
+    super.key,
+    required this.formManager,
+  });
 
   @override
   State<VisitOrFollowUpButton> createState() => _VisitOrFollowUpButtonState();
@@ -18,7 +21,15 @@ class _VisitOrFollowUpButtonState extends State<VisitOrFollowUpButton> {
   @override
   void initState() {
     super.initState();
-    context.read<MedicalHistoryCubit>().isFirstTime = true;
+    // Initialize with first time = true
+    widget.formManager.isFirstTime = true;
+  }
+
+  void _updateSelection(String value) {
+    setState(() {
+      _selectedOption = value;
+      widget.formManager.isFirstTime = (value == 'First Visit');
+    });
   }
 
   @override
@@ -30,10 +41,9 @@ class _VisitOrFollowUpButtonState extends State<VisitOrFollowUpButton> {
           value: 'First Visit',
           groupValue: _selectedOption,
           onChanged: (value) {
-            setState(() {
-              _selectedOption = value!;
-              context.read<MedicalHistoryCubit>().isFirstTime = true;
-            });
+            if (value != null) {
+              _updateSelection(value);
+            }
           },
           activeColor: ColorsManager.primaryColor,
         ),
@@ -48,10 +58,9 @@ class _VisitOrFollowUpButtonState extends State<VisitOrFollowUpButton> {
           value: 'Follow-up',
           groupValue: _selectedOption,
           onChanged: (value) {
-            setState(() {
-              _selectedOption = value!;
-              context.read<MedicalHistoryCubit>().isFirstTime = false;
-            });
+            if (value != null) {
+              _updateSelection(value);
+            }
           },
           activeColor: ColorsManager.primaryColor,
         ),

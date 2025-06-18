@@ -25,8 +25,9 @@ import '../../features/login/data/repositories_impl/login_repository_impl.dart';
 import '../../features/login/domain/repositories/login_repository.dart';
 import '../../features/login/domain/usecases/login_usecase.dart';
 import '../../features/login/presentation/state_management/login_cubit.dart';
+import '../../features/medical_history/presentation/state_management/add_medical_record_cubit/add_medical_record_cubit.dart';
 import '../../features/medical_history/domain/usecases/get_patient_summary_usecase.dart';
-import '../../features/medical_history/presentation/logic/patient_summary_cubit/patient_summary_cubit.dart';
+import '../../features/medical_history/presentation/state_management/patient_summary_cubit/patient_summary_cubit.dart';
 import '../../features/sign_up/data/datasources/sign_up_api_service.dart';
 import '../../features/sign_up/data/repositories_impl/sign_up_repository_impl.dart';
 import '../../features/sign_up/domain/repositories/sign_up_repository.dart';
@@ -38,8 +39,7 @@ import '../../features/medical_history/data/repositories_impl/medical_history_re
 import '../../features/medical_history/domain/repositories/medical_history_repository.dart';
 import '../../features/medical_history/domain/usecases/add_history_record_usecase.dart';
 import '../../features/medical_history/domain/usecases/get_medical_records_by_type_usecase.dart';
-import '../../features/medical_history/presentation/logic/medical_history_cubit/medical_history_cubit.dart';
-import '../../features/medical_history/presentation/logic/get_medical_records_cubit/get_medical_records_cubit.dart';
+import '../../features/medical_history/presentation/state_management/get_medical_records_cubit/get_medical_records_cubit.dart';
 import '../../features/main_layout/presentation/logic/navigation_cubit/navigation_cubit.dart';
 import '../../features/appointment/data/datasources/appointment_api_service.dart';
 import '../../features/appointment/data/repositories_impl/appointment_repository_impl.dart';
@@ -50,6 +50,17 @@ import '../networking/dio_factory.dart';
 import '../domain/services/input_validation_service.dart';
 import '../presentation/form/form_manager.dart';
 import '../services/input_validation_service_impl.dart';
+
+// Medical History Form Managers
+import '../../features/medical_history/presentation/form_managers/medical_visit_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/lab_test_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/allergy_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/health_log_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/xray_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/surgery_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/hereditary_disease_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/chronic_disease_form_manager.dart';
+import '../../features/medical_history/presentation/form_managers/medicine_form_manager.dart';
 
 final getIt = GetIt.instance;
 
@@ -139,11 +150,31 @@ Future<void> setUpGetIt() async {
   getIt.registerFactory(() => GetFamilyGroupCubit(
         getFamilyGroupWithCodeUseCase: getIt(),
       ));
-  getIt.registerFactory(() => MedicalHistoryCubit(getIt()));
-  getIt.registerFactory(() => GetMedicalRecordsCubit(getIt()));
+
+  // Medical History Form Managers
+  getIt.registerFactory(() => MedicalVisitFormManager());
+  getIt.registerFactory(() => LabTestFormManager());
+  getIt.registerFactory(() => AllergyFormManager());
+  getIt.registerFactory(() => HealthLogFormManager());
+  getIt.registerFactory(() => XRayFormManager());
+  getIt.registerFactory(() => SurgeryFormManager());
+  getIt.registerFactory(() => HereditaryDiseaseFormManager());
+  getIt.registerFactory(() => ChronicDiseaseFormManager());
+  getIt.registerFactory(() => MedicineFormManager());
+
+  // Medical History Cubits
+  getIt.registerFactory(() => GetMedicalRecordsCubit(
+        getMedicalRecordsByTypeUseCase: getIt(),
+      ));
+  getIt.registerFactory(() => AddMedicalRecordCubit(
+        addHistoryRecordUseCase: getIt(),
+        validationService: getIt(),
+      ));
   getIt.registerFactory(() => AppointmentCubit(getIt()));
   getIt.registerLazySingleton(() => NavigationCubit());
   getIt.registerFactory(() => GetScheduleCubit(getIt()));
   getIt.registerFactory(() => BookAppointmentCubit(getIt()));
-  getIt.registerFactory(() => PatientSummaryCubit(getIt()));
+  getIt.registerFactory(() => PatientSummaryCubit(
+        getPatientSummaryUseCase: getIt(),
+      ));
 }

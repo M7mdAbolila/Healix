@@ -8,7 +8,10 @@ import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_date_picker_widget.dart';
 import '../../../../core/widgets/custom_screen_app_bar.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
-import '../logic/medical_history_cubit/medical_history_cubit.dart';
+import '../../../../core/di/setup_get_it.dart';
+import '../../domain/entities/history_record_entity.dart';
+import '../form_managers/health_log_form_manager.dart';
+import '../state_management/add_medical_record_cubit/add_medical_record_cubit.dart';
 import '../widgets/upload_report_widget.dart';
 import '../widgets/add_record_bloc_lisneter.dart';
 
@@ -17,9 +20,60 @@ class AddLogsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final medicalHistoryCubit = context.read<MedicalHistoryCubit>();
-    medicalHistoryCubit.clearForm();
-    medicalHistoryCubit.medicalHistoryType = MedicalHistoryType.logs.index;
+    return BlocProvider(
+      create: (context) => getIt<AddMedicalRecordCubit>(),
+      child: const _AddLogsView(),
+    );
+  }
+}
+
+class _AddLogsView extends StatefulWidget {
+  const _AddLogsView();
+
+  @override
+  State<_AddLogsView> createState() => _AddLogsViewState();
+}
+
+class _AddLogsViewState extends State<_AddLogsView> {
+  final HealthLogFormManager _formManager = HealthLogFormManager();
+
+  @override
+  void initState() {
+    super.initState();
+    context
+        .read<AddMedicalRecordCubit>()
+        .setMedicalHistoryType(MedicalHistoryType.logs.index);
+  }
+
+  @override
+  void dispose() {
+    _formManager.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() {
+    if (_formManager.validateForm()) {
+      // Combine logType and logValue into notes field
+      final notesContent = [
+        if (_formManager.notesController.value.isNotEmpty)
+          _formManager.notesController.value,
+        if (_formManager.logValueController.value.isNotEmpty)
+          'Value: ${_formManager.logValueController.value}',
+      ].join('\n');
+
+      final record = HistoryRecordEntity(
+        date: DateTime.tryParse(_formManager.dateController.value),
+        speciality: _formManager.specialityController.value,
+        logType: _formManager.logTypeController.value,
+        notes: notesContent.isNotEmpty ? notesContent : null,
+      );
+
+      context.read<AddMedicalRecordCubit>().addMedicalRecord(record);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -31,54 +85,63 @@ class AddLogsScreen extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Column(
-                    children: [
-                      verticalSpace(24),
-                      CustomDatePickerWidget(
-                        title: 'Log Date',
-                        controller: medicalHistoryCubit.dateController,
-                      ),
-                      verticalSpace(16),
-                      CustomTextFormField(
-                        title: 'Log Type',
-                        hintText: 'Type Here..',
-                        controller: medicalHistoryCubit.logTypeController,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      verticalSpace(16),
-                      CustomTextFormField(
-                        title: 'Specialty',
-                        hintText: 'Type Here..',
-                        controller: medicalHistoryCubit.specialityController,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      verticalSpace(16),
-                      CustomTextFormField(
-                        title: 'Value',
-                        hintText: 'Type Here..',
-                        controller: medicalHistoryCubit.logValueController,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      verticalSpace(16),
-                      CustomTextFormField(
-                        title: 'Notes',
-                        hintText: 'Type here any notes..',
-                        maxLines: 7,
-                        controller: medicalHistoryCubit.notesController,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      verticalSpace(16),
-                      const UploadAReportWidget(),
-                      verticalSpace(32),
-                      CustomButton(
-                        title: 'Save',
-                        onTap: () {
-                          medicalHistoryCubit.addHistoryRecord();
-                        },
-                      ),
-                      verticalSpace(100),
-                      const AddRecordBlocListener(title: 'Logs'),
-                    ],
+                  child: Form(
+                    key: _formManager.formKey,
+                    child: Column(
+                      children: [
+                        verticalSpace(24),
+                        CustomDatePickerWidget(
+                          title: 'Log Date',
+                          controller: _formManager.dateController.controller,
+                        ),
+                        verticalSpace(16),
+                        CustomTextFormField(
+                          title: 'Log Type',
+                          hintText: 'Type Here..',
+                          controller: _formManager.logTypeController.controller,
+                          textInputAction: TextInputAction.next,
+                        ),
+                        verticalSpace(16),
+                        CustomTextFormField(
+                          title: 'Specialty',
+                          hintText: 'Type Here..',
+                          controller:
+                              _formManager.specialityController.controller,
+                          textInputAction: TextInputAction.next,
+                        ),
+                        verticalSpace(16),
+                        CustomTextFormField(
+                          title: 'Value',
+                          hintText: 'Type Here..',
+                          controller:
+                              _formManager.logValueController.controller,
+                          textInputAction: TextInputAction.next,
+                        ),
+                        verticalSpace(16),
+                        CustomTextFormField(
+                          title: 'Notes',
+                          hintText: 'Type here any notes..',
+                          maxLines: 7,
+                          controller: _formManager.notesController.controller,
+                          textInputAction: TextInputAction.next,
+                        ),
+                        verticalSpace(16),
+                        const UploadAReportWidget(),
+                        verticalSpace(32),
+                        BlocBuilder<AddMedicalRecordCubit,
+                            AddMedicalRecordState>(
+                          builder: (context, state) {
+                            return CustomButton(
+                              title: 'Save',
+                              onTap: () => _submitForm(),
+                              enable: state is! AddMedicalRecordLoading,
+                            );
+                          },
+                        ),
+                        verticalSpace(100),
+                        const AddRecordBlocListener(title: 'Logs'),
+                      ],
+                    ),
                   ),
                 ),
               ),

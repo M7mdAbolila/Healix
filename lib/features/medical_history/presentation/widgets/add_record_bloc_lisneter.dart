@@ -3,37 +3,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/core/dialogs/setup_dialog.dart';
 import 'package:healix/core/helpers/extensions.dart';
 
-import '../logic/medical_history_cubit/medical_history_cubit.dart';
-import '../logic/medical_history_cubit/medical_history_state.dart';
+import '../state_management/add_medical_record_cubit/add_medical_record_cubit.dart';
 
 class AddRecordBlocListener extends StatelessWidget {
   const AddRecordBlocListener({super.key, required this.title});
   final String title;
+
   @override
   Widget build(BuildContext context) {
-    return BlocListener<MedicalHistoryCubit, MedicalHistoryState>(
+    return BlocListener<AddMedicalRecordCubit, AddMedicalRecordState>(
       listenWhen: (previous, current) =>
-          current is AddHistoryRecordSuccess ||
-          current is MedicalHistoryError ||
-          current is MedicalHistoryLoading,
+          current is AddMedicalRecordSuccess ||
+          current is AddMedicalRecordFailure ||
+          current is AddMedicalRecordLoading,
       listener: (context, state) {
-        if (state is AddHistoryRecordSuccess) {
-          context.read<MedicalHistoryCubit>().clearForm();
+        if (state is AddMedicalRecordSuccess) {
           context.pop();
           showAwesomeSnackbar(
             context,
             title: title,
             message: 'Record added successfully.',
           );
-        } else if (state is MedicalHistoryError) {
+        } else if (state is AddMedicalRecordFailure) {
           context.pop();
           showAwesomeSnackbar(
             context,
             title: title,
-            message: state.errMessage,
+            message: state.message,
             isError: true,
           );
-        } else {
+        } else if (state is AddMedicalRecordLoading) {
           showLoadingDialog(context);
         }
       },

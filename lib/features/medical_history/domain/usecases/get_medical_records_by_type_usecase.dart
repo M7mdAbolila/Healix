@@ -4,13 +4,13 @@ import '../entities/get_medical_records_response_entity.dart';
 import '../repositories/medical_history_repository.dart';
 
 class GetMedicalRecordsByTypeUseCase {
-  final MedicalHistoryRepository repository;
+  final MedicalHistoryRepository _repository;
 
-  GetMedicalRecordsByTypeUseCase(this.repository);
+  GetMedicalRecordsByTypeUseCase(this._repository);
 
   Future<Either<ApiErrorModel, GetMedicalRecordsResponseEntity>> call(
     int recordType,
   ) async {
-    return await repository.getMedicalRecordsByType(recordType);
+    return await _repository.getMedicalRecordsByType(recordType);
   }
 }
