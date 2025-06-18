@@ -9,10 +9,12 @@ class NavigationCubit extends Cubit<NavigationState> {
   final PageController pageController = PageController();
 
   int get selectedIndex => _selectedIndex;
-
   void changeTab(int index) {
     if (index >= 0 && index <= 3 && index != _selectedIndex) {
       _selectedIndex = index;
+      if (pageController.hasClients) {
+        pageController.jumpToPage(index);
+      }
       emit(NavigationChanged(index));
     }
   }
@@ -30,4 +32,10 @@ class NavigationCubit extends Cubit<NavigationState> {
   void goToMedicalHistory() => changeTab(1);
   void goToMyActivity() => changeTab(2);
   void goToSettings() => changeTab(3);
+
+  @override
+  Future<void> close() {
+    pageController.dispose();
+    return super.close();
+  }
 }

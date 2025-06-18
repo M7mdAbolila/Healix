@@ -39,7 +39,6 @@ class _HealixMainLayoutView extends StatefulWidget {
 class _HealixMainLayoutViewState extends State<_HealixMainLayoutView> {
   void _onTabChanged(int index) {
     context.read<NavigationCubit>().changeTab(index);
-    context.read<NavigationCubit>().pageController.jumpToPage(index);
   }
 
   @override
@@ -98,7 +97,7 @@ class _HealixMainLayoutViewState extends State<_HealixMainLayoutView> {
             ],
           ),
           body: PageView(
-            controller: context.read<NavigationCubit>().pageController,
+            controller: context.watch<NavigationCubit>().pageController,
             physics: const NeverScrollableScrollPhysics(),
             onPageChanged: (index) {
               context.read<NavigationCubit>().changeTab(index);
