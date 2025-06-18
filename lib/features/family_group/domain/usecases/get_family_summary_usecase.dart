@@ -5,13 +5,13 @@ import '../entities/family_summary_entity.dart';
 import '../repositories/family_group_repository.dart';
 
 class GetFamilySummaryUseCase {
-  final FamilyGroupRepository repository;
+  final FamilyGroupRepository _repository;
 
-  GetFamilySummaryUseCase(this.repository);
+  GetFamilySummaryUseCase(this._repository);
 
   Future<Either<ApiErrorModel, FamilySummaryEntity>> call(
     FamilySummaryRequestEntity request,
   ) async {
-    return await repository.getFamilySummary(request);
+    return await _repository.getFamilySummary(request);
   }
 }

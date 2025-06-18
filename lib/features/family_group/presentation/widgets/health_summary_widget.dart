@@ -5,8 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healix/core/theming/text_styles.dart';
 
 import '../../../../core/theming/colors_manager.dart';
-import '../logic/family_group_cubit/family_group_cubit.dart';
-import '../logic/family_group_cubit/family_group_state.dart';
+import '../state_management/family_summary_cubit/family_summary_cubit.dart';
 
 class HealthSummaryWidget extends StatefulWidget {
   const HealthSummaryWidget({super.key, this.familyId});
@@ -20,7 +19,7 @@ class _HealthSummaryWidgetState extends State<HealthSummaryWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<FamilyGroupCubit>().getFamilySummary(widget.familyId ?? '');
+    context.read<FamilySummaryCubit>().getFamilySummary(widget.familyId ?? '');
   }
 
   @override
@@ -35,13 +34,13 @@ class _HealthSummaryWidgetState extends State<HealthSummaryWidget> {
             color: ColorsManager.darkerGreyText,
           ),
         ),
-        BlocBuilder<FamilyGroupCubit, FamilyGroupState>(
+        BlocBuilder<FamilySummaryCubit, FamilySummaryState>(
           buildWhen: (previous, current) =>
-              current is GetFamilySummaryLoading ||
-              current is GetFamilySummarySuccess ||
-              current is GetFamilySummaryFailure,
+              current is FamilySummaryLoading ||
+              current is FamilySummarySuccess ||
+              current is FamilySummaryFailure,
           builder: (context, state) {
-            if (state is GetFamilySummaryFailure) {
+            if (state is FamilySummaryFailure) {
               return Container(
                 height: 200.h,
                 padding: EdgeInsets.all(16.r),
@@ -54,7 +53,7 @@ class _HealthSummaryWidgetState extends State<HealthSummaryWidget> {
                 ),
                 child: Center(
                   child: Text(
-                    state.errMessage,
+                    state.errorMessage,
                     style: AppTextStyles.fontBodyText(
                       color: ColorsManager.alertColor,
                     ),
@@ -62,8 +61,8 @@ class _HealthSummaryWidgetState extends State<HealthSummaryWidget> {
                   ),
                 ),
               );
-            } else if (state is GetFamilySummarySuccess) {
-              final summary = state.familySummary.summary;
+            } else if (state is FamilySummarySuccess) {
+              final summary = state.summary.summary;
               return Container(
                 height: 400.h,
                 padding: EdgeInsets.all(16.r),

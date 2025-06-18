@@ -14,11 +14,12 @@ import '../../features/chat_bot/presentation/state_management/chat_cubit/chat_bo
 import '../../features/family_group/data/datasources/family_group_api_service.dart';
 import '../../features/family_group/data/repositories_impl/family_group_repository_impl.dart';
 import '../../features/family_group/domain/repositories/family_group_repository.dart';
-import '../../features/family_group/domain/usecases/create_family_group_usecase.dart';
-import '../../features/family_group/domain/usecases/get_family_group_with_code_usecase.dart';
-import '../../features/family_group/domain/usecases/join_family_group_usecase.dart';
-import '../../features/family_group/domain/usecases/get_family_summary_usecase.dart';
-import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
+import '../../features/family_group/domain/usecases/usecases.dart';
+import '../../features/family_group/presentation/state_management/create_family_group_cubit/create_family_group_cubit.dart';
+import '../../features/family_group/presentation/state_management/find_family_group_cubit/find_family_group_cubit.dart';
+import '../../features/family_group/presentation/state_management/join_family_group_cubit/join_family_group_cubit.dart';
+import '../../features/family_group/presentation/state_management/family_summary_cubit/family_summary_cubit.dart';
+import '../../features/family_group/presentation/state_management/get_family_group_cubit/get_family_group_cubit.dart';
 import '../../features/login/data/datasources/login_api_service.dart';
 import '../../features/login/data/repositories_impl/login_repository_impl.dart';
 import '../../features/login/domain/repositories/login_repository.dart';
@@ -118,9 +119,26 @@ Future<void> setUpGetIt() async {
         signUpFormManager: SignUpFormManager(),
         profileFormManager: CreateProfileFormManager(),
         physicalFormManager: PhysicalInfoFormManager(),
+      )); // Separate Family Group Cubits
+  getIt.registerFactory(() => CreateFamilyGroupCubit(
+        createFamilyGroupUseCase: getIt(),
+        validationService: getIt(),
+        formManager: FamilyGroupFormManager(),
       ));
-  getIt.registerFactory(
-      () => FamilyGroupCubit(getIt(), getIt(), getIt(), getIt()));
+  getIt.registerFactory(() => FindFamilyGroupCubit(
+        getFamilyGroupWithCodeUseCase: getIt(),
+        validationService: getIt(),
+        formManager: FamilyGroupFormManager(),
+      ));
+  getIt.registerFactory(() => JoinFamilyGroupCubit(
+        joinFamilyGroupUseCase: getIt(),
+      ));
+  getIt.registerFactory(() => FamilySummaryCubit(
+        getFamilySummaryUseCase: getIt(),
+      ));
+  getIt.registerFactory(() => GetFamilyGroupCubit(
+        getFamilyGroupWithCodeUseCase: getIt(),
+      ));
   getIt.registerFactory(() => MedicalHistoryCubit(getIt()));
   getIt.registerFactory(() => GetMedicalRecordsCubit(getIt()));
   getIt.registerFactory(() => AppointmentCubit(getIt()));

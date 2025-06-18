@@ -148,3 +148,28 @@ class ChatFormManager extends BaseFormManager {
     _messageController.dispose();
   }
 }
+
+class FamilyGroupFormManager extends BaseFormManager {
+  final FormFieldController _familyNameController = FormFieldController();
+  final FormFieldController _familyCodeController = FormFieldController();
+
+  FormFieldController get familyNameController => _familyNameController;
+  FormFieldController get familyCodeController => _familyCodeController;
+
+  @override
+  bool validateForm() {
+    return formKey.currentState?.validate() ?? false;
+  }
+
+  @override
+  void clearForm() {
+    _familyNameController.clear();
+    _familyCodeController.clear();
+  }
+
+  @override
+  void dispose() {
+    _familyNameController.dispose();
+    _familyCodeController.dispose();
+  }
+}

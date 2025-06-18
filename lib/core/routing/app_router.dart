@@ -7,8 +7,6 @@ import 'package:healix/features/appointment/presentation/screens/doctor_details_
 import 'package:healix/features/appointment/presentation/screens/doctors_list_screen.dart';
 import 'package:healix/features/chat_bot/presentation/screens/chat_bot_screen.dart';
 import 'package:healix/features/chat_bot/presentation/screens/all_chats_screen.dart';
-import 'package:healix/features/family_group/presentation/screens/family_group_members_screen.dart';
-import 'package:healix/features/family_group/presentation/screens/my_family_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/enter_otp_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:healix/features/forget_password/presentation/screens/reset_pass_screen.dart';
@@ -30,8 +28,7 @@ import 'package:healix/features/sign_up/presentation/screens/sign_up_screen.dart
 
 import '../../features/appointment/domain/entities/get_doctors_response_entity.dart';
 import '../../features/chat_bot/presentation/state_management/chat_cubit/chat_bot_cubit.dart';
-import '../../features/family_group/data/models/family_group_model.dart';
-import '../../features/family_group/presentation/logic/family_group_cubit/family_group_cubit.dart';
+import '../../features/family_group/family_group.dart';
 import '../../features/login/presentation/screens/login_screen.dart';
 import '../../features/sign_up/presentation/screens/create_profile_screen.dart';
 import '../../features/forget_password/presentation/screens/two_factor_auth_screen.dart';
@@ -192,7 +189,7 @@ class AppRouter {
       case Routes.myFamilyScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => getIt<FamilyGroupCubit>(),
+            create: (context) => getIt<GetFamilyGroupCubit>(),
             child: const MyFamilyScreen(),
           ),
         );

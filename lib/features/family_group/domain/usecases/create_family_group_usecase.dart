@@ -5,11 +5,12 @@ import '../entities/create_family_group_request_entity.dart';
 import '../repositories/family_group_repository.dart';
 
 class CreateFamilyGroupUseCase {
-  final FamilyGroupRepository repository;
-  CreateFamilyGroupUseCase(this.repository);
+  final FamilyGroupRepository _repository;
+
+  CreateFamilyGroupUseCase(this._repository);
 
   Future<Either<ApiErrorModel, CreateFamilyGroupResponseModel>> call(
-      CreateFamilyGroupRequestEntity request) {
-    return repository.createFamilyGroup(request);
+      CreateFamilyGroupRequestEntity request) async {
+    return await _repository.createFamilyGroup(request);
   }
 }

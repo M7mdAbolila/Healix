@@ -3,10 +3,11 @@ import 'package:healix/core/networking/api_error_model.dart';
 import '../repositories/family_group_repository.dart';
 
 class JoinFamilyGroupUseCase {
-  final FamilyGroupRepository repository;
-  JoinFamilyGroupUseCase(this.repository);
+  final FamilyGroupRepository _repository;
 
-  Future<Either<ApiErrorModel, void>> call(String familyGroupId) {
-    return repository.joinFamilyGroup(familyGroupId);
+  JoinFamilyGroupUseCase(this._repository);
+
+  Future<Either<ApiErrorModel, void>> call(String familyGroupId) async {
+    return await _repository.joinFamilyGroup(familyGroupId);
   }
 }
