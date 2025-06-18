@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healix/core/di/setup_get_it.dart';
-import 'package:healix/features/appointment/presentation/logic/get_schedule_cubit/get_schedule_cubit.dart';
+import 'package:healix/features/appointment/presentation/state_management/get_schedule_cubit/get_schedule_cubit.dart';
 import 'package:healix/features/appointment/presentation/screens/choose_specialty_screen.dart';
 import 'package:healix/features/appointment/presentation/screens/doctor_details_screen.dart';
 import 'package:healix/features/appointment/presentation/screens/doctors_list_screen.dart';

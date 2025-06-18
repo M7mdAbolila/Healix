@@ -7,7 +7,7 @@ import 'package:healix/core/widgets/my_divider_widget.dart';
 import 'package:healix/features/home/presentation/widgets/featured_doctor_list_view.dart';
 import 'package:healix/features/home/presentation/widgets/chat_with_healix_card.dart';
 import 'package:healix/features/home/presentation/widgets/just_talk_to_healix_card.dart';
-import '../../../appointment/presentation/logic/appointment_cubit/appointment_cubit.dart';
+import '../../../appointment/presentation/state_management/appointment_cubit/appointment_cubit.dart';
 import 'home_features_buttons_row.dart';
 
 class HomeContentWidget extends StatelessWidget {

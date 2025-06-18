@@ -1,4 +1,5 @@
-part of 'book_appointment_cubit.dart';
+import 'package:equatable/equatable.dart';
+import '../../../domain/entities/entities.dart';
 
 abstract class BookAppointmentState extends Equatable {
   const BookAppointmentState();
@@ -17,6 +18,7 @@ class BookAppointmentLoading extends BookAppointmentState {
 
 class BookAppointmentSuccess extends BookAppointmentState {
   final BookAppointmentResponseEntity response;
+
   const BookAppointmentSuccess(this.response);
 
   @override
@@ -24,9 +26,19 @@ class BookAppointmentSuccess extends BookAppointmentState {
 }
 
 class BookAppointmentError extends BookAppointmentState {
-  final String errMessage;
-  const BookAppointmentError(this.errMessage);
+  final String errorMessage;
+
+  const BookAppointmentError(this.errorMessage);
 
   @override
-  List<Object?> get props => [errMessage];
+  List<Object?> get props => [errorMessage];
+}
+
+class BookAppointmentValidationError extends BookAppointmentState {
+  final Map<String, String> fieldErrors;
+
+  const BookAppointmentValidationError(this.fieldErrors);
+
+  @override
+  List<Object?> get props => [fieldErrors];
 }

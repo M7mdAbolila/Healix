@@ -58,7 +58,7 @@ class DoctorPhotoAndMainInfoText extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Dr. ${doctor?.fname ?? ''} ${doctor?.lname ?? ''}',
+                '${doctor?.fname ?? ''} ${doctor?.lname ?? ''}',
                 style: AppTextStyles.fontTextInput(
                   color: ColorsManager.darkerGreyText,
                 ),

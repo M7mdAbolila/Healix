@@ -6,7 +6,8 @@ import 'package:healix/features/home/presentation/widgets/featured_doctor_item.d
 import 'package:healix/core/theming/text_styles.dart';
 import 'package:healix/core/theming/colors_manager.dart';
 
-import '../../../appointment/presentation/logic/appointment_cubit/appointment_cubit.dart';
+import '../../../appointment/presentation/state_management/appointment_cubit/appointment_cubit.dart';
+import '../../../appointment/presentation/state_management/appointment_cubit/appointment_state.dart';
 
 class FeaturedDoctorListView extends StatefulWidget {
   const FeaturedDoctorListView({super.key});
@@ -63,7 +64,7 @@ class _FeaturedDoctorListViewState extends State<FeaturedDoctorListView> {
               } else if (state is GetDoctorsError) {
                 return Center(
                   child: Text(
-                    'Error loading doctors',
+                    'Error loading doctors: ${state.errorMessage}',
                     style: AppTextStyles.fontTextInput(
                       color: ColorsManager.alertColor,
                     ),

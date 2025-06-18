@@ -2,8 +2,8 @@ import 'package:get_it/get_it.dart';
 
 import '../../features/appointment/domain/usecases/get_schedule_usecase.dart';
 import '../../features/appointment/domain/usecases/book_appointment_usecase.dart';
-import '../../features/appointment/presentation/logic/get_schedule_cubit/get_schedule_cubit.dart';
-import '../../features/appointment/presentation/logic/book_appointment_cubit/book_appointment_cubit.dart';
+import '../../features/appointment/presentation/state_management/get_schedule_cubit/get_schedule_cubit.dart';
+import '../../features/appointment/presentation/state_management/book_appointment_cubit/book_appointment_cubit.dart';
 import '../../features/chat_bot/data/datasources/chatbot_api_service.dart';
 import '../../features/chat_bot/data/repositories_impl/chat_bot_repository_impl.dart';
 import '../../features/chat_bot/domain/repositories/chat_bot_repository.dart';
@@ -45,7 +45,7 @@ import '../../features/appointment/data/datasources/appointment_api_service.dart
 import '../../features/appointment/data/repositories_impl/appointment_repository_impl.dart';
 import '../../features/appointment/domain/repositories/appointment_repository.dart';
 import '../../features/appointment/domain/usecases/get_doctors_usecase.dart';
-import '../../features/appointment/presentation/logic/appointment_cubit/appointment_cubit.dart';
+import '../../features/appointment/presentation/state_management/appointment_cubit/appointment_cubit.dart';
 import '../networking/dio_factory.dart';
 import '../domain/services/input_validation_service.dart';
 import '../presentation/form/form_manager.dart';
@@ -61,6 +61,7 @@ import '../../features/medical_history/presentation/form_managers/surgery_form_m
 import '../../features/medical_history/presentation/form_managers/hereditary_disease_form_manager.dart';
 import '../../features/medical_history/presentation/form_managers/chronic_disease_form_manager.dart';
 import '../../features/medical_history/presentation/form_managers/medicine_form_manager.dart';
+import '../../features/appointment/presentation/form_managers/appointment_form_managers.dart';
 
 final getIt = GetIt.instance;
 
@@ -130,7 +131,7 @@ Future<void> setUpGetIt() async {
         signUpFormManager: SignUpFormManager(),
         profileFormManager: CreateProfileFormManager(),
         physicalFormManager: PhysicalInfoFormManager(),
-      )); // Separate Family Group Cubits
+      ));
   getIt.registerFactory(() => CreateFamilyGroupCubit(
         createFamilyGroupUseCase: getIt(),
         validationService: getIt(),
@@ -161,6 +162,9 @@ Future<void> setUpGetIt() async {
   getIt.registerFactory(() => HereditaryDiseaseFormManager());
   getIt.registerFactory(() => ChronicDiseaseFormManager());
   getIt.registerFactory(() => MedicineFormManager());
+  // Appointment Form Managers
+  getIt.registerFactory(() => BookAppointmentFormManager());
+  getIt.registerFactory(() => DoctorSearchFormManager());
 
   // Medical History Cubits
   getIt.registerFactory(() => GetMedicalRecordsCubit(
@@ -170,10 +174,23 @@ Future<void> setUpGetIt() async {
         addHistoryRecordUseCase: getIt(),
         validationService: getIt(),
       ));
-  getIt.registerFactory(() => AppointmentCubit(getIt()));
+
+  // Appointment Cubits
+  getIt.registerFactory(() => AppointmentCubit(
+        getDoctorsUseCase: getIt(),
+        validationService: getIt(),
+        formManager: DoctorSearchFormManager(),
+      ));
   getIt.registerLazySingleton(() => NavigationCubit());
-  getIt.registerFactory(() => GetScheduleCubit(getIt()));
-  getIt.registerFactory(() => BookAppointmentCubit(getIt()));
+  getIt.registerFactory(() => GetScheduleCubit(
+        getScheduleUseCase: getIt(),
+        validationService: getIt(),
+      ));
+  getIt.registerFactory(() => BookAppointmentCubit(
+        bookAppointmentUseCase: getIt(),
+        validationService: getIt(),
+        formManager: BookAppointmentFormManager(),
+      ));
   getIt.registerFactory(() => PatientSummaryCubit(
         getPatientSummaryUseCase: getIt(),
       ));

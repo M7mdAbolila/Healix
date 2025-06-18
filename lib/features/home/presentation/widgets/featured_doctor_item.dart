@@ -67,7 +67,7 @@ class FeaturedDoctorItem extends StatelessWidget {
             ),
             verticalSpace(16),
             Text(
-              'Dr. ${doctor?.fname ?? ''} ${doctor?.lname ?? ''}',
+              '${doctor?.fname ?? ''} ${doctor?.lname ?? ''}',
               style: AppTextStyles.fontTextInput(
                 color: ColorsManager.darkerGreyText,
               ),

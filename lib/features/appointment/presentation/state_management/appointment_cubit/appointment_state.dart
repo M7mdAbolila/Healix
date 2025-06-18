@@ -1,4 +1,5 @@
-part of 'appointment_cubit.dart';
+import 'package:equatable/equatable.dart';
+import '../../../domain/entities/entities.dart';
 
 abstract class AppointmentState extends Equatable {
   const AppointmentState();
@@ -17,6 +18,7 @@ class GetDoctorsLoading extends AppointmentState {
 
 class GetDoctorsSuccess extends AppointmentState {
   final GetDoctorsResponseEntity response;
+  
   const GetDoctorsSuccess(this.response);
 
   @override
@@ -24,9 +26,19 @@ class GetDoctorsSuccess extends AppointmentState {
 }
 
 class GetDoctorsError extends AppointmentState {
-  final String errMessage;
-  const GetDoctorsError(this.errMessage);
+  final String errorMessage;
+  
+  const GetDoctorsError(this.errorMessage);
 
   @override
-  List<Object?> get props => [errMessage];
+  List<Object?> get props => [errorMessage];
+}
+
+class GetDoctorsValidationError extends AppointmentState {
+  final Map<String, String> fieldErrors;
+
+  const GetDoctorsValidationError(this.fieldErrors);
+
+  @override
+  List<Object?> get props => [fieldErrors];
 }

@@ -8,7 +8,8 @@ import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../domain/entities/schedule_entity.dart';
-import '../logic/get_schedule_cubit/get_schedule_cubit.dart';
+import '../state_management/get_schedule_cubit/get_schedule_cubit.dart';
+import '../state_management/get_schedule_cubit/get_schedule_state.dart';
 import 'show_confirm_booking_dialog.dart';
 
 class AvailableDoctorScheduleList extends StatefulWidget {
@@ -124,34 +125,6 @@ class _AvailableDoctorScheduleListState
     return time;
   }
 
-  String _convertToApiTimeFormat(String displayTime) {
-    try {
-      // Parse display time like "2:30 PM" back to "14:30:00"
-      final parts = displayTime.split(' ');
-      if (parts.length == 2) {
-        final timePart = parts[0];
-        final period = parts[1];
-
-        final timeParts = timePart.split(':');
-        if (timeParts.length == 2) {
-          int hour = int.parse(timeParts[0]);
-          final int minute = int.parse(timeParts[1]);
-
-          if (period == 'PM' && hour != 12) {
-            hour += 12;
-          } else if (period == 'AM' && hour == 12) {
-            hour = 0;
-          }
-
-          return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}:00';
-        }
-      }
-    } catch (e) {
-      return displayTime;
-    }
-    return displayTime;
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetScheduleCubit, GetScheduleState>(
@@ -165,7 +138,7 @@ class _AvailableDoctorScheduleListState
         if (state is GetScheduleFailure) {
           return Center(
             child: Text(
-              'Failed to load schedule: ${state.errMessage}',
+              'Failed to load schedule: ${state.errorMessage}',
               style: AppTextStyles.fontSmallerText(
                 color: ColorsManager.alertColor,
               ),
@@ -247,19 +220,12 @@ class _AvailableDoctorScheduleListState
                         color: Colors.white,
                       ),
                       onTap: () {
-                        // Convert times back to API format
-                        final String fromTimeApi =
-                            _convertToApiTimeFormat(dayData['fromTime']);
-                        final String toTimeApi =
-                            _convertToApiTimeFormat(dayData['toTime']);
-
                         showConfirmBookingDialog(
                           context,
                           doctor: widget.doctor!,
-                          day: dayData[
-                              'dateFormatted'], // Pass the date in YYYY-MM-DD format
-                          from: fromTimeApi,
-                          to: toTimeApi,
+                          day: dayData['dateFormatted'],
+                          from: dayData['fromTime'],
+                          to: dayData['toTime'],
                           dayLabel:
                               '${dayData['dayLabel']} ${dayData['dateString']}',
                         );
