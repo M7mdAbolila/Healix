@@ -1,8 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Location permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!---Internet permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="healix"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBg9T1jJ3ScSPJkjCBgnS7yd73E6mJvx48"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
